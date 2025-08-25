@@ -12,7 +12,7 @@ class VitrineController extends Controller
     public function contact()
     {
         return view('vitrine.contact-us');
-    }
+    } 
 
     public function galerie()
     {
@@ -22,7 +22,7 @@ class VitrineController extends Controller
         return view('vitrine.galerie', compact('images'));
     }
 
-        public function index()
+    public function index()
     {
         // Récupérer les 6 dernières images
         $latestImages = Gallery::orderBy('created_at', 'desc')->take(6)->get();
@@ -33,32 +33,8 @@ class VitrineController extends Controller
         return view('vitrine.index', compact('latestImages', 'latestNews'));
     }
 
-     public function show($id)
-    {
-        $news = Event::findOrFail($id);
-        return view('vitrine.actualite-detail', compact('news'));
-
-    }
-
-    public function actualites()
-    {
-        $events = Event::orderBy('created_at', 'desc')->paginate(10);
-        return view('vitrine.actualite', compact('events'));
-    }
-
-    public function showproduit($id)
-    {
-        $produit = Produit::findOrFail($id);
-        return view('vitrine.produit-detail', compact('produit'));
-
-    }
-
-
-    public function produits()
-    {
-        $produits = Produit::orderBy('created_at', 'desc')->paginate(16); ;
-        return view('vitrine.produit', compact('produits'));
-    }
+   
+ 
 
 
 }

@@ -1,70 +1,89 @@
 <div class="left-side-bar">
-		<div class="brand-logo">
-			<a href="/admin">
-				<h2 class="light-logo" style="color:white;text-align:center;"> UGBD</h2>
-			</a>
-			<div class="close-sidebar" data-toggle="left-sidebar-close">
-				<i class="ion-close-round"></i>
-			</div>
-		</div>
-		<div class="menu-block customscroll">
-			<div class="sidebar-menu">
-				<ul id="accordion-menu">
-                    <li>
-						<a href="/admin" class="dropdown-toggle no-arrow">
-							<span class="micon  dw dw-home"></span><span class="mtext">TABLEAU DE BORD</span>
-						</a>
-					</li>
-					<li>
-						<a href="/admin/contact" class="dropdown-toggle no-arrow">
-							<span class="micon  dw dw-home"></span><span class="mtext">Contact</span>
-						</a>
-					</li>
-					<li>
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-analytics-3"></span><span class="mtext">Galerie</span>
-						</a>
-						<ul class="submenu">
-							<li><a href="/admin/galleries/">Les images</a></li>
-							<li><a href="/admin/galleries/create">Ajouter une images</a></li>
-						</ul>
-					</li>
+    <div class="brand-logo text-center py-3">
+        <a href="{{ url('/admin') }}">
+            <h2 class="text-white">AM5 AUTO</h2>
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="fa fa-times"></i>
+        </div>
+    </div>
 
-                    <li>
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-browser1"></span><span class="mtext">Produits</span>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                
+                <!-- Tableau de bord -->
+                <li class="{{ request()->is('admin') ? 'active' : '' }}">
+                    <a href="{{ url('/admin') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon"><i class="fa fa-home"></i></span>
+                        <span class="mtext">Tableau de bord</span>
+                    </a>
+                </li>
 
-						</a>
-						<ul class="submenu">
-							<li><a href="/admin/produits/">Les produits</a></li>
-							<li><a href="/admin/produits/create">Nouveau produit</a></li>
-						</ul>
-					</li>
+                <!-- Clients -->
+                <li class="{{ request()->is('admin/clients*') ? 'active' : '' }}">
+                    <a href="{{ url('/admin/clients') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon"><i class="fa fa-users"></i></span>
+                        <span class="mtext">Clients</span>
+                    </a>
+                </li>
 
-					<li>
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-browser1"></span><span class="mtext">Actualités</span>
+                <!-- Gestion véhicule -->
+                <li class="{{ request()->is('admin/categories*') || request()->is('admin/brands*') || request()->is('admin/avis*') ? 'active' : '' }}">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon"><i class="fa fa-car"></i></span>
+                        <span class="mtext">Gestion véhicule</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="{{ request()->is('admin/categories*') ? 'active' : '' }}">
+                            <a href="{{ url('/admin/categories') }}">Catégories</a>
+                        </li>
+                        <li class="{{ request()->is('admin/brands*') ? 'active' : '' }}">
+                            <a href="{{ url('/admin/brands') }}">Marques</a>
+                        </li>
+                        <li class="{{ request()->is('admin/avis*') ? 'active' : '' }}">
+                            <a href="{{ url('/admin/avis') }}">Avis</a>
+                        </li>
+                    </ul>
+                </li>
 
-						</a>
-						<ul class="submenu">
-							<li><a href="/admin/events/">Les actualités</a></li>
-							<li><a href="/admin/events/create">Nouvelle actualité</a></li>
-						</ul>
-					</li>
+                <!-- Cars -->
+                <li class="{{ request()->is('admin/cars*') ? 'active' : '' }}">
+                    <a href="{{ url('/admin/cars') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon"><i class="fa fa-car"></i></span>
+                        <span class="mtext">Véhicules</span>
+                    </a>
+                </li>
 
+                <!-- Commandes -->
+                <li class="{{ request()->is('admin/commandes*') ? 'active' : '' }}">
+                    <a href="{{ url('/admin/commandes') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon"><i class="fa fa-shopping-cart"></i></span>
+                        <span class="mtext">Commandes</span>
+                    </a>
+                </li>
 
-                    <li>
-						<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-    					<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        					<i class="dw dw-logout"></i> Se déconnecter
-    					</a>
-						</div>
-						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    						@csrf
-						</form>
+                <!-- Contact -->
+                <li class="{{ request()->is('admin/contact*') ? 'active' : '' }}">
+                    <a href="{{ url('/admin/contact') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon"><i class="fa fa-envelope"></i></span>
+                        <span class="mtext">Contact</span>
+                    </a>
+                </li>
 
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+                <!-- Déconnexion -->
+                <li>
+                    <a href="#" class="dropdown-toggle no-arrow"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span class="micon"><i class="fa fa-logout"></i></span>
+                        <span class="mtext">Se déconnecter</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

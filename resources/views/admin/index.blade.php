@@ -12,9 +12,9 @@
             </div>
             <div class="col-md-8">
                 <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                    UGBD <div class="weight-600 font-30 text-blue"> </div>
+                    AM5 AUTO <div class="weight-600 font-30 text-blue"> </div>
                 </h4>
-                <p class="font-18 max-width-600">Universelle Grigny Boxe Découverte</p>
+                <p class="font-18 max-width-600">Vente de véhicules neufs et d'occasions</p>
 
             </div>
         </div>
@@ -29,7 +29,7 @@
 							</div>
 							<div class="widget-data">
 								<div class="h4 mb-0">TOTAL</div>
-								<div class="weight-600 font-14">BOXE EDUCATIVE</div>
+								<div class="weight-600 font-14">COMMANDES</div>
 							</div>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 							</div>
 							<div class="widget-data">
 								<div class="h4 mb-0">TOTAL</div>
-								<div class="weight-600 font-14">BOXE AMATEUR </div>
+								<div class="weight-600 font-14">MARQUES </div>
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 							</div>
 							<div class="widget-data">
 								<div class="h4 mb-0">TOTAL</div>
-								<div class="weight-600 font-14">BOXE PROFESSIONNELLE</div>
+								<div class="weight-600 font-14">VEHICULES</div>
 							</div>
 						</div>
 					</div>

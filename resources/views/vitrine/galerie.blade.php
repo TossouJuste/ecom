@@ -1,152 +1,183 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
-<!-- Mirrored from powerzone.dexignzone.com/xhtml/shortcode-filters.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Nov 2024 15:07:51 GMT -->
+<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:55:14 GMT -->
 <head>
-
-	<!-- Title -->
-	<title>Galerie - UGBD</title>
-
-	<!-- Meta -->
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="DexignZone">
-	<meta name="robots" content="index, follow">
-	<meta name="keywords" content="bodybuilding, class, clean, coach, fitness, fitness gym, gym, gym trainer, health, martial arts, personal trainer, sport, sports theme, training, workout, Fitness template, Workout design, Health and wellness, Exercise layout, Fitness app, Gym website, UI components, UX components, Workout routines, Health template, UIUX, creative, HTML, CSS, Sass Integration, HTML Template, Bootstrap, Bootstrap Template, Gym UI Kit, websiite, Website template, Fitness Website Design, Exercise App Design, Gym Interface, Exercise Dashboard, Gym Homepage Template, HTML Gym Template, Responsive Gym Design, responsive, HTML Fitness Components, Workout Program Template, Fitness Studio HTML, Responsive Workout Design, Landing Page Kit, HTML5, HTML/CSS">
-	<meta name="description" content="Embark on a transformative fitness journey with the PowerZone HTML Template. Elevate your workouts and gym routines with this dynamic and versatile template designed to unleash the power of sleek aesthetics and intuitive features. Discover a world of possibilities for fitness and wellness, as PowerZone becomes your gateway to a healthier, stronger version of yourself. With its modern design and comprehensive features, this template is set to redefine and enhance your fitness experience like never before">
-	<meta property="og:title" content="PowerZone - Fitness, Workout & Gym HTML Template | DexignZone">
-	<meta property="og:description" content="Embark on a transformative fitness journey with the PowerZone HTML Template. Elevate your workouts and gym routines with this dynamic and versatile template designed to unleash the power of sleek aesthetics and intuitive features. Discover a world of possibilities for fitness and wellness, as PowerZone becomes your gateway to a healthier, stronger version of yourself. With its modern design and comprehensive features, this template is set to redefine and enhance your fitness experience like never before">
-	<meta property="og:image" content="social-image.png">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="twitter:title" content="PowerZone - Fitness, Workout & Gym HTML Template | DexignZone">
-	<meta name="twitter:description" content="Embark on a transformative fitness journey with the PowerZone HTML Template. Elevate your workouts and gym routines with this dynamic and versatile template designed to unleash the power of sleek aesthetics and intuitive features. Discover a world of possibilities for fitness and wellness, as PowerZone becomes your gateway to a healthier, stronger version of yourself. With its modern design and comprehensive features, this template is set to redefine and enhance your fitness experience like never before">
-	<meta name="twitter:image" content="social-image.png">
-	<meta name="twitter:card" content="summary_large_image">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Dreams Rent | Template</title>
 
-	<!-- Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/img/favicon.png">
 
-	<!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="assets/images/logoUGBD.png">
-    <link href="assets/vendor/animate/animate.css" rel="stylesheet">
-	<link href="assets/vendor/rangeslider/rangeslider.css" rel="stylesheet">
-	<link href="assets/vendor/switcher/switcher.css" rel="stylesheet">
-	<link href="assets/vendor/lightgallery/dist/css/lightgallery.css" rel="stylesheet">
-    <link href="assets/vendor/lightgallery/dist/css/lg-thumbnail.css" rel="stylesheet">
-    <link href="assets/vendor/lightgallery/dist/css/lg-zoom.css" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-	<!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
-	<link class="skin" rel="stylesheet" href="assets/css/skin/skin-3.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 
-	<!-- Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com/">
-	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+	<!-- Aos CSS -->
+	<link rel="stylesheet" href="assets/plugins/aos/aos.css">
+
+	<!-- Fancybox CSS -->
+	<link rel="stylesheet" href="assets/plugins/fancybox/fancybox.css">
+
+    <!-- Fearther CSS -->
+	<link rel="stylesheet" href="assets/css/feather.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
 
 </head>
-<body id="bg" class="data-typography-1">
-<div id="loading-area" class="loading-page-1">
-	<div class="loading-inner">
-	<span class="text-primary">U</span>
-		<span class="text-primary">G</span>
-		<span class="text-primary">B</span>
-		<span class="text-primary">D</span>
-		<span class="text-white">G</span>
-		<span class="text-white">R</span>
-		<span class="text-white">I</span>
-		<span class="text-white">G</span>
-		<span class="text-white">N</span>
-		<span class="text-white">Y</span>
-	</div>
-</div>
-<div class="page-wraper">
 
-		<!-- Header -->
-		@include('vitrine.header')
-	<!-- Header -->
+<body>
 
-	<div class="page-content bg-white">
+	<div class="main-wrapper">
 
+		@include('vitrine.nav')
 
-		<!-- Banner  -->
-		<div class="dz-bnr-inr style-2" style="background-image: url('assets/images/banner/banner-2.png')">
-			<div class="banner-gradient"></div>
+		<!-- Breadscrumb Section -->
+		<div class="breadcrumb-bar">
+			<div class="container">
+				<div class="row align-items-center text-center">
+		    		<div class="col-md-12 col-12">
+			    	    <h2 class="breadcrumb-title"> <br>Gallery </h2>
+				    	<nav aria-label="breadcrumb" class="page-breadcrumb">
+
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadscrumb Section -->
+
+		<!-- Gallery section-->
+		<div class="section gallery-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-6">
-						<div class="dz-bnr-inr-entry">
-							<h1>Galerie</h1>
-							<!-- Breadcrumb Row -->
-							<nav aria-label="breadcrumb" class="breadcrumb-row">
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="/">Accueil</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Galerie</li>
-								</ul>
-							</nav>
-							<!-- Breadcrumb Row End -->
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-01.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-01.jpg">
+							</a>
 						</div>
 					</div>
-					<div class="col-lg-6">
-						<div class="banner-media">
-							<img src="assets/images/banner/pic2.png" alt="/">
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-02.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-02.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-03.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-03.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-04.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-04.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-05.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-05.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-06.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-06.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-07.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-07.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-08.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-08.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-09.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-09.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-10.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-10.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-11.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-11.jpg">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-down">
+						<div class="gallery-widget">
+							<a href="assets/img/gallery/gallery-12.jpg" data-fancybox="gallery2">
+								<img class="img-fluid" alt="Image" src="assets/img/gallery/gallery-thum-12.jpg">
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Gallery-->
-		<section class="content-inner-1">
-			<div class="container">
-				<div class="text-center m-b30">
-					<h3 class="title m-b30">Quelques images de nos événements</h3>
-				</div>
-				<div class="clearfix" id="lightgallery5">
-					<ul id="masonry5" class="dlab-gallery-listing gallery-grid-8 sp10 gallery text-center">
-                        @foreach($images as $image)
-						    <li class="card-container m-b10 col-lg-2 Pull-up">
-							    <a href="{{ asset('storage/' . $image->photo) }}" data-src="{{ asset('storage/' . $image->photo) }}" class="dz-media lg-item">
-								    <img src="{{ asset('storage/' . $image->photo) }}"  alt="{{ $image->titre }}" width="800" height="650">
-							    </a>
-						    </li>
-                        @endforeach
-					</ul>
-				</div>
-                <!-- Liens de pagination -->
-                <div class="pagination-wrapper">
-                    {{ $images->links() }}
-                </div>
-			</div>
-		</section>
+		<!-- /Gallery section-->
 
 
+       @include('vitrine.footer')
 
-		@include('vitrine.footer')
-
-	<div class="scroltop-progress scroltop-primary active-progress">
-		<svg width="100%" height="100%" viewBox="-1 -1 102 102">
-			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 24.3299px;"></path>
-		</svg>
 	</div>
 
-</div>
-<!-- JAVASCRIPT FILES ========================================= -->
-<script src="assets/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+    <!-- scrollToTop start -->
+	<div class="progress-wrap active-progress">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;"></path>
+		</svg>
+	</div>
+	<!-- scrollToTop end -->
 
+	<!-- jQuery -->
+	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
 
-<script src="assets/vendor/wow/wow.js"></script><!-- WOW.JS -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="assets/vendor/rangeslider/rangeslider.js"></script><!-- RANGESLIDER -->
-<script src="assets/vendor/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
-<script src="assets/vendor/masonry/masonry-4.2.2.js"></script><!-- MASONRY -->
-<script src="assets/vendor/masonry/isotope.pkgd.min.js"></script><!-- MASONRY -->
-<script src="assets/vendor/lightgallery/dist/lightgallery.min.js"></script>
-<script src="assets/vendor/lightgallery/dist/plugins/thumbnail/lg-thumbnail.min.js"></script>
-<script src="assets/vendor/lightgallery/dist/plugins/zoom/lg-zoom.min.js"></script>
-<script src="assets/js/dz.carousel.js"></script><!-- OWL-CAROUSEL -->
-<script src="assets/js/dz.ajax.js"></script><!-- AJAX -->
-<script src="assets/js/custom.js"></script><!-- CUSTOM JS -->
+	<!-- Bootstrap Core JS -->
+	<script src="assets/js/bootstrap.bundle.min.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
+
+	<!-- Aos -->
+	<script src="assets/plugins/aos/aos.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
+
+	<!-- Fancybox JS -->
+	<script src="assets/plugins/fancybox/fancybox.umd.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
+
+	<!-- Top JS -->
+	<script src="assets/js/backToTop.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
+
+	<!-- Custom JS -->
+	<script src="assets/js/script.js" type="2a71359d8425a6a48f03cccf-text/javascript"></script>
+
+<script src="assets/js/rocket-loader.min.js" data-cf-settings="2a71359d8425a6a48f03cccf-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"96e851d2e9b794e8","version":"2025.7.0","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from powerzone.dexignzone.com/xhtml/shortcode-filters.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Nov 2024 15:08:05 GMT -->
+<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/gallery.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:55:25 GMT -->
 </html>

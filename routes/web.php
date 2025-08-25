@@ -7,37 +7,26 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\BrandController;
+
 
 // vitrine
-Route::get('/temoignage', function () {return view('vitrine.temoignage');});
-Route::get('/about', function () {return view('vitrine.about-us');});
-Route::get('/mission', function () {return view('vitrine.mission');});
-Route::get('/activite', function () {return view('vitrine.activite');});
-Route::get('/partenaire', function () {return view('vitrine.partenaire');});
-Route::get('/bureau', function () {return view('vitrine.bureau');});
-Route::get('/temoignage', function () {return view('vitrine.temoignage');});
-Route::get('/boxe', function () {return view('vitrine.boxe');});
-Route::get('/boxe-edu', function () {return view('vitrine.boxe-edu');});
-Route::get('/boxe-ama', function () {return view('vitrine.boxe-ama');});
-Route::get('/boxe-pro', function () {return view('vitrine.boxe-pro');});
-Route::get('/formateur', function () {return view('vitrine.formateur');});
-Route::get('/inscription', function () {return view('vitrine.contact-us');});
+Route::get('/about', fn()=>view('vitrine.about-us'));  
+Route::get('/terms', fn()=>view('vitrine.terms-condition'));
+Route::get('/inscription', fn()=>view('vitrine.contact-us'));
+Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
 
 Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
 
+Route::get('/gallery', [VitrineController::class, 'galerie'])->name('vitrine.galerie'); 
+Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index'); 
 
-Route::get('/galerie', [VitrineController::class, 'galerie'])->name('vitrine.galerie');
-
-Route::get('/actualite', [VitrineController::class, 'actualites'])->name('vitrine.actualite');
-Route::get('/actualite-detail/{id}', [VitrineController::class, 'show'])->name('vitrine.actualite-detail');
-
-Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
-Route::get('/produit', [VitrineController::class, 'produits'])->name('vitrine.produit');
-Route::get('/produit-detail/{id}', [VitrineController::class, 'showproduit'])->name('vitrine.produit-detail');
-
-
+Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
 
 
 
@@ -67,25 +56,30 @@ Route::post('/email/resend', [App\Http\Controllers\Auth\VerificationController::
 Route::get('/admin', [HomeController::class, 'index'])->name('');
 
 Route::middleware(['auth'])->group(function () {
-  //  Route::get('/admin/contact', [ContactController::class, 'showContact'])->name('admin.contact');
-  // Route::get('/admin/rendezvous', [RendezvousController::class, 'showRendezvous'])->name('admin.rendezvous');
 
     Route::get('admin/galleries', [GalleryController::class, 'index'])->name('admin.galleries.index');
     Route::get('admin/galleries/create', [GalleryController::class, 'create'])->name('admin.galleries.create');
     Route::post('admin/galleries', [GalleryController::class, 'store'])->name('admin.galleries.store');
     Route::delete('admin/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('admin.galleries.destroy');
 
-    Route::get('/admin/events', [EventController::class, 'index'])->name('admin.events.index');
-    Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.events.create');
-    Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
-    Route::get('/admin/events/{event}', [EventController::class, 'show'])->name('admin.events.show');
-    Route::get('/admin/events/{event}/edit', [EventController::class, 'edit'])->name('admin.events.edit');
-    Route::put('/admin/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
-    Route::delete('/admin/events/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy');
+    
 
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('produits', ProduitController::class);
+        Route::resource('cars', CarController::class)->except(['create','edit','show']);
     });
 
+    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::delete('/cars/images/{id}', [CarImageController::class, 'destroy'])
+        ->name('cars.images.destroy');
+    });
+
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['create','edit','show']);
+    });
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('brands', BrandController::class)->except(['create','edit','show']);
+    });
 
 });
