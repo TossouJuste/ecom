@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type_user',
     ];
 
     /**
@@ -46,5 +47,15 @@ class User extends Authenticatable
         ];
     }
 
+     // Méthodes pour vérifier le type d'utilisateur
+    public function isAdmin()
+    {
+        return $this->type_user === 'admin';
+    }
+
+    public function isClient()
+    {
+        return $this->type_user === 'client';
+    }
 
 }

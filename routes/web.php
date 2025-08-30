@@ -11,28 +11,12 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\BrandController;
 
 
-// vitrine
-Route::get('/about', fn()=>view('vitrine.about-us'));  
-Route::get('/terms', fn()=>view('vitrine.terms-condition'));
-Route::get('/inscription', fn()=>view('vitrine.contact-us'));
-Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
-
-Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
-
-Route::get('/gallery', [VitrineController::class, 'galerie'])->name('vitrine.galerie'); 
-Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index'); 
-
-Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
-
-
 
 // Login Routes
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+
+// Logout
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 // Registration Routes
@@ -50,10 +34,66 @@ Route::get('/email/verify', [App\Http\Controllers\Auth\VerificationController::c
 Route::get('/email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('verification.verify');
 Route::post('/email/resend', [App\Http\Controllers\Auth\VerificationController::class, 'resend'])->name('verification.resend');
 
+// Groupe pour les routes admin
+Route::middleware(['auth', 'user.type'])->group(function () {
+    Route::get('/admin', [HomeController::class, 'index'])->name('');
+});
+
+// Groupe pour les routes client
+Route::middleware(['auth', 'user.type'])->group(function () {
+    Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index'); 
+});
+
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// vitrine
+Route::get('/about', fn()=>view('vitrine.about-us'));  
+Route::get('/terms', fn()=>view('vitrine.terms-condition'));
+Route::get('/inscription', fn()=>view('vitrine.contact-us'));
+Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
+
+Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
+
+Route::get('/gallery', [VitrineController::class, 'galerie'])->name('vitrine.galerie'); 
+
+Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
+
+
+
+
 
 
 // Route protégée pour l'accueil de l'utilisateur authentifié
-Route::get('/admin', [HomeController::class, 'index'])->name('');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -69,8 +109,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('admin')->name('admin.')->group(function () {
-    Route::delete('/cars/images/{id}', [CarImageController::class, 'destroy'])
-        ->name('cars.images.destroy');
+    // Route::delete('/cars/images/{id}', [CarImageController::class, 'destroy'])
+        // ->name('cars.images.destroy');
     });
 
 
@@ -83,3 +123,38 @@ Route::middleware(['auth'])->group(function () {
     });
 
 });
+
+
+
+
+
+
+
+
+// // Routes protégées pour l'admin
+// Route::middleware(['auth', 'user.type:admin'])->prefix('admin')->name('admin.')->group(function () {
+//     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+//     // Autres routes admin...
+// });
+
+// // Routes protégées pour les clients
+// Route::middleware(['auth', 'user.type:client'])->prefix('client')->name('client.')->group(function () {
+//     Route::get('/dashboard', [ClientController::class, 'dashboard'])->name('dashboard');
+//     // Autres routes client...
+// });
+
+// // Route par défaut (optionnelle)
+// Route::get('/home', function () {
+//     $user = auth()->user();
+    
+//     if ($user->isAdmin()) {
+//         return redirect()->route('admin.dashboard');
+//     }
+    
+//     if ($user->isClient()) {
+//         return redirect()->route('client.dashboard');
+//     }
+    
+//     return view('home');
+// })->middleware('auth')->name('home');
+
