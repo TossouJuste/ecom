@@ -36,12 +36,17 @@ Route::post('/email/resend', [App\Http\Controllers\Auth\VerificationController::
 
 // Groupe pour les routes admin
 Route::middleware(['auth', 'user.type'])->group(function () {
-    Route::get('/admin', [HomeController::class, 'index'])->name('');
+    Route::get('/admin', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('cars', CarController::class)->except(['create', 'edit', 'show']);
+    });
 });
 
 // Groupe pour les routes client
+Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
+Route::get('/vehicule', [VitrineController::class, 'list_cars_store'])->name('vitrine.vehicule');
 Route::middleware(['auth', 'user.type'])->group(function () {
-    Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index'); 
+    // Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
 });
 
 // 
@@ -73,16 +78,15 @@ Route::middleware(['auth', 'user.type'])->group(function () {
 
 
 // vitrine
-Route::get('/about', fn()=>view('vitrine.about-us'));  
-Route::get('/terms', fn()=>view('vitrine.terms-condition'));
-Route::get('/inscription', fn()=>view('vitrine.contact-us'));
-Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
+Route::get('/about', fn() => view('vitrine.about-us'));
+Route::get('/terms', fn() => view('vitrine.terms-condition'));
+Route::get('/inscription', fn() => view('vitrine.contact-us'));
 
 Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact', [ContactController::class, 'contact'])->name('admin.contact');
 
-Route::get('/gallery', [VitrineController::class, 'galerie'])->name('vitrine.galerie'); 
+Route::get('/gallery', [VitrineController::class, 'galerie'])->name('vitrine.galerie');
 
 Route::get('/contact', [VitrineController::class, 'contact'])->name('vitrine.contact-us');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -102,26 +106,23 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/galleries', [GalleryController::class, 'store'])->name('admin.galleries.store');
     Route::delete('admin/galleries/{gallery}', [GalleryController::class, 'destroy'])->name('admin.galleries.destroy');
 
-    
+
+
+
 
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('cars', CarController::class)->except(['create','edit','show']);
-    });
-
-    Route::prefix('admin')->name('admin.')->group(function () {
-    // Route::delete('/cars/images/{id}', [CarImageController::class, 'destroy'])
+        // Route::delete('/cars/images/{id}', [CarImageController::class, 'destroy'])
         // ->name('cars.images.destroy');
     });
 
 
     Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['create','edit','show']);
+        Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class)->except(['create', 'edit', 'show']);
     });
 
     Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('brands', BrandController::class)->except(['create','edit','show']);
+        Route::resource('brands', BrandController::class)->except(['create', 'edit', 'show']);
     });
-
 });
 
 
@@ -157,4 +158,3 @@ Route::middleware(['auth'])->group(function () {
     
 //     return view('home');
 // })->middleware('auth')->name('home');
-
