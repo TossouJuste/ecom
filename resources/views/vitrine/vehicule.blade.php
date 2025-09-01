@@ -274,9 +274,9 @@
                                             @foreach ($filterData['brands'] as $brand)
                                                 <label class="custom_check w-100">
                                                     <input type="checkbox" name="brands[]"
-                                                        value="{{ $brand }}"
-                                                        {{ in_array($brand, request('brands', [])) ? 'checked' : '' }}>
-                                                    <span class="checkmark"></span> {{ $brand }}
+                                                        value="{{ $brand->id }}"
+                                                        {{ in_array($brand->id, request('brands', [])) ? 'checked' : '' }}>
+                                                    <span class="checkmark"></span> {{ $brand->name }}
                                                 </label>
                                             @endforeach
                                         </div>
@@ -301,9 +301,9 @@
                                             @foreach ($filterData['categories'] as $category)
                                                 <label class="custom_check w-100">
                                                     <input type="checkbox" name="categories[]"
-                                                        value="{{ $category }}"
-                                                        {{ in_array($category, request('categories', [])) ? 'checked' : '' }}>
-                                                    <span class="checkmark"></span> {{ $category }}
+                                                        value="{{ $category->id }}"
+                                                        {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}>
+                                                    <span class="checkmark"></span> {{ $category->name }}
                                                 </label>
                                             @endforeach
                                         </div>

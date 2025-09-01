@@ -204,8 +204,10 @@ class VitrineController extends Controller
     private function getFilterData()
     {
         return [
-            'brands' => Car::distinct()->pluck('marque')->filter()->values(),
-            'categories' => Car::distinct()->pluck('categorie')->filter()->values(),
+            // 'brands' => Car::distinct()->pluck('marque')->filter()->values(),
+            // 'categories' => Car::distinct()->pluck('categorie')->filter()->values(),
+            'brands' => \App\Models\Brand::all(), // ou Brand::all()
+            'categories' => \App\Models\Category::all(), // ou Category::all()
             'years' => Car::distinct()->pluck('annee')->filter()->sort()->values(),
             'fuel_types' => Car::distinct()->pluck('carburant')->filter()->values(),
             'transmissions' => Car::distinct()->pluck('boite_vitesse')->filter()->values(),
