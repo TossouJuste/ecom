@@ -8,7 +8,7 @@ return new class extends Migration {
   public function up(): void {
     Schema::create('orders', function(Blueprint $t){
       $t->id();
-      $t->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
+      $t->foreignId('client_id')->constrained('users')->cascadeOnDelete();
       $t->foreignId('car_id')->constrained('cars')->cascadeOnDelete();
       $t->unsignedBigInteger('prix')->nullable();
       $t->string('status')->default('pending'); // pending|paid|cancelled

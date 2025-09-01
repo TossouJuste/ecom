@@ -59,7 +59,7 @@ public function store(Request $request)
             'adresse' => $request->adresse,
             'code_postal' => $request->code_postal,
             'type_paiement' => $request->type_paiement,
-            'montant' => $request->type_paiement === 'apport_direct' ? $request->montant : null,
+            'montant' => $request->type_paiement === 'apport_direct' ? $request->montant : 0,
         ]);
 
         // Envoi des emails
