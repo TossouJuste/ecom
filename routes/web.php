@@ -9,8 +9,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\BrandController;
-
-
+use App\Http\Controllers\OrdersController;
 
 // Login Routes
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
@@ -45,6 +44,7 @@ Route::middleware(['auth', 'user.type'])->group(function () {
 // Groupe pour les routes client
 Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
 Route::get('/vehicule', [VitrineController::class, 'list_cars_store'])->name('vitrine.vehicule');
+Route::post('/orders', [OrdersController::class, 'store'])->name('orders.store');
 Route::middleware(['auth', 'user.type'])->group(function () {
     // Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
 });
