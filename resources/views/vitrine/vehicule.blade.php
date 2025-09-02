@@ -666,102 +666,6 @@
         </section>
         <!-- /Car Grid View -->
 
-        {{-- Modal view --}}
-        <!-- Modal Rent Now -->
-        <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form id="rentForm">
-                        @csrf
-                        <input type="hidden" id="car_id" name="car_id">
-
-                        <div class="modal-header">
-                            <h5 class="modal-title">Réserver ce véhicule</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <div class="modal-body">
-                            <div id="car-details" class="mb-4">
-                                <!-- Les détails de la voiture seront affichés ici -->
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Téléphone *</label>
-                                        <input type="tel" name="telephone" class="form-control" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Pays *</label>
-                                        <input type="text" name="pays" class="form-control" required>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label class="form-label">Adresse *</label>
-                                        <textarea name="adresse" class="form-control" rows="2" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Ville *</label>
-                                        <input type="text" name="ville" class="form-control" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Code postal</label>
-                                        <input type="text" name="code_postal" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Type de paiement *</label>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="type_paiement"
-                                                id="financement" value="financement" checked>
-                                            <label class="form-check-label" for="financement">
-                                                Financement
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="type_paiement"
-                                                id="apport_direct" value="apport_direct">
-                                            <label class="form-check-label" for="apport_direct">
-                                                Apport direct
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Champ montant (masqué par défaut) -->
-                            <div class="mb-3" id="montant-field" style="display: none;">
-                                <label class="form-label">Montant à verser (FCFA) *</label>
-                                <input type="number" name="montant" class="form-control" min="0"
-                                    step="0.01">
-                            </div>
-
-                            <div class="alert alert-info">
-                                <strong>Note:</strong> Après validation de votre commande, vous recevrez un email
-                                de confirmation avec votre code de suivi.
-                            </div>
-                        </div>
-
-                        <div class="modal-footer mb-4 p-2">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="submit" class="btn btn-primary" id="submitBtn">
-                                <span class="spinner-border spinner-border-sm d-none" role="status"></span>
-                                Confirmer la réservation
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         @include('vitrine.footer')
 
     </div>
@@ -775,6 +679,101 @@
         </svg>
     </div>
     <!-- scrollToTop end -->
+
+    {{-- Modal views --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Modal Rent Now corrigée -->
+    <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form id="rentForm">
+                    <input type="hidden" id="car_id" name="car_id">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Réserver ce véhicule</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div id="car-details" class="mb-4">
+                            <!-- Les détails de la voiture seront affichés ici -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Téléphone *</label>
+                                    <input type="tel" name="telephone" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Pays *</label>
+                                    <input type="text" name="pays" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ville *</label>
+                                    <input type="text" name="ville" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Adresse *</label>
+                                    <textarea name="adresse" class="form-control" rows="2" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Code postal</label>
+                                    <input type="text" name="code_postal" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Type de paiement *</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type_paiement"
+                                            id="financement" value="financement" checked>
+                                        <label class="form-check-label" for="financement">
+                                            Financement
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type_paiement"
+                                            id="apport_direct" value="apport_direct">
+                                        <label class="form-check-label" for="apport_direct">
+                                            Apport direct
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Champ montant (masqué par défaut) -->
+                        <div class="mb-3" id="montant-field" style="display: none;">
+                            <label class="form-label">Montant à verser (FCFA) *</label>
+                            <input type="number" name="montant" class="form-control" min="0"
+                                step="0.01">
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>Note:</strong> Après validation de votre commande, vous recevrez un email
+                            de confirmation avec votre code de suivi.
+                        </div>
+                    </div>
+
+                    <div class="modal-footer mb-4 p-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            Confirmer la réservation
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -852,94 +851,205 @@
             const montantField = document.getElementById('montant-field');
             const submitBtn = document.getElementById('submitBtn');
 
+            // Vérifier que les éléments existent
+            if (!rentModal || !rentForm || !montantField || !submitBtn) {
+                console.error('Éléments de la modal non trouvés');
+                return;
+            }
+
             // Gestion du type de paiement
             document.querySelectorAll('input[name="type_paiement"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (this.value === 'apport_direct') {
                         montantField.style.display = 'block';
-                        montantField.querySelector('input').required = true;
+                        const montantInput = montantField.querySelector('input[name="montant"]');
+                        if (montantInput) montantInput.required = true;
                     } else {
                         montantField.style.display = 'none';
-                        montantField.querySelector('input').required = false;
+                        const montantInput = montantField.querySelector('input[name="montant"]');
+                        if (montantInput) montantInput.required = false;
                     }
                 });
             });
 
             // Gestion du clic sur "Rent Now"
             document.querySelectorAll('.btn-order').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    button.addEventListener('click', function(e) {
+                            e.preventDefault();
 
-                    // Récupérer les données de la voiture depuis l'élément parent
-                    const carCard = this.closest('.listing-item');
-                    const carTitle = carCard.querySelector('.listing-title a').textContent;
-                    const carPrice = carCard.querySelector('.listing-price h6').textContent;
-                    const carImage = carCard.querySelector('.listing-img img').src;
+                            // Vérifier l'authentification
+                            @guest
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Connexion requise',
+                                text: 'Vous devez être connecté pour réserver un véhicule.',
+                                showCancelButton: true,
+                                confirmButtonText: 'Se connecter',
+                                cancelButtonText: 'Annuler'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '{{ route('login') }}';
+                                }
+                            });
+                            return;
+                        @endguest
 
-                    // Récupérer l'ID de la voiture (à ajouter comme data-attribute sur le bouton)
-                    const carId = this.getAttribute('data-car-id');
+                        // Récupérer les données de la voiture
+                        const carCard = this.closest('.listing-item');
+                        if (!carCard) {
+                            Swal.fire('Erreur', 'Impossible de récupérer les informations de la voiture',
+                                'error');
+                            return;
+                        }
 
-                    // Remplir la modal
-                    document.getElementById('car_id').value = carId;
-                    document.getElementById('car-details').innerHTML = `
+                        const carTitleElement = carCard.querySelector('.listing-title a');
+                        const carPriceElement = carCard.querySelector('.listing-price h6');
+                        const carImageElement = carCard.querySelector('.listing-img img');
+
+                        if (!carTitleElement || !carPriceElement || !carImageElement) {
+                            Swal.fire('Erreur', 'Données de la voiture incomplètes', 'error');
+                            return;
+                        }
+
+                        const carTitle = carTitleElement.textContent;
+                        const carPrice = carPriceElement.textContent;
+                        const carImage = carImageElement.src;
+                        const carId = this.getAttribute('data-car-id');
+
+                        if (!carId) {
+                            Swal.fire('Erreur', 'ID de la voiture manquant', 'error');
+                            return;
+                        }
+
+                        // Remplir la modal
+                        document.getElementById('car_id').value = carId; document.getElementById(
+                            'car-details').innerHTML = `
                 <div class="d-flex align-items-center">
                     <img src="${carImage}" alt="Car" style="width: 80px; height: 60px; object-fit: cover;" class="me-3">
                     <div>
                         <h6 class="mb-1">${carTitle}</h6>
-                        <p class="mb-0">${carPrice}</p>
+                        <p class="mb-0 text-muted">${carPrice}</p>
                     </div>
                 </div>
             `;
 
-                    // Afficher la modal
-                    new bootstrap.Modal(rentModal).show();
-                });
-            });
-
-            // Soumission du formulaire
-            rentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                const formData = new FormData(this);
-                const spinner = submitBtn.querySelector('.spinner-border');
-
-                // Afficher le spinner
-                spinner.classList.remove('d-none');
-                submitBtn.disabled = true;
-
-                fetch('{{ route('orders.store') }}', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            // Fermer la modal
-                            bootstrap.Modal.getInstance(rentModal).hide();
-
-                            // Afficher un message de succès
-                            alert(`Commande créée avec succès! Code de suivi: ${data.tracking_code}`);
-
-                            // Réinitialiser le formulaire
-                            rentForm.reset();
-                            montantField.style.display = 'none';
-                        } else {
-                            alert('Erreur lors de la création de la commande: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        alert('Une erreur est survenue. Veuillez réessayer.');
-                    })
-                    .finally(() => {
-                        // Masquer le spinner
-                        spinner.classList.add('d-none');
-                        submitBtn.disabled = false;
+                        // Afficher la modal
+                        const modal = new bootstrap.Modal(rentModal); modal.show();
                     });
             });
+
+        // Soumission du formulaire avec SweetAlert
+        rentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Empêcher double soumission
+            if (submitBtn.disabled || rentForm.dataset.submitting === 'true') return;
+
+            submitBtn.disabled = true;
+            rentForm.dataset.submitting = 'true';
+
+            // Loader SweetAlert
+            Swal.fire({
+                title: 'Traitement...',
+                text: 'Création de votre commande en cours',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const formData = new FormData(this);
+
+            // Ajouter le token CSRF
+            const csrfToken = document.querySelector('meta[name="csrf-token"]');
+            if (csrfToken) {
+                formData.append('_token', csrfToken.getAttribute('content'));
+            }
+
+            fetch('{{ route('orders.store') }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Fermer la modal
+                        const modal = bootstrap.Modal.getInstance(rentModal);
+                        if (modal) modal.hide();
+
+                        // Succès avec SweetAlert
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Commande créée!',
+                            html: `
+                                <p>Votre réservation a été confirmée.</p>
+                                <p><strong>Code de suivi:</strong> <code>${data.tracking_code}</code></p>
+                                <p>Un email de confirmation vous a été envoyé.</p>
+                            `,
+                            confirmButtonText: 'OK',
+                            allowOutsideClick: true,
+                            allowEscapeKey: true
+                        }).then(() => {
+                            // Force la fermeture de la modal Bootstrap si elle existe encore
+                            const modal = bootstrap.Modal.getInstance(rentModal);
+                            if (modal) {
+                                modal.hide();
+                            }
+                            // Retirer les backdrops qui restent
+                            document.querySelectorAll('.modal-backdrop').forEach(backdrop =>
+                                backdrop.remove());
+                            document.body.classList.remove('modal-open');
+                            document.body.style.removeProperty('padding-right');
+                        });
+
+                        // Réinitialiser le formulaire
+                        rentForm.reset();
+                        montantField.style.display = 'none';
+                        document.getElementById('financement').checked = true;
+
+                    } else {
+                        let errorMessage = data.message || 'Erreur lors de la création de la commande';
+
+                        // Afficher les erreurs de validation
+                        if (data.errors) {
+                            errorMessage += '<br><br>';
+                            Object.keys(data.errors).forEach(field => {
+                                errorMessage +=
+                                    `<strong>${field}:</strong> ${data.errors[field].join(', ')}<br>`;
+                            });
+                        }
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erreur',
+                            html: errorMessage
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur réseau',
+                        text: 'Une erreur de connexion est survenue. Veuillez vérifier votre connexion et réessayer.'
+                    });
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    rentForm.dataset.submitting = 'false';
+                });
+        });
         });
     </script>
 
