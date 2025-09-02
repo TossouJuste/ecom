@@ -11,7 +11,7 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                
+
                 <!-- Tableau de bord -->
                 <li class="{{ request()->is('admin') ? 'active' : '' }}">
                     <a href="{{ url('/admin') }}" class="dropdown-toggle no-arrow">
@@ -29,7 +29,8 @@
                 </li>
 
                 <!-- Gestion véhicule -->
-                <li class="{{ request()->is('admin/categories*') || request()->is('admin/brands*') || request()->is('admin/avis*') ? 'active' : '' }}">
+                <li
+                    class="{{ request()->is('admin/categories*') || request()->is('admin/brands*') || request()->is('admin/avis*') ? 'active' : '' }}">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon"><i class="fa fa-car"></i></span>
                         <span class="mtext">Gestion véhicule</span>
@@ -57,7 +58,7 @@
 
                 <!-- Commandes -->
                 <li class="{{ request()->is('admin/commandes*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.orders.index') }}" class="dropdown-toggle no-arrow">
+                    <a href="{{ url('/admin/commandes') }}" class="dropdown-toggle no-arrow">
                         <span class="micon"><i class="fa fa-shopping-cart"></i></span>
                         <span class="mtext">Commandes</span>
                     </a>
@@ -74,7 +75,7 @@
                 <!-- Déconnexion -->
                 <li>
                     <a href="#" class="dropdown-toggle no-arrow"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="micon"><i class="fa fa-logout"></i></span>
                         <span class="mtext">Se déconnecter</span>
                     </a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\OrdersController;
 
 // Login Routes
@@ -39,6 +40,16 @@ Route::middleware(['auth', 'user.type'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('cars', CarController::class)->except(['create', 'edit', 'show']);
     });
+    // Route::get('/admin/commandes', [AdminOrderController::class, 'index'])->name('admin.orders.index');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/data', [AdminOrderController::class, 'getData'])->name('orders.data');
+        Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+        Route::post('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
+        Route::post('/orders/{order}/progress', [AdminOrderController::class, 'updateProgress'])->name('orders.updateProgress');
+        Route::post('/orders/{order}/payment', [AdminOrderController::class, 'togglePayment'])->name('orders.togglePayment');
+    });
 });
 
 // Groupe pour les routes client
@@ -46,7 +57,7 @@ Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
 Route::get('/vehicule', [VitrineController::class, 'list_cars_store'])->name('vitrine.vehicule');
 Route::post('/orders', [OrdersController::class, 'store'])->name('orders.store');
 
-Route::middleware('auth')->prefix('client')->name('client.')->group(function() {
+Route::middleware('auth')->prefix('client')->name('client.')->group(function () {
     Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
     Route::get('/orders/data', [OrdersController::class, 'getData'])->name('orders.data');
     Route::get('/orders/{order}', [OrdersController::class, 'show'])->name('orders.show');

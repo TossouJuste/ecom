@@ -21,7 +21,17 @@ class Orders extends Model
         'adresse',
         'code_postal',
         'type_paiement',
-        'montant'
+        'montant',
+        'completion_percentage',
+        'admin_description',
+        'last_updated_by_admin',
+    ];
+
+    protected $casts = [
+        'paiement_valide' => 'boolean',
+        'prix' => 'decimal:2',
+        'montant' => 'decimal:2',
+        'last_updated_by_admin' => 'datetime',
     ];
 
     public function tracking()
@@ -29,13 +39,6 @@ class Orders extends Model
         return $this->hasOne(Tracking::class);
     }
 
-    protected $casts = [
-        'paiement_valide' => 'boolean',
-        'prix' => 'decimal:2',
-        'montant' => 'decimal:2',
-    ];
-
-    // Relations
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id');
