@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tracking extends Model {
   protected $fillable = ['order_id','progress','status','description'];
-  public function order(){ return $this->belongsTo(Order::class); }
+  public function order(){ return $this->belongsTo(Orders::class); }
 }
 

@@ -45,6 +45,14 @@ Route::middleware(['auth', 'user.type'])->group(function () {
 Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
 Route::get('/vehicule', [VitrineController::class, 'list_cars_store'])->name('vitrine.vehicule');
 Route::post('/orders', [OrdersController::class, 'store'])->name('orders.store');
+
+Route::middleware('auth')->prefix('client')->name('client.')->group(function() {
+    Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
+    Route::get('/orders/data', [OrdersController::class, 'getData'])->name('orders.data');
+    Route::get('/orders/{order}', [OrdersController::class, 'show'])->name('orders.show');
+    Route::post('/orders/{order}/cancel', [OrdersController::class, 'cancel'])->name('orders.cancel');
+});
+
 Route::middleware(['auth', 'user.type'])->group(function () {
     // Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
 });

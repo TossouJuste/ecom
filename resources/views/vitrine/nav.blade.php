@@ -11,17 +11,17 @@
                     </span>
                 </a>
                 <a href="/" class="navbar-brand logo">
-                    <img src="assets/img/logo-white.svg" class="img-fluid white-logo" alt="Logo">
-                    <img src="assets/img/logo.svg" class="img-fluid dark-logo" alt="Logo">
+                    <img src="{{ asset('assets/img/logo-white.svg') }}" class="img-fluid white-logo" alt="Logo">
+                    <img src="{{ asset('assets/img/logo.svg') }}" class="img-fluid dark-logo" alt="Logo">
                 </a>
                 <a href="/" class="navbar-brand logo-small">
-                    <img src="assets/img/logo-small.png" class="img-fluid" alt="Logo">
+                    <img src="{{ asset('assets/img/logo-small.png') }}" class="img-fluid" alt="Logo">
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
                     <a href="/" class="menu-logo">
-                        <img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+                        <img src="{{ asset('assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
                 </div>
@@ -48,8 +48,8 @@
                     </li>
                     @if (Auth::check() && Auth::user()->type_user === 'client')
                         <li class="has-submenu">
-                            <a href="#">Dashboard <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
+                            <a href="{{ route('client.orders.index') }}">Dashboard</a>
+                            {{-- <ul class="submenu">
                                 <li class="has-submenu">
                                     <a href="javascript:void(0);">Admin Dashboard</a>
                                     <ul class="submenu">
@@ -57,7 +57,7 @@
                                         <li><a href="admin/reservations.php">Bookings</a></li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </li>
                     @endif
 
