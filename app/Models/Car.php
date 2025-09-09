@@ -80,6 +80,11 @@ class Car extends Model
         return $query->where('disponible', true);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     // Scope pour recherche
     public function scopeSearch($query, $search)
     {

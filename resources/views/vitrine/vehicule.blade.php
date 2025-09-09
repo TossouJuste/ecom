@@ -412,7 +412,7 @@
                                     <div class="listing-img">
                                         <div class="img-slider owl-carousel">
                                             <div class="slide-images">
-                                                <a href="listing-details.html">
+                                                <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                     <img src="{{ asset('storage/' . $car->image_principale) }}"
                                                         class="img-fluid" alt="Toyota">
                                                 </a>
@@ -420,7 +420,7 @@
                                             @if ($car->images())
                                                 @foreach ($car->images() as $carListImage)
                                                     <div class="slide-images">
-                                                        <a href="listing-details.html">
+                                                        <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                             <img src="{{ asset('storage/' . $carListImage->imagePath) }}"
                                                                 class="img-fluid" alt="Toyota">
                                                         </a>
@@ -441,7 +441,8 @@
                                         <div class="listing-features d-flex align-items-end justify-content-between">
                                             <div class="list-rating">
                                                 <h3 class="listing-title">
-                                                    <a href="listing-details.html">{{ $car->titre }}</a>
+                                                    <a
+                                                        href="{{ route('vitrine.vehicule.details', $car->id) }}">{{ $car->titre }}</a>
                                                 </h3>
                                                 <div class="list-rating">
                                                     <i class="fas fa-star filled"></i>
@@ -561,38 +562,6 @@
                             </ul>
                         </nav>
                     </div>
-                    {{-- <div class="blog-pagination">
-                            <nav>
-                                <ul class="pagination page-item justify-content-center">
-                                    <li class="previtem">
-                                        <a class="page-link" href="#"><i
-                                                class="fas fa-regular fa-arrow-left me-2"></i> Prev</a>
-                                    </li>
-                                    <li class="justify-content-center pagination-center">
-                                        <div class="page-group">
-                                            <ul>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">1</a>
-                                                </li>
-                                                <li class="page-item">
-                                                    <a class="active page-link" href="#">2 <span
-                                                            class="visually-hidden">(current)</span></a>
-                                                </li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nextlink">
-                                        <a class="page-link" href="#">Next <i
-                                                class="fas fa-regular fa-arrow-right ms-2"></i></a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div> --}}
-                    <!--/Pagination-->
-
                 </div>
             </div>
         </div>
@@ -925,6 +894,22 @@
                     rentForm.dataset.submitting = 'false';
                 });
         });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('[data-bs-dismiss="modal"]')) {
+                e.target.blur();
+                const modal = e.target.closest('.modal');
+                modal.removeAttribute('aria-hidden');
+
+                setTimeout(() => {
+                    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                    document.body.classList.remove('modal-open');
+                    document.body.style.cssText = '';
+                }, 200);
+            }
         });
     </script>
 @endpush

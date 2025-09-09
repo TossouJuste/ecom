@@ -221,7 +221,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label>Équipements de série</label>
                                             <textarea name="equipements_de_serie" class="form-control" rows="2">{{ $car->equipements_de_serie }}</textarea>
                                         </div>
@@ -229,7 +229,7 @@
                                         <div class="mb-3">
                                             <label>Options supplémentaires</label>
                                             <textarea name="options_supplementaires" class="form-control" rows="2">{{ $car->options_supplementaires }}</textarea>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
@@ -463,8 +463,7 @@
                 <!-- NOUVEAUX CHAMPS AJOUTÉS -->
                 <div class="row">
                     <div class="col-md-6">
-                        <!-- Type de location -->
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label">Type de location</label>
                             <select name="type_location" class="form-control">
                                 <option value="day" selected>Par jour</option>
@@ -472,7 +471,7 @@
                                 <option value="week">Par semaine</option>
                                 <option value="any">Flexible</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <!-- Kilométrage limité -->
                         <div class="mb-3">
@@ -497,19 +496,17 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <!-- Localisation -->
+                    {{-- <div class="col-md-6">
                         <div class="mb-3">
                             <input type="text" name="localisation" class="form-control"
                                 placeholder="Localisation (ex. Dakar, Sénégal)">
                         </div>
 
-                        <!-- Couleur -->
                         <div class="mb-3">
                             <input type="text" name="couleur" class="form-control"
                                 placeholder="Couleur du véhicule">
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Spécifications/Équipements (JSON) -->
@@ -575,14 +572,14 @@
                     <input type="hidden" name="specifications_json" id="specifications_json">
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <textarea name="equipements_de_serie" class="form-control" placeholder="Équipements de série (ABS, airbags, GPS…)"
                         rows="2"></textarea>
-                </div>
-                <div class="mb-3">
+                </div> --}}
+                {{-- <div class="mb-3">
                     <textarea name="options_supplementaires" class="form-control"
                         placeholder="Options supplémentaires (Caméra de recul, GPS, sièges chauffants…)" rows="2"></textarea>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     <div class="mb-3 col-md-6">

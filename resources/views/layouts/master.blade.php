@@ -50,7 +50,7 @@
         @include('vitrine.nav')
 
         @yield('content-client')
-        
+
         @include('vitrine.footer')
     </div>
 
@@ -62,10 +62,12 @@
             </path>
         </svg>
     </div>
- 
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- jQuery -->
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}" type="2ac22662d873afbb6f8466dc-text/javascript"></script>
@@ -100,13 +102,43 @@
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/script.js') }}" type="2ac22662d873afbb6f8466dc-text/javascript"></script>
 
-    <script src="{{ asset('assets/js/rocket-loader.min.js') }}" data-cf-settings="2ac22662d873afbb6f8466dc-|49" defer></script>
+    <script src="{{ asset('assets/js/rocket-loader.min.js') }}" data-cf-settings="2ac22662d873afbb6f8466dc-|49" defer>
+    </script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"rayId":"96e851842dd0df91","version":"2025.7.0","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}'
         crossorigin="anonymous"></script>
+    {{-- <script src="{{ asset('assets/js/modal-fix.js') }}"></script> --}}
 
-        @stack('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trackingForm = document.getElementById('trackingSearchForm');
+            const trackingInput = document.getElementById('tracking_code_search');
+
+            if (trackingForm) {
+                trackingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const trackingCode = trackingInput.value.trim();
+                    if (!trackingCode) {
+                        Swal.fire('Erreur', 'Veuillez saisir un code de suivi', 'warning');
+                        return;
+                    }
+
+                    // Redirection vers la page de suivi
+                    window.location.href = `/track-order?tracking_code=${encodeURIComponent(trackingCode)}`;
+                });
+            }
+        });
+    </script>
+
+    <!-- Dans votre layout, ajoutez data-cfasync="false" -->
+    <script data-cfasync="false" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script data-cfasync="false" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script data-cfasync="false" src="{{ asset('assets/js/modal-fix.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

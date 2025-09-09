@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrderTrackingController;
 
 // Login Routes
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
@@ -55,7 +56,10 @@ Route::middleware(['auth', 'user.type'])->group(function () {
 // Groupe pour les routes client
 Route::get('/', [VitrineController::class, 'index'])->name('vitrine.index');
 Route::get('/vehicule', [VitrineController::class, 'list_cars_store'])->name('vitrine.vehicule');
+Route::get('/vehicule/{vehicule}', [VitrineController::class, 'car_details'])->name('vitrine.vehicule.details');
 Route::post('/orders', [OrdersController::class, 'store'])->name('orders.store');
+Route::get('/track-order', [OrderTrackingController::class, 'showSearchForm'])->name('track.search');
+Route::post('/track-order', [OrderTrackingController::class, 'trackOrder'])->name('track.order');
 
 Route::middleware('auth')->prefix('client')->name('client.')->group(function () {
     Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
@@ -68,7 +72,7 @@ Route::middleware(['auth', 'user.type'])->group(function () {
     // Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
 });
 
-// 
+//
 
 
 
@@ -166,14 +170,14 @@ Route::middleware(['auth'])->group(function () {
 // // Route par défaut (optionnelle)
 // Route::get('/home', function () {
 //     $user = auth()->user();
-    
+
 //     if ($user->isAdmin()) {
 //         return redirect()->route('admin.dashboard');
 //     }
-    
+
 //     if ($user->isClient()) {
 //         return redirect()->route('client.dashboard');
 //     }
-    
+
 //     return view('home');
 // })->middleware('auth')->name('home');

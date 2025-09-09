@@ -31,11 +31,7 @@
 
                     </li>
                     <li class="has-submenu">
-                        <a href="#">vehicles <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="/vehicule">Used vehicles</a></li>
-                            <li><a href="/vehicule">New vehicle</a></li>
-                        </ul>
+                        <a href="/vehicule">vehicles</a>
                     </li>
                     <li class="has-submenu">
                         <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
@@ -46,21 +42,19 @@
                             <li><a href="/terms">Terms & Conditions</a></li>
                         </ul>
                     </li>
+
                     @if (Auth::check() && Auth::user()->type_user === 'client')
                         <li class="has-submenu">
                             <a href="{{ route('client.orders.index') }}">Dashboard</a>
-                            {{-- <ul class="submenu">
-                                <li class="has-submenu">
-                                    <a href="javascript:void(0);">Admin Dashboard</a>
-                                    <ul class="submenu">
-                                        <li><a href="admin/index.php">Dashboard</a></li>
-                                        <li><a href="admin/reservations.php">Bookings</a></li>
-                                    </ul>
-                                </li>
-                            </ul> --}}
                         </li>
                     @endif
 
+                    <li class="has-submenu">
+                        <a href="{{ route('track.search') }}">
+                            <i class="fas fa-search me-1"></i>Suivre ma commande
+                        </a>
+                    </li>
+                    
                     @guest
                         <li class="login-link">
                             <a href="/register">Sign Up</a>
@@ -78,17 +72,6 @@
                                 @csrf
                             </form>
                         </li>
-
-                        {{-- <li>
-                            <a href="#" class="dropdown-toggle no-arrow"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <span class="micon"><i class="fa fa-logout"></i></span>
-                                <span class="mtext">Se déconnecter</span>
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li> --}}
                     @endguest
                 </ul>
             </div>

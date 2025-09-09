@@ -41,7 +41,6 @@ class VitrineController extends Controller
     //     return view('vitrine.vehicule', compact('latestCars'));
     // }
 
-
     public function list_cars_store(Request $request)
     {
         $query = Car::query();
@@ -199,6 +198,29 @@ class VitrineController extends Controller
             'filterData',
             'totalCars'
         ));
+    }
+
+    public function car_details($vehicule)
+    {
+        // $car = Car::findOrFail($vehicule);
+        $car = Car::with(['images', 'reviews.client'])
+            ->findOrFail($vehicule);
+
+        // Incrémenter le nombre de vues
+        $car->increment('views');
+
+        // Véhicules similaires
+        $similarCars = Car::where('id', '!=', $vehicule)
+            ->where(function ($query) use ($car) {
+                $query->where('marque', $car->marque)
+                    ->orWhere('categorie', $car->categorie);
+            })
+            ->where('disponible', true)
+            ->take(4)
+            ->get();
+
+        // return view('vitrine.car-details', compact('car', 'similarCars'));
+        return view('vitrine.listing-details', compact(['car', 'similarCars']));
     }
 
     private function getFilterData()
