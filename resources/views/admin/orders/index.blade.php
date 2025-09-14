@@ -2,7 +2,7 @@
 
 @push('styles')
     <!-- Bootstrap CSS (si pas déjà inclus) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
@@ -164,7 +164,7 @@
                 <form id="progressForm">
                     <div class="modal-header">
                         <h5 class="modal-title" id="progressModalLabel">Mettre à jour la progression</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" id="order_id">
@@ -207,7 +207,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="orderDetailModalLabel">Détails de la commande</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body" id="orderDetails">
                     <!-- Contenu chargé dynamiquement -->
@@ -516,11 +516,11 @@
                         <p><strong>${order.client.name}</strong><br>
                            ${order.client.email}<br>
                            ${order.telephone}</p>
-                           
+
                         <h6>Véhicule</h6>
                         <p><strong>${order.car.titre}</strong><br>
                            ${order.car.modele}</p>
-                           
+
                         <h6>Progression</h6>
                         <div class="progress mb-2">
                             <div class="progress-bar" style="width: ${order.completion_percentage || 0}%">
@@ -529,18 +529,18 @@
                         </div>
                         <p><small>${order.admin_description || 'Aucune description'}</small></p>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <h6>Commande</h6>
                         <p>Code: <code>${order.tracking_code}</code><br>
                            Statut: <span class="badge bg-info">${order.status}</span><br>
                            Date: ${new Date(order.created_at).toLocaleDateString('fr-FR')}</p>
-                           
+
                         <h6>Paiement</h6>
                         <p>Prix: <strong>${Number(order.prix).toLocaleString('fr-FR')} FCFA</strong><br>
                            Type: ${order.type_paiement}<br>
                            Validé: ${order.paiement_valide ? 'Oui' : 'Non'}</p>
-                           
+
                         <h6>Adresse</h6>
                         <p>${order.adresse}<br>
                            ${order.ville}, ${order.pays}</p>

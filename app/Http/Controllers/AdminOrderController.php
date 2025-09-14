@@ -49,7 +49,7 @@ class AdminOrderController extends Controller
             })
             ->addColumn('car_info', function ($row) {
                 return '<div class="d-flex align-items-center">
-                            <img src="' . asset('storage/' . $row->car->image_principale) . '" 
+                            <img src="' . asset('storage/' . $row->car->image_principale) . '"
                                  alt="Car" class="me-2" style="width: 50px; height: 40px; object-fit: cover; border-radius: 5px;">
                             <div>
                                 <strong>' . $row->car->titre . '</strong><br>
@@ -164,7 +164,14 @@ class AdminOrderController extends Controller
         // Envoyer email au client si changement significatif
         if (abs($oldPercentage - $request->completion_percentage) >= 10 || $oldPercentage != $request->completion_percentage) {
             try {
+
+                // Log::info([
+                //     'client' => $order->client->email,
+                //     'order' => $order
+                // ]);
+
                 Mail::to($order->client->email)->send(new OrderProgressUpdate($order));
+
             } catch (\Exception $e) {
                 Log::error('Erreur envoi email mise à jour: ' . $e->getMessage());
             }
