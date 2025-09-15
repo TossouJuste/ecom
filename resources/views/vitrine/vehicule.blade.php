@@ -428,11 +428,27 @@
                                                 @endforeach
                                             @endif
                                         </div>
-                                        <div class="fav-item justify-content-end">
+                                        {{-- <div class="fav-item justify-content-end">
                                             <span class="img-count"><i
                                                     class="feather-image"></i>{{ $car->images()->count() + 1 }}</span>
                                             <a href="javascript:void(0)" class="fav-icon">
                                                 <i class="feather-heart"></i>
+                                            </a>
+                                        </div> --}}
+                                        <div class="fav-item justify-content-end">
+                                            <span class="img-count"><i
+                                                    class="feather-image"></i>{{ $car->images()->count() + 1 }}</span>
+                                            <a href="javascript:void(0)" class="fav-icon"
+                                                data-car-id="{{ $car->id }}">
+                                                @auth
+                                                    @if (auth()->user()->hasFavorite($car->id))
+                                                        <i class="feather-heart text-danger"></i>
+                                                    @else
+                                                        <i class="feather-heart"></i>
+                                                    @endif
+                                                @else
+                                                    <i class="feather-heart"></i>
+                                                @endauth
                                             </a>
                                         </div>
                                         <span class="featured-text">{{ $car->modele }}</span>
@@ -567,7 +583,7 @@
         </div>
     </section>
 
-    <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="rentModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form id="rentForm">
@@ -575,7 +591,7 @@
 
                     <div class="modal-header">
                         <h5 class="modal-title">Réserver ce véhicule</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <button type="button" class="btn-close" id="cancelBtnWindows" data-bs-dismiss="modal"></button>
                     </div>
 
                     <div class="modal-body">
@@ -594,20 +610,22 @@
                                     <input type="text" name="pays" class="form-control" required>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Adresse *</label>
-                                    <textarea name="adresse" class="form-control" rows="2" required></textarea>
-                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Ville *</label>
                                     <input type="text" name="ville" class="form-control" required>
                                 </div>
+
                                 <div class="mb-3">
+                                    <label class="form-label">Adresse *</label>
+                                    <textarea name="adresse" class="form-control" rows="2" required></textarea>
+                                </div>
+                                {{-- <div class="mb-3">
                                     <label class="form-label">Code postal</label>
                                     <input type="text" name="code_postal" class="form-control">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -648,7 +666,8 @@
                     </div>
 
                     <div class="modal-footer mb-4 p-2">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn"
+                            data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" id="submitBtn">
                             Confirmer la réservation
                         </button>
@@ -829,8 +848,16 @@
                 .then(data => {
                     if (data.success) {
                         // Fermer la modal
+                        // const modal = bootstrap.Modal.getInstance(rentModal);
+                        // if (modal) modal.hide();
+
+                        const rentModal = document.getElementById('rentModal');
                         const modal = bootstrap.Modal.getInstance(rentModal);
-                        if (modal) modal.hide();
+
+                        if (modal) {
+                            modal.hide(); // ferme proprement la modale et restaure le scroll
+                        }
+
 
                         // Succès avec SweetAlert
                         Swal.fire({
@@ -846,10 +873,19 @@
                             allowEscapeKey: true
                         }).then(() => {
                             // Force la fermeture de la modal Bootstrap si elle existe encore
+                            // const modal = bootstrap.Modal.getInstance(rentModal);
+                            // if (modal) {
+                            //     modal.hide();
+                            // }
+
+                            const rentModal = document.getElementById('rentModal');
                             const modal = bootstrap.Modal.getInstance(rentModal);
+
                             if (modal) {
-                                modal.hide();
+                                modal.hide(); // ferme proprement la modale et restaure le scroll
                             }
+
+
                             // Retirer les backdrops qui restent
                             document.querySelectorAll('.modal-backdrop').forEach(backdrop =>
                                 backdrop.remove());
@@ -898,18 +934,475 @@
     </script>
 
     <script>
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('[data-bs-dismiss="modal"]')) {
-                e.target.blur();
-                const modal = e.target.closest('.modal');
-                modal.removeAttribute('aria-hidden');
+        // document.addEventListener('click', function(e) {
+        //     if (e.target.matches('[data-bs-dismiss="modal"]')) {
+        //         e.target.blur();
+        //         const modal = e.target.closest('.modal');
+        //         modal.removeAttribute('aria-hidden');
 
-                setTimeout(() => {
-                    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
-                    document.body.classList.remove('modal-open');
-                    document.body.style.cssText = '';
-                }, 200);
+        //         setTimeout(() => {
+        //             document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+        //             document.body.classList.remove('modal-open');
+        //             document.body.style.cssText = '';
+        //         }, 200);
+        //     }
+        // });
+
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            const rentModal = document.getElementById('rentModal');
+            const modal = bootstrap.Modal.getInstance(rentModal);
+
+            if (modal) {
+                modal.hide(); // ferme proprement
             }
+
+            // Nettoyer aria-hidden si bloqué
+            rentModal.removeAttribute('aria-hidden');
+
+            // Supprimer manuellement le backdrop si il reste affiché
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+
+            // Enlever la classe modal-open sur le body
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('overflow');
+            document.body.style.removeProperty('padding-right');
+
+            // Redonner le focus ailleurs
+            document.activeElement.blur();
+        });
+
+        document.getElementById('cancelBtnWindows').addEventListener('click', function() {
+            const rentModal = document.getElementById('rentModal');
+            const modal = bootstrap.Modal.getInstance(rentModal);
+
+            if (modal) {
+                modal.hide(); // ferme proprement
+            }
+
+            // Nettoyer aria-hidden si bloqué
+            rentModal.removeAttribute('aria-hidden');
+
+            // Supprimer manuellement le backdrop si il reste affiché
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+
+            // Enlever la classe modal-open sur le body
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('overflow');
+            document.body.style.removeProperty('padding-right');
+
+            // Redonner le focus ailleurs
+            document.activeElement.blur();
+        });
+    </script>
+
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du clic sur l'icône favoris
+            document.querySelectorAll('.fav-icon').forEach(favIcon => {
+                    favIcon.addEventListener('click', function(e) {
+                            e.preventDefault();
+
+                            // Vérifier l'authentification
+                            @guest
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Connexion requise',
+                                text: 'Vous devez être connecté pour ajouter des favoris.',
+                                showCancelButton: true,
+                                confirmButtonText: 'Se connecter',
+                                cancelButtonText: 'Annuler'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '{{ route('login') }}';
+                                }
+                            });
+                            return;
+                        @endguest
+
+                        const carId = this.getAttribute('data-car-id');
+                        const heartIcon = this.querySelector('i');
+
+                        if (!carId) {
+                            Swal.fire('Erreur', 'ID de la voiture manquant', 'error');
+                            return;
+                        }
+
+                        // Désactiver temporairement le bouton
+                        this.style.pointerEvents = 'none';
+
+                        // Envoyer la requête AJAX
+                        fetch('{{ route('favorites.toggle') }}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                    .getAttribute('content'),
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                car_id: carId
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.success) {
+                                // Changer l'apparence de l'icône
+                                if (data.is_favorite) {
+                                    heartIcon.classList.add('text-danger');
+                                    // Animation de pulsation
+                                    heartIcon.style.animation = 'heartbeat 0.6s ease-in-out';
+                                } else {
+                                    heartIcon.classList.remove('text-danger');
+                                }
+
+                                // Afficher un message de succès discret
+                                const toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    timerProgressBar: true
+                                });
+
+                                toast.fire({
+                                    icon: data.is_favorite ? 'success' : 'info',
+                                    title: data.message
+                                });
+
+                                // Réinitialiser l'animation après un délai
+                                setTimeout(() => {
+                                    heartIcon.style.animation = '';
+                                }, 600);
+                            } else {
+                                Swal.fire('Erreur', data.message ||
+                                    'Erreur lors de la mise à jour des favoris', 'error');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur:', error);
+                            Swal.fire('Erreur', 'Une erreur est survenue. Veuillez réessayer.',
+                            'error');
+                        })
+                        .finally(() => {
+                            // Réactiver le bouton
+                            this.style.pointerEvents = 'auto';
+                        });
+                    });
+            });
+        });
+
+        // CSS pour l'animation du cœur (à ajouter dans votre fichier CSS)
+        const style = document.createElement('style');
+        style.textContent = `
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.2); }
+        50% { transform: scale(1.1); }
+        75% { transform: scale(1.25); }
+        100% { transform: scale(1); }
+    }
+
+    .fav-icon {
+        transition: all 0.3s ease;
+    }
+
+    .fav-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+`;
+        document.head.appendChild(style);
+    </script> --}}
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+                // ===== GESTION DES FAVORIS CORRIGÉE =====
+                document.querySelectorAll('.fav-icon').forEach(favIcon => {
+                        favIcon.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+
+                                // Vérifier l'authentification côté client
+                                @guest
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Connexion requise',
+                                    text: 'Vous devez être connecté pour ajouter des favoris.',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Se connecter',
+                                    cancelButtonText: 'Annuler',
+                                    confirmButtonColor: '#007bff',
+                                    cancelButtonColor: '#6c757d'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.href = '{{ route('login') }}';
+                                    }
+                                });
+                                return;
+                            @endguest
+
+                            const carId = this.getAttribute('data-car-id');
+                            const heartIcon = this.querySelector('i');
+
+                            if (!carId) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Erreur',
+                                    text: 'ID de la voiture manquant'
+                                });
+                                return;
+                            }
+
+                            // Désactiver temporairement le bouton pour éviter les double-clics
+                            this.style.pointerEvents = 'none';
+
+                            // Déterminer l'état actuel du favori
+                            const isCurrentlyFavorite = heartIcon.classList.contains('text-danger') ||
+                                heartIcon.classList.contains('fa-heart');
+
+                            // Animation de chargement
+                            const originalContent = heartIcon.className; heartIcon.className =
+                            'fas fa-spinner fa-spin';
+
+                            // Choisir l'action selon l'état actuel
+                            const action = isCurrentlyFavorite ? 'remove' : 'add';
+                            const url = isCurrentlyFavorite ? '{{ route('favorites.remove') }}' :
+                                '{{ route('favorites.add') }}';
+
+                            console.log(`Action: ${action}, Est favori actuellement: ${isCurrentlyFavorite}`);
+
+                            // Envoyer la requête AJAX
+                            fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json',
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                },
+                                body: JSON.stringify({
+                                    car_id: carId
+                                })
+                            })
+                            .then(response => {
+                                if (!response.ok) {
+                                    if (response.status === 401) {
+                                        throw new Error('Non authentifié');
+                                    }
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                console.log('Réponse serveur:', data);
+
+                                if (data.success) {
+                                    // Restaurer l'icône originale d'abord
+                                    heartIcon.className = 'feather-heart'; // Reset à l'état de base
+
+                                    // Appliquer le bon état selon la réponse
+                                    if (data.is_favorite) {
+                                        // AJOUTÉ aux favoris - icône rouge
+                                        heartIcon.classList.remove('feather-heart');
+                                        heartIcon.classList.add('fas', 'fa-heart', 'text-danger');
+
+                                        // Animation de pulsation pour l'ajout
+                                        heartIcon.style.animation = 'heartbeat 0.6s ease-in-out';
+                                        this.style.transform = 'scale(1.2)';
+                                        setTimeout(() => {
+                                            this.style.transform = 'scale(1)';
+                                        }, 300);
+
+                                    } else {
+                                        // RETIRÉ des favoris - icône normale
+                                        heartIcon.classList.remove('fas', 'fa-heart', 'text-danger');
+                                        heartIcon.classList.add('feather-heart');
+
+                                        // Animation de sortie pour la suppression
+                                        this.style.transform = 'scale(0.8)';
+                                        setTimeout(() => {
+                                            this.style.transform = 'scale(1)';
+                                        }, 200);
+                                    }
+
+                                    // Toast de notification
+                                    const toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2500,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.addEventListener('mouseenter', Swal
+                                            .stopTimer);
+                                            toast.addEventListener('mouseleave', Swal
+                                                .resumeTimer);
+                                        }
+                                    });
+
+                                    toast.fire({
+                                        icon: data.is_favorite ? 'success' : 'info',
+                                        title: data.message,
+                                        background: data.is_favorite ? '#d4edda' : '#d1ecf1',
+                                        color: data.is_favorite ? '#155724' : '#0c5460'
+                                    });
+
+                                    // Réinitialiser l'animation après un délai
+                                    setTimeout(() => {
+                                        heartIcon.style.animation = '';
+                                    }, 600);
+
+                                } else {
+                                    // En cas d'erreur, restaurer l'icône d'origine
+                                    heartIcon.className = originalContent;
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur',
+                                        text: data.message ||
+                                            'Erreur lors de la mise à jour des favoris'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erreur favoris:', error);
+
+                                // Restaurer l'icône
+                                heartIcon.className = originalContent;
+
+                                if (error.message === 'Non authentifié') {
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        title: 'Session expirée',
+                                        text: 'Votre session a expiré. Veuillez vous reconnecter.',
+                                        confirmButtonText: 'Se reconnecter'
+                                    }).then(() => {
+                                        window.location.href = '{{ route('login') }}';
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Erreur de connexion',
+                                        text: 'Une erreur est survenue. Veuillez vérifier votre connexion et réessayer.'
+                                    });
+                                }
+                            })
+                            .finally(() => {
+                                // Réactiver le bouton après un délai
+                                setTimeout(() => {
+                                    this.style.pointerEvents = 'auto';
+                                }, 400);
+                            });
+                        });
+                });
+
+            // ===== FONCTION POUR SYNCHRONISER L'ÉTAT INITIAL =====
+            function syncFavoriteStates() {
+                @auth
+                document.querySelectorAll('.fav-icon').forEach(favIcon => {
+                    const carId = favIcon.getAttribute('data-car-id');
+                    const heartIcon = favIcon.querySelector('i');
+
+                    if (carId) {
+                        // Vérifier l'état actuel depuis le serveur
+                        fetch('{{ route('favorites.status') }}', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                        .getAttribute('content'),
+                                    'Accept': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    car_id: carId
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success && data.is_favorite) {
+                                    heartIcon.classList.remove('feather-heart');
+                                    heartIcon.classList.add('fas', 'fa-heart', 'text-danger');
+                                }
+                            })
+                            .catch(error => {
+                                console.log('Erreur sync favoris:', error);
+                            });
+                    }
+                });
+            @endauth
+        }
+
+        // Synchroniser les états au chargement (optionnel - seulement si les états ne sont pas déjà corrects dans le HTML)
+        // syncFavoriteStates();
+
+        // ===== STYLES CSS POUR LES FAVORIS =====
+        if (!document.getElementById('favorites-styles')) {
+            const style = document.createElement('style');
+            style.id = 'favorites-styles';
+            style.textContent = `
+            @keyframes heartbeat {
+                0% { transform: scale(1); }
+                25% { transform: scale(1.2); }
+                50% { transform: scale(1.1); }
+                75% { transform: scale(1.25); }
+                100% { transform: scale(1); }
+            }
+
+            .fav-icon {
+                transition: all 0.3s ease;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                z-index: 10;
+                position: relative;
+            }
+
+            .fav-icon:hover {
+                transform: scale(1.1);
+                background: rgba(255, 255, 255, 1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .fav-icon i {
+                font-size: 18px;
+                transition: all 0.3s ease;
+            }
+
+            .fav-icon .text-danger {
+                color: #dc3545 !important;
+                filter: drop-shadow(0 0 4px rgba(220, 53, 69, 0.3));
+            }
+
+            .fav-icon .fa-spinner {
+                color: #007bff !important;
+            }
+
+            .fav-icon:hover i.text-danger {
+                filter: drop-shadow(0 0 8px rgba(220, 53, 69, 0.5));
+            }
+        `;
+            document.head.appendChild(style);
+        }
         });
     </script>
 @endpush

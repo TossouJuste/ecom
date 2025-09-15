@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderTrackingController;
 
@@ -70,6 +71,39 @@ Route::middleware('auth')->prefix('client')->name('client.')->group(function () 
 
 Route::middleware(['auth', 'user.type'])->group(function () {
     // Route::get('/vehicule', fn()=>view('vitrine.vehicule'));
+});
+
+
+// Route::middleware(['auth'])->group(function () {
+//     // Toggle favori (AJAX)
+//     Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+
+//     // Page des favoris
+//     Route::get('/mes-favoris', [FavoriteController::class, 'index'])->name('favorites.index');
+
+//     // Supprimer un favori
+//     Route::delete('/favorites/{carId}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+// });
+
+
+Route::middleware(['auth'])->group(function () {
+    // Ajouter aux favoris
+    Route::post('/favorites/add', [FavoriteController::class, 'add'])->name('favorites.add');
+
+    // Retirer des favoris
+    Route::post('/favorites/remove', [FavoriteController::class, 'remove'])->name('favorites.remove');
+
+    // Toggle favori (pour compatibilité)
+    Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+
+    // Vérifier le statut d'un favori
+    Route::post('/favorites/status', [FavoriteController::class, 'status'])->name('favorites.status');
+
+    // Page des favoris
+    Route::get('/mes-favoris', [FavoriteController::class, 'index'])->name('favorites.index');
+
+    // Supprimer un favori depuis la page favoris
+    Route::delete('/favorites/{carId}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 });
 
 //

@@ -30,31 +30,43 @@
                         <a href="/">Home <i class=""></i></a>
 
                     </li>
-                    <li class="has-submenu">
-                        <a href="/vehicule">vehicles</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vehicule">vehicles</a>
                     </li>
-                    <li class="has-submenu">
+                    <li class="nav-item">
                         <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                            <li><a href="/gallery">Gallery</a></li>
-                            <li><a href="/terms">Terms & Conditions</a></li>
+                            <li><a class="nav-link" href="/about">About Us</a></li>
+                            <li><a class="nav-link" href="/contact">Contact</a></li>
+                            <li><a class="nav-link" href="/gallery">Gallery</a></li>
+                            <li><a class="nav-link" href="/terms">Terms & Conditions</a></li>
                         </ul>
                     </li>
 
                     @if (Auth::check() && Auth::user()->type_user === 'client')
                         <li class="has-submenu">
-                            <a href="{{ route('client.orders.index') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('client.orders.index') }}">Dashboard</a>
                         </li>
                     @endif
 
-                    <li class="has-submenu">
-                        <a href="{{ route('track.search') }}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('track.search') }}">
                             <i class="fas fa-search me-1"></i>Suivre ma commande
                         </a>
                     </li>
-                    
+
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('favorites.index') }}">
+                                <i class="feather-heart me-1"></i>
+                                Mes Favoris
+                                @if (auth()->user()->favorites()->count() > 0)
+                                    <span class="badge bg-danger ms-1">{{ auth()->user()->favorites()->count() }}</span>
+                                @endif
+                            </a>
+                        </li>
+                    @endauth
+
                     @guest
                         <li class="login-link">
                             <a href="/register">Sign Up</a>

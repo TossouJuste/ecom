@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="view-all d-flex align-items-center gap-3">
-                                        <a href="listing-grid.html"
+                                        <a href="#"
                                             class="btn btn-primary d-inline-flex align-items-center">Rent a Car<i
                                                 class="bx bx-right-arrow-alt ms-1"></i></a>
                                         <a href="add-listing.html"
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="banner-search">
-                    <form action="https://dreamsrent.dreamstechnologies.com/html/template/listing-grid.html"
+                    <form action="#"
                         class="form-block d-flex align-items-center">
                         <div class="search-input">
                             <div class="input-block">
@@ -193,10 +193,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Sports Coupe</a></h6>
+                                            <h6 class="title"><a href="#">Sports Coupe</a></h6>
                                             <p>14 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -212,10 +212,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Sedan</a></h6>
+                                            <h6 class="title"><a href="#">Sedan</a></h6>
                                             <p>12 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -231,10 +231,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Sports Car</a></h6>
+                                            <h6 class="title"><a href="#">Sports Car</a></h6>
                                             <p>35 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -250,10 +250,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Pickup</a></h6>
+                                            <h6 class="title"><a href="#">Pickup</a></h6>
                                             <p>35 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -269,10 +269,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Family MPV</a></h6>
+                                            <h6 class="title"><a href="#">Family MPV</a></h6>
                                             <p>35 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -288,10 +288,10 @@
                                 <div class="category-item flex-fill">
                                     <div class="category-info d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h6 class="title"><a href="listing-grid.html">Crossover</a></h6>
+                                            <h6 class="title"><a href="#">Crossover</a></h6>
                                             <p>30 Cars</p>
                                         </div>
-                                        <a href="listing-grid.html" class="link-icon"><i
+                                        <a href="#" class="link-icon"><i
                                                 class="bx bx-right-arrow-alt"></i></a>
                                     </div>
                                     <div class="category-img">
@@ -305,7 +305,7 @@
                         </div>
 
                         <div class="view-all-btn text-center aos" data-aos="fade-down">
-                            <a href="listing-grid.html" class="btn btn-secondary">View All<i
+                            <a href="{{ route('vitrine.vehicule') }}" class="btn btn-secondary">View All<i
                                     class="bx bx-right-arrow-alt ms-1"></i></a>
                         </div>
                     </div>
@@ -443,7 +443,7 @@
                                 <div class="listing-img">
                                     <div class="img-slider owl-carousel">
                                         <div class="slide-images">
-                                            <a href="listing-details.html">
+                                            <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                 <img src="{{ asset('storage/' . $car->image_principale) }}"
                                                     class="img-fluid" alt="Toyota">
                                             </a>
@@ -451,7 +451,7 @@
                                         @if ($car->images())
                                             @foreach ($car->images() as $carListImage)
                                                 <div class="slide-images">
-                                                    <a href="listing-details.html">
+                                                    <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                         <img src="{{ asset('storage/' . $carListImage->imagePath) }}"
                                                             class="img-fluid" alt="Toyota">
                                                     </a>
@@ -474,7 +474,7 @@
                                     <div class="listing-features d-flex align-items-center justify-content-between">
                                         <div class="list-rating">
                                             <h3 class="listing-title">
-                                                <a href="listing-details.html">{{ $car->titre }}</a>
+                                                <a href="{{ route('vitrine.vehicule.details', $car->id) }}">{{ $car->titre }}</a>
                                             </h3>
                                             <div class="list-rating">
                                                 <i class="fas fa-star filled"></i>
@@ -517,7 +517,7 @@
                 </div>
 
                 <div class="view-all-btn text-center aos" data-aos="fade-down">
-                    <a href="listing-grid.html" class="btn btn-secondary d-inline-flex align-items-center">View More
+                    <a href="{{ route('vitrine.vehicule') }}" class="btn btn-secondary d-inline-flex align-items-center">View More
                         Cars<i class="bx bx-right-arrow-alt ms-1"></i></a>
                 </div>
 
@@ -660,7 +660,7 @@
                             <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
-                                        <a href="listing-details.html">
+                                        <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                             <img src="assets/img/cars/rental-car-01.jpg" class="img-fluid"
                                                 alt="Toyota">
                                         </a>
@@ -684,7 +684,7 @@
                                                 <span>(5.0)</span>
                                             </div>
                                             <h3 class="listing-title">
-                                                <a href="listing-details.html">BMW 640 XI Gran Turismo</a>
+                                                <a href="{{ route('vitrine.vehicule.details', $car->id) }}">BMW 640 XI Gran Turismo</a>
                                             </h3>
                                         </div>
                                         <div class="listing-details-group">
@@ -724,7 +724,7 @@
                                             </ul>
                                         </div>
                                         <div class="listing-button">
-                                            <a href="listing-details.html" class="btn btn-order"><span><i
+                                            <a href="#" class="btn btn-order"><span><i
                                                         class="feather-calendar me-2"></i></span>Rent Now</a>
                                         </div>
                                     </div>
@@ -736,7 +736,7 @@
                             <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
-                                        <a href="listing-details.html">
+                                        <a href="#">
                                             <img src="assets/img/cars/rental-car-02.jpg" class="img-fluid"
                                                 alt="Toyota">
                                         </a>
@@ -760,7 +760,7 @@
                                                 <span>(5.0)</span>
                                             </div>
                                             <h3 class="listing-title">
-                                                <a href="listing-details.html">Camz Ferrari Portofino M</a>
+                                                <a href="#">Camz Ferrari Portofino M</a>
                                             </h3>
                                         </div>
                                         <div class="listing-details-group">
@@ -800,7 +800,7 @@
                                             </ul>
                                         </div>
                                         <div class="listing-button">
-                                            <a href="listing-details.html" class="btn btn-order"><span><i
+                                            <a href="#" class="btn btn-order"><span><i
                                                         class="feather-calendar me-2"></i></span>Rent Now</a>
                                         </div>
                                     </div>
@@ -814,25 +814,25 @@
                                     <div class="listing-img">
                                         <div class="img-slider owl-carousel owl-theme">
                                             <div class="slide-images">
-                                                <a href="listing-details.html">
+                                                <a href="#">
                                                     <img src="assets/img/cars/rental-car-03.jpg" class="img-fluid"
                                                         alt="Toyota">
                                                 </a>
                                             </div>
                                             <div class="slide-images">
-                                                <a href="listing-details.html">
+                                                <a href="#">
                                                     <img src="assets/img/cars/rental-car-03-slider1.jpg"
                                                         class="img-fluid" alt="Toyota">
                                                 </a>
                                             </div>
                                             <div class="slide-images">
-                                                <a href="listing-details.html">
+                                                <a href="#">
                                                     <img src="assets/img/cars/rental-car-03-slider2.jpg"
                                                         class="img-fluid" alt="Toyota">
                                                 </a>
                                             </div>
                                             <div class="slide-images">
-                                                <a href="listing-details.html">
+                                                <a href="#">
                                                     <img src="assets/img/cars/rental-car-03-slider3.jpg"
                                                         class="img-fluid" alt="Toyota">
                                                 </a>
@@ -858,7 +858,7 @@
                                                 <span>(5.0)</span>
                                             </div>
                                             <h3 class="listing-title">
-                                                <a href="listing-details.html">Mercedes-Benz</a>
+                                                <a href="#">Mercedes-Benz</a>
                                             </h3>
                                         </div>
                                         <div class="listing-details-group">
@@ -898,7 +898,7 @@
                                             </ul>
                                         </div>
                                         <div class="listing-button">
-                                            <a href="listing-details.html" class="btn btn-order"><span><i
+                                            <a href="#" class="btn btn-order"><span><i
                                                         class="feather-calendar me-2"></i></span>Rent Now</a>
                                         </div>
                                     </div>
@@ -910,7 +910,7 @@
                             <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
-                                        <a href="listing-details.html">
+                                        <a href="#">
                                             <img src="assets/img/cars/rental-car-04.jpg" class="img-fluid"
                                                 alt="Toyota">
                                         </a>
@@ -934,7 +934,7 @@
                                                 <span>(4.5)</span>
                                             </div>
                                             <h3 class="listing-title">
-                                                <a href="listing-details.html">Range Rover</a>
+                                                <a href="#">Range Rover</a>
                                             </h3>
                                         </div>
                                         <div class="listing-details-group">
@@ -974,7 +974,7 @@
                                             </ul>
                                         </div>
                                         <div class="listing-button">
-                                            <a href="listing-details.html" class="btn btn-order"><span><i
+                                            <a href="#" class="btn btn-order"><span><i
                                                         class="feather-calendar me-2"></i></span>Rent Now</a>
                                         </div>
                                     </div>
@@ -987,7 +987,7 @@
                 </div>
                 <!-- View More -->
                 <div class="view-all text-center" data-aos="fade-down">
-                    <a href="listing-grid.html" class="btn btn-view d-inline-flex align-items-center">Go to all Cars
+                    <a href="{{ route('vitrine.vehicule') }}" class="btn btn-view d-inline-flex align-items-center">Go to all Cars
                         <span><i class="feather-arrow-right ms-2"></i></span></a>
                 </div>
                 <!-- View More -->

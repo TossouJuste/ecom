@@ -164,12 +164,6 @@ class AdminOrderController extends Controller
         // Envoyer email au client si changement significatif
         if (abs($oldPercentage - $request->completion_percentage) >= 10 || $oldPercentage != $request->completion_percentage) {
             try {
-
-                // Log::info([
-                //     'client' => $order->client->email,
-                //     'order' => $order
-                // ]);
-
                 Mail::to($order->client->email)->send(new OrderProgressUpdate($order));
 
             } catch (\Exception $e) {
