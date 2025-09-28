@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mise à jour de votre réservation</title>
+    <title>Mise à jour de votre commande</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -300,7 +300,7 @@
         <!-- Header -->
         <div class="header">
             <h1>Dreams Rent</h1>
-            <p>Mise à jour de votre réservation</p>
+            <p>Mise à jour de votre commande</p>
         </div>
 
         <!-- Content -->
@@ -309,7 +309,7 @@
                 Bonjour <strong>{{ $order->client->name }}</strong>,
             </div>
 
-            <p>Nous avons une mise à jour concernant votre réservation. Notre équipe a progressé sur votre dossier et souhaite vous tenir informé de l'avancement.</p>
+            <p>Nous avons une mise à jour concernant votre commande. Notre équipe a progressé sur votre dossier et souhaite vous tenir informé de l'avancement.</p>
 
             <!-- Section Progression -->
             <div class="progress-section">
@@ -379,7 +379,7 @@
 
             <!-- Récapitulatif commande -->
             <div class="order-summary">
-                <h3>Récapitulatif de votre réservation</h3>
+                <h3>Récapitulatif de votre commande</h3>
 
                 <div class="info-row">
                     <span class="info-label">Code de suivi :</span>
@@ -417,7 +417,7 @@
             @if($order->completion_percentage >= 100)
             <div class="status-update" style="background: #d4edda; color: #155724; border-color: #c3e6cb;">
                 <strong>🎉 Votre véhicule est prêt !</strong>
-                <p>Félicitations ! Votre réservation est finalisée. Vous pouvez maintenant récupérer votre véhicule.</p>
+                <p>Félicitations ! Votre commande est finalisée. Vous pouvez maintenant récupérer votre véhicule.</p>
             </div>
             @elseif($order->completion_percentage >= 75)
             <div class="status-update" style="background: #cce5ff; color: #004085; border-color: #99d6ff;">
@@ -448,7 +448,7 @@
             </div>
 
             <p style="color: #666; font-style: italic; text-align: center; margin-top: 30px;">
-                Vous recevrez une nouvelle notification à chaque étape importante de votre réservation.
+                Vous recevrez une nouvelle notification à chaque étape importante de votre commande.
             </p>
         </div>
 
@@ -470,7 +470,7 @@
             </p>
 
             <p style="font-size: 11px; opacity: 0.6; margin-top: 10px;">
-                Vous recevez cet email car vous avez une réservation active avec nous.<br>
+                Vous recevez cet email car vous avez une commande active avec nous.<br>
                 Code de suivi: {{ $order->tracking_code }}
             </p>
         </div>

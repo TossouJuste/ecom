@@ -50,7 +50,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">Mes Réservations</h4>
+                        <h4 class="mb-0">Mes commandes</h4>
                         <div class="d-flex gap-2">
                             <select id="statusFilter" class="form-select form-select-sm">
                                 <option value="">Tous les statuts</option>
@@ -62,7 +62,7 @@
                             </select>
                             <button class="btn btn-sm btn-success"
                                 onclick="window.location='{{ route('vitrine.vehicule') }}'">
-                                <i class="fas fa-plus"></i> Nouvelle réservation
+                                <i class="fas fa-plus"></i> Nouvelle commande
                             </button>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Détails de la réservation</h5>
+                    <h5 class="modal-title">Détails de la commande</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="orderDetails">
@@ -297,7 +297,7 @@
                     <tr><td><strong>Date de commande:</strong></td><td>${new Date(order.created_at).toLocaleDateString('fr-FR')}</td></tr>
                     <tr><td><strong>Type de paiement:</strong></td><td>${order.type_paiement == 'financement' ? 'Financement' : 'Apport direct'}</td></tr>
                 </table>
-                
+
                 <h6>Contact</h6>
                 <table class="table table-sm">
                     <tr><td><strong>Téléphone:</strong></td><td>${order.telephone}</td></tr>
@@ -306,18 +306,18 @@
                     ${order.code_postal ? `<tr><td><strong>Code postal:</strong></td><td>${order.code_postal}</td></tr>` : ''}
                 </table>
             </div>
-            
+
             <div class="col-md-6">
                 <h6>Véhicule</h6>
                 <div class="d-flex mb-3">
-                    <img src="${order.car.image_principale ? '{{ asset('storage') }}/' + order.car.image_principale : '/default-car.jpg'}" 
+                    <img src="${order.car.image_principale ? '{{ asset('storage') }}/' + order.car.image_principale : '/default-car.jpg'}"
                          alt="Car" style="width: 80px; height: 60px; object-fit: cover; border-radius: 5px;" class="me-3">
                     <div>
                         <strong>${order.car.titre}</strong><br>
                         <small class="text-muted">${order.car.modele}</small>
                     </div>
                 </div>
-                
+
                 <h6>Tarification</h6>
                 <table class="table table-sm">
                     <tr><td><strong>Prix total:</strong></td><td class="text-success">${Number(order.prix).toLocaleString('fr-FR')} FCFA</td></tr>

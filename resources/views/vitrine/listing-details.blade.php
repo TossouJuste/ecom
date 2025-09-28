@@ -63,8 +63,8 @@
                     </div>
                 </div>
                 <div class="details-btn">
-                    {{-- <span class="total-badge"><i class='bx bx-calendar-edit'></i>Total Réservations : 300</span>
-                    <a href="#"><i class='bx bx-git-compare'></i>Comparer</a> --}}
+                    {{-- <span class="total-badge"><i class='bx bx-calendar-edit'></i>Total Commandes : 300</span> --}}
+                    {{-- <a href="#"><i class='bx bx-git-compare'></i>Comparer</a> --}}
                 </div>
             </div>
         </div>
@@ -404,7 +404,7 @@
 
                 <div class="col-lg-4 theiaStickySidebar">
                     <!-- Pricing Section -->
-                    <div class="review-sec mt-0">
+                    {{-- <div class="review-sec mt-0">
                         <div class="review-header">
                             <h4>Tarification</h4>
                         </div>
@@ -580,14 +580,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Owner Details -->
                     <div class="review-sec extra-service mt-0">
                         <div class="review-header">
-                            <h4>Détails du propriétaire</h4>
+                            <h4>Contacts</h4>
                         </div>
-                        <div class="owner-detail">
+                        {{-- <div class="owner-detail">
                             <div class="owner-img">
                                 <a href="#"><img src="assets/img/profiles/avatar-07.jpg" alt="Propriétaire"></a>
                                 <span class="badge-check"><img src="assets/img/icons/badge-check.svg"
@@ -602,31 +602,52 @@
                                     <span>(5.0)</span>
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
                         <ul class="booking-list">
                             <li>Email <span><a href="https://dreamsrent.dreamstechnologies.com/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="036a6d656c43667b626e736f662d606c6e">contact@dreamsrent.com</a></span>
                             </li>
                             <li>Téléphone <span>+221 77 XXX XX XX</span></li>
-                            <li>Localisation <span>{{ $car->localisation ?: 'Dakar, Sénégal' }}</span></li>
+
+                            <li class="">
+                                <div class="input-block mb-0">
+                                    <div class="search-btn flex d-flex text-center items-center">
+                                        @if ($car->disponible)
+                                            <button type="button"
+                                                class="btn btn-primary check-available rent-now-btn"
+                                                data-car-id="{{ $car->id }}">Commander
+                                                maintenant</button>
+                                        @else
+                                            <button type="button" class="btn btn-secondary" disabled>Non
+                                                disponible</button>
+                                        @endif
+                                        &nbsp;
+                                        &nbsp;
+                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#enquiry"
+                                            class="btn btn-theme">Nous
+                                            contacter</a>
+                                    </div>
+                                </div>
+                            </li>
+                            {{-- <li>Localisation <span>{{ $car->localisation ?: 'Dakar, Sénégal' }}</span></li> --}}
                         </ul>
-                        <div class="message-btn">
+                        {{-- <div class="message-btn">
                             <a href="#" class="btn btn-order">Message au propriétaire</a>
                             <a href="#" class="chat-link"><i class="fa-brands fa-whatsapp"></i>Chat via
                                 WhatsApp</a>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <!-- Car Location -->
-                    <div class="review-sec share-car mt-0">
+                    {{-- <div class="review-sec share-car mt-0">
                         <div class="review-header">
                             <h4>Localisation du véhicule</h4>
                         </div>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.5189!2d-17.4441!3d14.7167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2sDakar%2C%20Senegal!5e0!3m2!1sen!2ssn!4v1647875776543!5m2!1sen!2ssn"
                             class="iframe-video"></iframe>
-                    </div>
+                    </div> --}}
 
                     <!-- Share Section -->
                     <div class="review-sec share-car mt-0 mb-0">
@@ -773,14 +794,14 @@
         </div>
     </section>
 
-    <!-- Modal de réservation -->
+    <!-- Modal de commande -->
     <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form id="rentForm">
                     <input type="hidden" id="car_id" name="car_id">
                     <div class="modal-header">
-                        <h5 class="modal-title">Réserver ce véhicule</h5>
+                        <h5 class="modal-title">Commander ce véhicule</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -847,7 +868,7 @@
 
                     <div class="modal-footer mb-4 p-2">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary" id="submitBtn">Confirmer la réservation</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Confirmer la commande</button>
                     </div>
                 </form>
             </div>
@@ -1153,7 +1174,7 @@
                                 icon: 'success',
                                 title: 'Commande créée!',
                                 html: `
-                                <p>Votre réservation a été confirmée.</p>
+                                <p>Votre commande a été confirmée.</p>
                                 <p><strong>Code de suivi:</strong> <code>${data.tracking_code}</code></p>
                                 <p>Un email de confirmation vous a été envoyé.</p>
                             `,
@@ -1218,7 +1239,7 @@
                     Swal.fire({
                         icon: 'warning',
                         title: 'Connexion requise',
-                        text: 'Vous devez être connecté pour réserver un véhicule.',
+                        text: 'Vous devez être connecté pour commander un véhicule.',
                         showCancelButton: true,
                         confirmButtonText: 'Se connecter',
                         cancelButtonText: 'Annuler'
@@ -1240,7 +1261,7 @@
             Swal.fire({
                 icon: 'warning',
                 title: 'Connexion requise',
-                text: 'Vous devez être connecté pour réserver un véhicule.',
+                text: 'Vous devez être connecté pour commander un véhicule.',
                 showCancelButton: true,
                 confirmButtonText: 'Se connecter',
                 cancelButtonText: 'Annuler'

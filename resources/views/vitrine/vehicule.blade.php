@@ -590,7 +590,7 @@
                     <input type="hidden" id="car_id" name="car_id">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Réserver ce véhicule</h5>
+                        <h5 class="modal-title">Commander ce véhicule</h5>
                         <button type="button" class="btn-close" id="cancelBtnWindows" data-bs-dismiss="modal"></button>
                     </div>
 
@@ -669,7 +669,7 @@
                         <button type="button" class="btn btn-secondary" id="cancelBtn"
                             data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary" id="submitBtn">
-                            Confirmer la réservation
+                            Confirmer la commande
                         </button>
                     </div>
                 </form>
@@ -745,7 +745,7 @@
                             Swal.fire({
                                 icon: 'warning',
                                 title: 'Connexion requise',
-                                text: 'Vous devez être connecté pour réserver un véhicule.',
+                                text: 'Vous devez être connecté pour commandé un véhicule.',
                                 showCancelButton: true,
                                 confirmButtonText: 'Se connecter',
                                 cancelButtonText: 'Annuler'
@@ -864,7 +864,7 @@
                             icon: 'success',
                             title: 'Commande créée!',
                             html: `
-                                <p>Votre réservation a été confirmée.</p>
+                                <p>Votre commande a été confirmée.</p>
                                 <p><strong>Code de suivi:</strong> <code>${data.tracking_code}</code></p>
                                 <p>Un email de confirmation vous a été envoyé.</p>
                             `,

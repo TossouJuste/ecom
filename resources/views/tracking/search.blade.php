@@ -22,7 +22,7 @@
                         <i class="fas fa-search me-2"></i>
                         Suivre ma commande
                     </h2>
-                    <p class="mb-0 mt-2">Entrez votre code de suivi pour connaître l'état de votre réservation</p>
+                    <p class="mb-0 mt-2">Entrez votre code de suivi pour connaître l'état de votre commande</p>
                 </div>
 
                 <div class="card-body p-5">
@@ -49,7 +49,7 @@
                                 </button>
                             </div>
                             <small class="form-text mt-2">
-                                Le code de suivi vous a été envoyé par email lors de votre réservation
+                                Le code de suivi vous a été envoyé par email lors de votre commande
                             </small>
                         </div>
                     </form>
