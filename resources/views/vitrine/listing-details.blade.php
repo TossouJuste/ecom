@@ -46,14 +46,14 @@
                         <div class="camaro-info">
                             <h3>{{ $car->titre }}</h3>
                             <div class="camaro-location">
-                                <div class="camaro-location-inner">
+                                {{-- <div class="camaro-location-inner">
                                     <i class='bx bx-map'></i>
                                     <span>Localisation : {{ $car->localisation ?: 'Dakar, Sénégal' }}</span>
-                                </div>
-                                <div class="camaro-location-inner">
+                                </div> --}}
+                                {{-- <div class="camaro-location-inner">
                                     <i class='bx bx-show'></i>
                                     <span>Vues : 250</span>
-                                </div>
+                                </div> --}}
                                 <div class="camaro-location-inner">
                                     <i class='bx bx-car'></i>
                                     <span>Ajouté le : {{ $car->created_at->format('d M, Y') }}</span>
@@ -63,8 +63,8 @@
                     </div>
                 </div>
                 <div class="details-btn">
-                    <span class="total-badge"><i class='bx bx-calendar-edit'></i>Total Réservations : 300</span>
-                    <a href="#"><i class='bx bx-git-compare'></i>Comparer</a>
+                    {{-- <span class="total-badge"><i class='bx bx-calendar-edit'></i>Total Réservations : 300</span>
+                    <a href="#"><i class='bx bx-git-compare'></i>Comparer</a> --}}
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                     <div class="detail-product">
                         <div class="pro-info">
                             <div class="pro-badge">
-                                <span class="badge-km"><i class="fa-solid fa-person-walking"></i>4.2 Km</span>
+                                <span class="badge-km"><i class="fa-solid fa-person-walking"></i>$car-> Km</span>
                                 <a href="javascript:void(0);" class="fav-icon" data-car-id="{{ $car->id }}">
                                     @auth
                                         @if (auth()->user()->hasFavorite($car->id))
@@ -94,7 +94,7 @@
                             </div>
                             <ul>
                                 @if ($car->disponible)
-                                    <li class="del-airport"><i class="fa-solid fa-check"></i>Livraison aéroport</li>
+                                    {{-- <li class="del-airport"><i class="fa-solid fa-check"></i>Livraison aéroport</li> --}}
                                     <li class="del-home"><i class="fa-solid fa-check"></i>Livraison domicile</li>
                                 @endif
                             </ul>
@@ -1018,12 +1018,12 @@
                                     }, 600);
                                 } else {
                                     heartIcon.className = originalContent;
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
-                                        text: data.message ||
-                                            'Erreur lors de la mise à jour des favoris'
-                                    });
+                                    // Swal.fire({
+                                    //     icon: 'error',
+                                    //     title: 'Erreur',
+                                    //     text: data.message ||
+                                    //         'Erreur lors de la mise à jour des favoris'
+                                    // });
                                 }
                             })
                             .catch(error => {

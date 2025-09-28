@@ -114,7 +114,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="banner-search">
+
+                {{-- <div class="banner-search">
                     <form action="#"
                         class="form-block d-flex align-items-center">
                         <div class="search-input">
@@ -165,7 +166,8 @@
                             <button class="btn btn-primary" type="submit"><i class="bx bx-search-alt"></i></button>
                         </div>
                     </form>
-                </div>
+                </div> --}}
+
             </div>
             <div class="banner-bgs">
                 <img src="assets/img/bg/banner-bg-01.png" class="bg-01 img-fluid" alt="img">
@@ -481,8 +483,8 @@
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.0) 138 Reviews</span>
+                                                <i class="fas fa-star filled"></i>
+                                                <span>(4.0)</span>
                                             </div>
                                         </div>
                                         <div>
@@ -657,12 +659,13 @@
                     <div class="popular-slider-group">
                         <div class="owl-carousel rental-deal-slider owl-theme">
                             <!-- owl carousel item -->
+                            @foreach ($latestCars as $car)
                             <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
                                         <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
-                                            <img src="assets/img/cars/rental-car-01.jpg" class="img-fluid"
-                                                alt="Toyota">
+                                            <img src="{{ asset('storage/' . $car->image_principale) }}" class="img-fluid"
+                                                alt="">
                                         </a>
                                         <div class="fav-item justify-content-end">
                                             <a href="javascript:void(0)" class="fav-icon">
@@ -673,7 +676,7 @@
                                     <div class="listing-content">
                                         <div class="listing-features">
                                             <div class="fav-item-rental">
-                                                <div class="featured-text">$400<span>/day</span></div>
+                                                <div class="featured-text">${{ $car->prix }}</div>
                                             </div>
                                             <div class="list-rating">
                                                 <i class="fas fa-star filled"></i>
@@ -684,7 +687,7 @@
                                                 <span>(5.0)</span>
                                             </div>
                                             <h3 class="listing-title">
-                                                <a href="{{ route('vitrine.vehicule.details', $car->id) }}">BMW 640 XI Gran Turismo</a>
+                                                <a href="{{ route('vitrine.vehicule.details', $car->id) }}">{{ $car->title }}</a>
                                             </h3>
                                         </div>
                                         <div class="listing-details-group">
@@ -692,17 +695,17 @@
                                                 <li>
                                                     <span><img src="assets/img/icons/car-parts-01.svg"
                                                             alt="Auto"></span>
-                                                    <p>Auto</p>
+                                                    <p>{{ $car->boite_vitesse }}</p>
                                                 </li>
                                                 <li>
                                                     <span><img src="assets/img/icons/car-parts-02.svg"
                                                             alt="10 KM"></span>
-                                                    <p>10 KM</p>
+                                                    {{ $car->kilometrage }}
                                                 </li>
-                                                <li>
+                                                 <li>
                                                     <span><img src="assets/img/icons/car-parts-03.svg"
-                                                            alt="Petrol"></span>
-                                                    <p>Diesel</p>
+                                                            alt="{{ $car->carburant }}"></span>
+                                                    <p>{{ $car->carburant }}</p>
                                                 </li>
                                             </ul>
                                             <ul>
@@ -712,28 +715,29 @@
                                                     <p>Power</p>
                                                 </li>
                                                 <li>
-                                                    <span><img src="assets/img/icons/car-parts-07.svg"
-                                                            alt="2018"></span>
-                                                    <p>AC</p>
+                                                    <span><img src="assets/img/icons/car-parts-05.svg"
+                                                            alt="{{ $car->annee }}"></span>
+                                                    <p>{{ $car->annee }}</p>
                                                 </li>
                                                 <li>
                                                     <span><img src="assets/img/icons/car-parts-06.svg"
                                                             alt="Persons"></span>
-                                                    <p>5 Persons</p>
+                                                    <p>{{ $car->places }} Persons</p>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="listing-button">
-                                            <a href="#" class="btn btn-order"><span><i
+                                            <a href="{{ route('vitrine.vehicule.details', $car->id) }}" class="btn btn-order"><span><i
                                                         class="feather-calendar me-2"></i></span>Rent Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                             <!-- /owl carousel item -->
 
                             <!-- owl carousel item -->
-                            <div class="rental-car-item">
+                            {{-- <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
                                         <a href="#">
@@ -805,11 +809,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- /owl carousel item -->
 
                             <!-- owl carousel item -->
-                            <div class="rental-car-item">
+                            {{-- <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
                                         <div class="img-slider owl-carousel owl-theme">
@@ -903,11 +907,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- /owl carousel item -->
 
                             <!-- owl carousel item -->
-                            <div class="rental-car-item">
+                            {{-- <div class="rental-car-item">
                                 <div class="listing-item mb-0">
                                     <div class="listing-img">
                                         <a href="#">
@@ -979,7 +983,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- /owl carousel item -->
 
                         </div>

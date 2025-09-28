@@ -121,7 +121,8 @@ class FavoriteController extends Controller
         return response()->json([
             'success' => true,
             'is_favorite' => true,
-            'message' => 'Ajouté aux favoris'
+            // 'message' => 'Ajouté aux favoris'
+            'message' => 'Effectuée'
         ]);
     }
 
@@ -153,7 +154,8 @@ class FavoriteController extends Controller
         return response()->json([
             'success' => true,
             'is_favorite' => false,
-            'message' => 'Retiré des favoris'
+            // 'message' => 'Retiré des favoris'
+            'message' => 'En cours'
         ]);
     }
 
@@ -179,7 +181,8 @@ class FavoriteController extends Controller
             return response()->json([
                 'success' => true,
                 'is_favorite' => false,
-                'message' => 'Retiré des favoris'
+                // 'message' => 'Retiré des favoris'
+                'message' => 'En cours'
             ]);
         } else {
             // Si n'existe pas, on ajoute
@@ -190,7 +193,8 @@ class FavoriteController extends Controller
             return response()->json([
                 'success' => true,
                 'is_favorite' => true,
-                'message' => 'Ajouté aux favoris'
+                // 'message' => 'Ajouté aux favoris'
+                'message' => 'Effectuée'
             ]);
         }
     }

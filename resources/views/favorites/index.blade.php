@@ -80,7 +80,7 @@
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star filled"></i>
                                                 <span>(4.0) 138 Reviews</span>
                                             </div>
                                         </div>

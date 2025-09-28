@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="section-search page-search">
+    {{-- <div class="section-search page-search">
         <div class="container">
             <div class="search-box-banner">
                 <form action="{{ route('vitrine.vehicule') }}" method="GET">
@@ -84,7 +84,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="sort-section">
         <div class="container">
@@ -193,14 +193,14 @@
                         </div>
 
                         <!-- Disponibilité -->
-                        <div class="product-availability">
+                        {{-- <div class="product-availability">
                             <h6>Availability</h6>
                             <div class="status-toggle">
                                 <input id="availability" name="availability" class="check" type="checkbox"
                                     value="1" {{ request('availability') ? 'checked' : '' }}>
                                 <label for="availability" class="checktoggle">checkbox</label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- Filtre par marque -->
                         <div class="accordion" id="accordionMain1">
@@ -414,7 +414,7 @@
                                             <div class="slide-images">
                                                 <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                     <img src="{{ asset('storage/' . $car->image_principale) }}"
-                                                        class="img-fluid" alt="Toyota">
+                                                        class="img-fluid" alt="">
                                                 </a>
                                             </div>
                                             @if ($car->images())
@@ -422,7 +422,7 @@
                                                     <div class="slide-images">
                                                         <a href="{{ route('vitrine.vehicule.details', $car->id) }}">
                                                             <img src="{{ asset('storage/' . $carListImage->imagePath) }}"
-                                                                class="img-fluid" alt="Toyota">
+                                                                class="img-fluid" alt="">
                                                         </a>
                                                     </div>
                                                 @endforeach
@@ -465,14 +465,14 @@
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>(4.0) 138 Reviews</span>
+                                                    <i class="fas fa-star filled"></i>
+                                                    {{-- <span>(4.0) 138 Reviews</span> --}}
                                                 </div>
                                             </div>
-                                            <div class="list-km">
+                                            {{-- <div class="list-km">
                                                 <span class="km-count"><img src="assets/img/icons/map-pin.svg"
                                                         alt="author">4.1m</span>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="listing-details-group">
                                             <ul>
@@ -511,11 +511,11 @@
                                             </ul>
                                         </div>
                                         <div class="listing-location-details">
-                                            <div class="listing-price">
+                                            {{-- <div class="listing-price">
                                                 <span><i class="feather-map-pin"></i></span>Dallas, USA
-                                            </div>
+                                            </div> --}}
                                             <div class="listing-price">
-                                                <h6>${{ $car->prix }} <span>/ Day</span></h6>
+                                                <h6>${{ $car->prix }}</h6>
                                             </div>
                                         </div>
                                         <div class="listing-button">
