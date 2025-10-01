@@ -7,7 +7,7 @@
 						<div class="col-lg-5">
 							<div class="footer-contact footer-widget">
 								<div class="footer-logo">
-									<img src="assets/img/logo-white.svg" class="img-fluid aos" alt="logo">
+									<img src="{{ asset('images/logo-white.png') }}" class="img-fluid aos" alt="logo">
 								</div>
 								<div class="footer-contact-info">
 									<p>We offer a diverse fleet of vehicles to suit every need, including compact cars, sedans, SUVs and luxury vehicles. </p>
@@ -164,4 +164,4 @@
 			</div>
 			<!-- /Footer Bottom -->
 		</footer>
-		<!-- /Footer -->	
+		<!-- /Footer -->

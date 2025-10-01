@@ -11,17 +11,17 @@
                     </span>
                 </a>
                 <a href="/" class="navbar-brand logo">
-                    <img src="{{ asset('assets/img/logo-white.svg') }}" class="img-fluid white-logo" alt="Logo">
-                    <img src="{{ asset('assets/img/logo.svg') }}" class="img-fluid dark-logo" alt="Logo">
+                    <img src="{{ asset('images/logo-white.png') }}" class="img-fluid white-logo w-50 h-50" alt="Logo">
+                    <img src="{{ asset('images/logo.png') }}" class="img-fluid dark-logo w-50 h-50" alt="Logo">
                 </a>
                 <a href="/" class="navbar-brand logo-small">
-                    <img src="{{ asset('assets/img/logo-small.png') }}" class="img-fluid" alt="Logo">
+                    <img src="{{ asset('images/logo.png') }}" class="img-fluid w-25 h-25" alt="Logo">
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
                     <a href="/" class="menu-logo">
-                        <img src="{{ asset('assets/img/logo.svg') }}" class="img-fluid" alt="Logo">
+                        <img src="{{ asset('images/logo.png') }}" class="img-fluid w-50 h-50" alt="Logo">
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
                 </div>

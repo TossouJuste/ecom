@@ -29,7 +29,7 @@
 		<div class="main-wrapper login-body">
 			<!-- Header -->
 			<header class="log-header">
-				<a href="/"><img class="img-fluid logo-dark" src="assets/img/logo.svg" alt="Logo"></a>
+				<a href="/"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo"></a>
 			</header>
 			<!-- /Header -->
 

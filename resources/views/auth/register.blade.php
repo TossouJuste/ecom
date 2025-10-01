@@ -1,47 +1,47 @@
   <!DOCTYPE html>
 <html lang="en">
-	
+
 <!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:55:09 GMT -->
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		<title>Dreams Rent | Template</title>
-		
+
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/img/favicon.png">
-		
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
 		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
-		
+
 		<!-- Fearther CSS -->
 		<link rel="stylesheet" href="assets/css/feather.css">
-		
+
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="assets/css/style.css">
 	</head>
 	<body>
-	
+
 		<!-- Main Wrapper -->
 		<div class="main-wrapper login-body">
 			<!-- Header -->
 			<header class="log-header">
-				<a href="index.html"><img class="img-fluid logo-dark" src="assets/img/logo.svg" alt="Logo"></a>
+				<a href="index.html"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo"></a>
 			</header>
 			<!-- /Header -->
 
 			<div class="login-wrapper">
-				<div class="loginbox">						
+				<div class="loginbox">
 					<div class="login-auth">
 						<div class="login-auth-wrap">
 							<div class="sign-group">
 								<a href="index.html" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
 							</div>
 							<h1>Sign Up</h1>
-							<p class="account-subtitle">We'll send a confirmation code to your email.</p>								
+							<p class="account-subtitle">We'll send a confirmation code to your email.</p>
 							<form method="POST" action="{{ route('register') }}">
                                 @csrf
 								<div class="input-block">
@@ -54,7 +54,7 @@
                                         </span>
                                     @enderror
 								</div>
-                                
+
 								<div class="input-block">
 									<label class="form-label">Email <span class="text-danger">*</span></label>
 									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -75,9 +75,9 @@
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror 
+                                        @enderror
 									</div>
-								</div>	
+								</div>
 
                                 <div class="input-block">
 									<label class="form-label">Confirm password <span class="text-danger">*</span></label>
@@ -88,9 +88,9 @@
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror 
+                                        @enderror
 									</div>
-								</div>	
+								</div>
                                 <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">  {{ __('Register') }} </button>
 								 	<div class="login-or">
 									<span class="or-line"></span>
@@ -105,34 +105,34 @@
 								</div>
 								<!-- /Social Login -->
 								<div class="text-center dont-have">Already have an Account? <a href="login.html">Sign In</a></div>
-							</form>							
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Footer -->
-			<footer class="log-footer">				
-				<div class="container-fluid">					
+			<footer class="log-footer">
+				<div class="container-fluid">
 					<!-- Copyright -->
 					<div class="copyright">
 						<div class="copyright-text">
 							<p>© 2024 Dreams Rent. All Rights Reserved.</p>
 						</div>
 					</div>
-					<!-- /Copyright -->						
-				</div>			
+					<!-- /Copyright -->
+				</div>
 			</footer>
 			<!-- /Footer -->
 		</div>
 		<!-- /Main Wrapper -->
-		
+
 		<!-- jQuery -->
 		<script src="assets/js/jquery-3.7.1.min.js" type="c881804a75cc4615538a2428-text/javascript"></script>
-		
+
 		<!-- Bootstrap Core JS -->
 		<script src="assets/js/bootstrap.bundle.min.js" type="c881804a75cc4615538a2428-text/javascript"></script>
-		
+
 		<!-- Custom JS -->
 		<script src="assets/js/script.js" type="c881804a75cc4615538a2428-text/javascript"></script>
 
