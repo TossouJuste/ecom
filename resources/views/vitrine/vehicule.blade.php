@@ -6,7 +6,7 @@
                 <div class="col-md-12 col-12">
                     <h2 class="breadcrumb-title"> <br>Car Listings</h2>
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
-
+                        The list of our vehicles
                     </nav>
                 </div>
             </div>

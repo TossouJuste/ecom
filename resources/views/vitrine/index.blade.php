@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:46:30 GMT -->
-
+ 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dreams Rent | Template</title>
+    <title>Home am5auto</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
@@ -88,10 +87,10 @@
                                         </div>
                                     </div>
                                     <div class="view-all d-flex align-items-center gap-3">
-                                        <a href="#"
-                                            class="btn btn-primary d-inline-flex align-items-center">Rent a Car<i
+                                        <a href="/vehicule"
+                                            class="btn btn-primary d-inline-flex align-items-center">Buy a Car<i
                                                 class="bx bx-right-arrow-alt ms-1"></i></a>
-                                        <a href="add-listing.html"
+                                        <a href="/vehicule"
                                             class="btn btn-secondary d-inline-flex align-items-center"><i
                                                 class="bx bxs-plus-circle me-1"></i>Add Your Car</a>
                                     </div>
@@ -107,7 +106,7 @@
                                             <h6>$650 <span> /day</span></h6>
                                         </span>
                                     </div>
-                                    <span class="rent-tag"><i class="bx bxs-circle"></i> Available for Rent</span>
+                                    <span class="rent-tag"><i class="bx bxs-circle"></i> Available for Buy</span>
                                     <img src="assets/img/banner/banner.png" class="img-fluid" alt="img">
                                 </div>
                             </div>
@@ -728,7 +727,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="{{ route('vitrine.vehicule.details', $car->id) }}" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -805,7 +804,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -903,7 +902,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -979,7 +978,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>

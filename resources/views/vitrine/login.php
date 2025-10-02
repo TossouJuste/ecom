@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:55:10 GMT -->
+	 
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Dreams Rent | Template</title>
+		<title>Login </title>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -29,7 +28,7 @@
 		<div class="main-wrapper login-body">
 			<!-- Header -->
 			<header class="log-header">
-				<a href="index.html"><img class="img-fluid logo-dark" src="assets/img/logo.svg" alt="Logo"></a>
+				<a href="index.html"><img class="img-fluid logo-dark" src="assets/img/logo.svg" alt="Logo" width="10%"></a>
 			</header>
 			<!-- /Header -->
 
@@ -38,7 +37,7 @@
 					<div class="login-auth">
 						<div class="login-auth-wrap">
 							<div class="sign-group">
-								<a href="index.html" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
+								<a href="/" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
 							</div>
 							<h1>Sign In</h1>
 							<p class="account-subtitle">We'll send a confirmation code to your email.</p>								
