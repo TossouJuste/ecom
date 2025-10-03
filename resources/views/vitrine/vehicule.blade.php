@@ -520,7 +520,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <button class="btn btn-order" data-car-id="{{ $car->id }}"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</button>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</button>
                                         </div>
                                     </div>
                                 </div>
@@ -735,7 +735,7 @@
                 });
             });
 
-            // Gestion du clic sur "Rent Now"
+            // Gestion du clic sur "Buy Now"
             document.querySelectorAll('.btn-order').forEach(button => {
                     button.addEventListener('click', function(e) {
                             e.preventDefault();
@@ -995,137 +995,6 @@
         });
     </script>
 
-
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gestion du clic sur l'icône favoris
-            document.querySelectorAll('.fav-icon').forEach(favIcon => {
-                    favIcon.addEventListener('click', function(e) {
-                            e.preventDefault();
-
-                            // Vérifier l'authentification
-                            @guest
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Connexion requise',
-                                text: 'Vous devez être connecté pour ajouter des favoris.',
-                                showCancelButton: true,
-                                confirmButtonText: 'Se connecter',
-                                cancelButtonText: 'Annuler'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = '{{ route('login') }}';
-                                }
-                            });
-                            return;
-                        @endguest
-
-                        const carId = this.getAttribute('data-car-id');
-                        const heartIcon = this.querySelector('i');
-
-                        if (!carId) {
-                            Swal.fire('Erreur', 'ID de la voiture manquant', 'error');
-                            return;
-                        }
-
-                        // Désactiver temporairement le bouton
-                        this.style.pointerEvents = 'none';
-
-                        // Envoyer la requête AJAX
-                        fetch('{{ route('favorites.toggle') }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                    .getAttribute('content'),
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                car_id: carId
-                            })
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            if (data.success) {
-                                // Changer l'apparence de l'icône
-                                if (data.is_favorite) {
-                                    heartIcon.classList.add('text-danger');
-                                    // Animation de pulsation
-                                    heartIcon.style.animation = 'heartbeat 0.6s ease-in-out';
-                                } else {
-                                    heartIcon.classList.remove('text-danger');
-                                }
-
-                                // Afficher un message de succès discret
-                                const toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 2000,
-                                    timerProgressBar: true
-                                });
-
-                                toast.fire({
-                                    icon: data.is_favorite ? 'success' : 'info',
-                                    title: data.message
-                                });
-
-                                // Réinitialiser l'animation après un délai
-                                setTimeout(() => {
-                                    heartIcon.style.animation = '';
-                                }, 600);
-                            } else {
-                                Swal.fire('Erreur', data.message ||
-                                    'Erreur lors de la mise à jour des favoris', 'error');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur:', error);
-                            Swal.fire('Erreur', 'Une erreur est survenue. Veuillez réessayer.',
-                            'error');
-                        })
-                        .finally(() => {
-                            // Réactiver le bouton
-                            this.style.pointerEvents = 'auto';
-                        });
-                    });
-            });
-        });
-
-        // CSS pour l'animation du cœur (à ajouter dans votre fichier CSS)
-        const style = document.createElement('style');
-        style.textContent = `
-    @keyframes heartbeat {
-        0% { transform: scale(1); }
-        25% { transform: scale(1.2); }
-        50% { transform: scale(1.1); }
-        75% { transform: scale(1.25); }
-        100% { transform: scale(1); }
-    }
-
-    .fav-icon {
-        transition: all 0.3s ease;
-    }
-
-    .fav-icon:hover {
-        transform: scale(1.1);
-    }
-
-    .text-danger {
-        color: #dc3545 !important;
-    }
-`;
-        document.head.appendChild(style);
-    </script> --}}
-
-
-
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -1176,6 +1045,7 @@
                             // Animation de chargement
                             const originalContent = heartIcon.className; heartIcon.className =
                             'fas fa-spinner fa-spin';
+                            // 'fas fa-spinner fa-spin';
 
                             // Choisir l'action selon l'état actuel
                             const action = isCurrentlyFavorite ? 'remove' : 'add';
@@ -1271,8 +1141,8 @@
                                     heartIcon.className = originalContent;
 
                                     Swal.fire({
-                                        icon: 'error',
-                                        title: 'Erreur',
+                                        icon: 'info',
+                                        title: 'INFO',
                                         text: data.message ||
                                             'Erreur lors de la mise à jour des favoris'
                                     });

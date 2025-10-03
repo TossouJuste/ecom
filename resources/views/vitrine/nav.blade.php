@@ -27,7 +27,7 @@
                 </div>
                 <ul class="main-nav">
                     <li class="has-submenu megamenu active">
-                        <a href="/">Home <i class=""></i></a>
+                        <a href="/">Home</a>
 
                     </li>
                     <li class="nav-item">

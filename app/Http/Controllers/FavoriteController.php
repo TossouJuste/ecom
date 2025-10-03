@@ -108,7 +108,8 @@ class FavoriteController extends Controller
         if ($exists) {
             return response()->json([
                 'success' => false,
-                'message' => 'Cette voiture est déjà dans vos favoris'
+                // 'message' => 'Cette voiture est déjà dans vos favoris'
+                'message' => 'Opération déjà effectuée'
             ]);
         }
 

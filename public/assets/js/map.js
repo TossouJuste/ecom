@@ -23,7 +23,7 @@ var locations =[{
 	"profile_link":"listing-details.html",
 	"image":'assets/img/profiles/avatar-04.jpg'
 	}, {
-		
+
 	"id":"02",
 	"car_brand":"BMW",
 	"car_name":"BMW 640 XI Gran Turismo",
@@ -115,9 +115,9 @@ function initialize() {
 		center: new google.maps.LatLng(53.470692, -2.220328),
         scrollwheel: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-		
+
     };
-  
+
      map = new google.maps.Map(document.getElementById('map'), mapOptions);
     map.slide = true;
 
@@ -132,34 +132,34 @@ function initialize() {
 }
 
 function setInfo(marker) {
-  var content = 
-'<div class="listing-item" style="width: 100%; display: inline-block;">'+											
-									'<div class="listing-img">'+	
-										'<a href="' + marker.profile_link + '">'+	
-											'<img src="' + marker.car_image + '" class="img-fluid" alt="Audi">'+	
-										'</a>'+	
-										'<div class="fav-item justify-content-end">'+	
-											'<a href="javascript:void(0)" class="fav-icon">'+	
-												'<i class="feather-heart"></i>'+	
-											'</a>	'+										
-										'</div>'+		
-										'<span class="featured-text">' + marker.car_brand + '</span>'+	
-									'</div>'+											
-									'<div class="listing-content">'+	
-										'<div class="listing-features d-flex align-items-end justify-content-between">'+	
-											'<div class="list-rating">'+	
-												'<a href="javascript:void(0)" class="author-img">'+	
+  var content =
+'<div class="listing-item" style="width: 100%; display: inline-block;">'+
+									'<div class="listing-img">'+
+										'<a href="' + marker.profile_link + '">'+
+											'<img src="' + marker.car_image + '" class="img-fluid" alt="Audi">'+
+										'</a>'+
+										'<div class="fav-item justify-content-end">'+
+											'<a href="javascript:void(0)" class="fav-icon">'+
+												'<i class="feather-heart"></i>'+
+											'</a>	'+
+										'</div>'+
+										'<span class="featured-text">' + marker.car_brand + '</span>'+
+									'</div>'+
+									'<div class="listing-content">'+
+										'<div class="listing-features d-flex align-items-end justify-content-between">'+
+											'<div class="list-rating">'+
+												'<a href="javascript:void(0)" class="author-img">'+
 												'<img src="' + marker.image + '" class="img-fluid" alt="Audi">'+
 												'</a>'+
-												'<h3 class="listing-title">'+	
-													'<a href="' + marker.profile_link + '">' + marker.car_name + '</a>'+	
-												'</h3>			'+															  
-												'<div class="list-rating">			'+					
-												'	<i class="fas fa-star filled"></i>'+	
-													'<i class="fas fa-star filled"></i>'+	
-													'<i class="fas fa-star filled"></i>'+	
-													'<i class="fas fa-star filled"></i>'+	
-													'<i class="fas fa-star"></i>'+	
+												'<h3 class="listing-title">'+
+													'<a href="' + marker.profile_link + '">' + marker.car_name + '</a>'+
+												'</h3>			'+
+												'<div class="list-rating">			'+
+												'	<i class="fas fa-star filled"></i>'+
+													'<i class="fas fa-star filled"></i>'+
+													'<i class="fas fa-star filled"></i>'+
+													'<i class="fas fa-star filled"></i>'+
+													'<i class="fas fa-star"></i>'+
 													'<span>' + marker.reviews + ' Reviews</span>'+
 												'</div>'+
 											'</div>'+
@@ -181,35 +181,35 @@ function setInfo(marker) {
 													'<span><img src="assets/img/icons/car-parts-03.svg" alt="Petrol"></span>'+
 													'<p>Petrol</p>'+
 												'</li>'+
-											'</ul>'+	
+											'</ul>'+
 											'<ul>'+
 												'<li>'+
 													'<span><img src="assets/img/icons/car-parts-04.svg" alt="Power"></span>'+
 													'<p>Power</p>'+
 												'</li>'+
 												'<li>'+
-													'<span><img src="assets/img/icons/car-parts-05.svg" alt="2019"></span>'+	
-													'<p>2019</p>'+	
-												'</li>'+	
-												'<li>'+	
-													'<span><img src="assets/img/icons/car-parts-06.svg" alt="Persons"></span>'+	
-													'<p>4 Persons</p>'+	
-												'</li>'+	
-											'</ul>'+	
-										'</div>'+																	 
-										'<div class="listing-location-details">'+	
-											'<div class="listing-price">'+	
-												'<span><i class="feather-map-pin"></i></span>' + marker.address + ''+	
-											'</div>'+	
-											'<div class="listing-price">'+	
-												'<h6>' + marker.amount + '<span>/ Day</span></h6>'+	
-											'</div>'+	
-										'</div>'+	
-										'<div class="listing-button">'+	
-											'<a href="' + marker.profile_link + '" class="btn btn-order"><span><i class="feather-calendar me-2"></i></span>'+	'Rent Now</a>'+	
-										'</div>'+		
-									'</div>'+	
-								'</div>';	
+													'<span><img src="assets/img/icons/car-parts-05.svg" alt="2019"></span>'+
+													'<p>2019</p>'+
+												'</li>'+
+												'<li>'+
+													'<span><img src="assets/img/icons/car-parts-06.svg" alt="Persons"></span>'+
+													'<p>4 Persons</p>'+
+												'</li>'+
+											'</ul>'+
+										'</div>'+
+										'<div class="listing-location-details">'+
+											'<div class="listing-price">'+
+												'<span><i class="feather-map-pin"></i></span>' + marker.address + ''+
+											'</div>'+
+											'<div class="listing-price">'+
+												'<h6>' + marker.amount + '</h6>'+
+											'</div>'+
+										'</div>'+
+										'<div class="listing-button">'+
+											'<a href="' + marker.profile_link + '" class="btn btn-order"><span><i class="feather-calendar me-2"></i></span>'+	'Buy Now</a>'+
+										'</div>'+
+									'</div>'+
+								'</div>';
 
   infowindow.setContent(content);
 }

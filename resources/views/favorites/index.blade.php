@@ -84,10 +84,10 @@
                                                 <span>(4.0) 138 Reviews</span>
                                             </div>
                                         </div>
-                                        <div class="list-km">
+                                        {{-- <div class="list-km">
                                             <span class="km-count"><img src="assets/img/icons/map-pin.svg"
                                                     alt="author">4.1m</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="listing-details-group">
                                         <ul>
@@ -126,16 +126,16 @@
                                         </ul>
                                     </div>
                                     <div class="listing-location-details">
-                                        <div class="listing-price">
+                                        {{-- <div class="listing-price">
                                             <span><i class="feather-map-pin"></i></span>Dallas, USA
-                                        </div>
+                                        </div> --}}
                                         <div class="listing-price">
-                                            <h6>${{ $car->prix }} <span>/ Day</span></h6>
+                                            <h6>${{ $car->prix }}</h6>
                                         </div>
                                     </div>
                                     <div class="listing-button">
                                         <button class="btn btn-order" data-car-id="{{ $car->id }}"><span><i
-                                                    class="feather-calendar me-2"></i></span>Rent Now</button>
+                                                    class="feather-calendar me-2"></i></span>Buy Now</button>
                                     </div>
                                 </div>
                             </div>

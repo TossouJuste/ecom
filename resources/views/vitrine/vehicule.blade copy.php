@@ -54,7 +54,7 @@
                     <div class="col-md-12 col-12">
                         <h2 class="breadcrumb-title"> <br>Car Listings</h2>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
-                            
+
                         </nav>
                     </div>
                 </div>
@@ -681,9 +681,9 @@
     <!-- scrollToTop end -->
 
     {{-- Modal views --}}
-    
 
-    <!-- Modal Rent Now corrigée -->
+
+    <!-- Modal Buy Now corrigée -->
     <div class="modal fade" id="rentModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

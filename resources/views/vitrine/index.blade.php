@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dreams Rent | Template</title>
+    <title>Dreams Buy | Template</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
@@ -89,9 +89,9 @@
                                     </div>
                                     <div class="view-all d-flex align-items-center gap-3">
                                         <a href="#"
-                                            class="btn btn-primary d-inline-flex align-items-center">Rent a Car<i
+                                            class="btn btn-primary d-inline-flex align-items-center">Buy a Car<i
                                                 class="bx bx-right-arrow-alt ms-1"></i></a>
-                                        <a href="add-listing.html"
+                                        <a href="#"
                                             class="btn btn-secondary d-inline-flex align-items-center"><i
                                                 class="bx bxs-plus-circle me-1"></i>Add Your Car</a>
                                     </div>
@@ -107,7 +107,7 @@
                                             <h6>$650 <span> /day</span></h6>
                                         </span>
                                     </div>
-                                    <span class="rent-tag"><i class="bx bxs-circle"></i> Available for Rent</span>
+                                    <span class="rent-tag"><i class="bx bxs-circle"></i> Available for Buy</span>
                                     <img src="assets/img/banner/banner.png" class="img-fluid" alt="img">
                                 </div>
                             </div>
@@ -484,11 +484,10 @@
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
                                                 <i class="fas fa-star filled"></i>
-                                                <span>(4.0)</span>
                                             </div>
                                         </div>
                                         <div>
-                                            <h4 class="price">${{ $car->prix }}<span>/ Day</span></h4>
+                                            <h4 class="price">${{ $car->prix }}</h4>
                                         </div>
                                     </div>
                                     <div class="listing-details-group">
@@ -728,7 +727,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="{{ route('vitrine.vehicule.details', $car->id) }}" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -805,7 +804,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -903,7 +902,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -979,7 +978,7 @@
                                         </div>
                                         <div class="listing-button">
                                             <a href="#" class="btn btn-order"><span><i
-                                                        class="feather-calendar me-2"></i></span>Rent Now</a>
+                                                        class="feather-calendar me-2"></i></span>Buy Now</a>
                                         </div>
                                     </div>
                                 </div>

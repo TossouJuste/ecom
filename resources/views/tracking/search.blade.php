@@ -13,28 +13,28 @@
         </div>
     </div>
 
-   <div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-lg border-0">
-                <div class="card-header bg-primary text-white text-center py-4">
-                    <h2 class="mb-0">
-                        <i class="fas fa-search me-2"></i>
-                        Suivre ma commande
-                    </h2>
-                    <p class="mb-0 mt-2">Entrez votre code de suivi pour connaître l'état de votre commande</p>
-                </div>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h2 class="mb-0">
+                            <i class="fas fa-search me-2"></i>
+                            Suivre ma commande
+                        </h2>
+                        <p class="mb-0 mt-2">Entrez votre code de suivi pour connaître l'état de votre commande</p>
+                    </div>
 
-                <div class="card-body p-5">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            {{ $errors->first() }}
-                        </div>
-                    @endif
+                    <div class="card-body p-5">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                {{ $errors->first() }}
+                            </div>
+                        @endif
 
-                    <form action="{{ route('track.order') }}" method="POST" id="trackingForm">
-                        @csrf
-                        <div class="mb-4">
+                        <form action="{{ route('track.order') }}" method="POST" id="trackingForm">
+                            @csrf
+                            {{-- <div class="mb-4">
                             <label class="form-label h5">Code de suivi</label>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-text">
@@ -44,35 +44,66 @@
                                        placeholder="Ex: ORD-ABC123DEF456"
                                        value="{{ old('tracking_code', request('tracking_code')) }}"
                                        style="text-transform: uppercase;" required>
-                                <button type="submit" class="btn btn-primary px-4">
+                                <button type="submit" class="btn btn-primary btn-sm px-4">
                                     <i class="fas fa-search me-2"></i>Rechercher
                                 </button>
                             </div>
                             <small class="form-text mt-2">
                                 Le code de suivi vous a été envoyé par email lors de votre commande
                             </small>
-                        </div>
-                    </form>
+                        </div> --}}
 
-                    <!-- Section d'aide -->
-                    <div class="mt-5">
-                        <h5>Besoin d'aide ?</h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-envelope text-primary me-3 mt-1"></i>
-                                    <div>
-                                        <strong>Email de confirmation</strong>
-                                        <p class="mb-0 small">Vérifiez votre boîte mail pour retrouver votre code</p>
+                            <div class="mb-4">
+                                <label class="form-label h5">Code de suivi</label>
+                                <div class="input-group input-group-lg flex-wrap">
+                                    {{-- <span class="input-group-text">
+                                        <i class="fas fa-barcode"></i>
+                                    </span> --}}
+                                    <input type="text" name="tracking_code" class="form-control"
+                                        placeholder="Ex: ORD-ABC123DEF456"
+                                        value="{{ old('tracking_code', request('tracking_code')) }}"
+                                        style="text-transform: uppercase;" required>
+
+                                    <!-- Bouton en inline sur grand écran -->
+                                    <button type="submit" class="btn btn-primary btn-sm px-4 d-none d-md-inline-block">
+                                        {{-- <i class="fas fa-search me-2"></i> --}}
+                                        Rechercher
+                                    </button>
+                                </div>
+
+                                <!-- Bouton visible en dessous sur mobile -->
+                                <button type="submit" class="btn btn-primary btn-md w-100 mt-2 d-md-none">
+                                    {{-- <i class="fas fa-search me-2"></i> --}}
+                                    Rechercher
+                                </button>
+
+                                <small class="form-text mt-2">
+                                    Le code de suivi vous a été envoyé par email lors de votre commande
+                                </small>
+                            </div>
+
+                        </form>
+
+                        <!-- Section d'aide -->
+                        <div class="mt-5">
+                            <h5>Besoin d'aide ?</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                                        <div>
+                                            <strong>Email de confirmation</strong>
+                                            <p class="mb-0 small">Vérifiez votre boîte mail pour retrouver votre code</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex align-items-start mb-3">
-                                    <i class="fas fa-phone text-primary me-3 mt-1"></i>
-                                    <div>
-                                        <strong>Contactez-nous</strong>
-                                        <p class="mb-0 small">+221 XX XXX XX XX</p>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-start mb-3">
+                                        <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                                        <div>
+                                            <strong>Contactez-nous</strong>
+                                            <p class="mb-0 small">+221 XX XXX XX XX</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -82,14 +113,13 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
-<script>
-// Auto-capitalisation du code de suivi
-document.querySelector('input[name="tracking_code"]').addEventListener('input', function(e) {
-    e.target.value = e.target.value.toUpperCase();
-});
-</script>
+    <script>
+        // Auto-capitalisation du code de suivi
+        document.querySelector('input[name="tracking_code"]').addEventListener('input', function(e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+    </script>
 @endpush
