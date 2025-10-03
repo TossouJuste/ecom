@@ -7,7 +7,7 @@
 						<div class="col-lg-5">
 							<div class="footer-contact footer-widget">
 								<div class="footer-logo">
-									<img src="{{ asset('images/logo-white.png') }}" class="img-fluid aos" alt="logo">
+									<img src="{{ asset('images/logo-white.png') }}" class="img-fluid aos" width="50%" alt="logo">
 								</div>
 								<div class="footer-contact-info">
 									<p>We offer a diverse fleet of vehicles to suit every need, including compact cars, sedans, SUVs and luxury vehicles. </p>
@@ -50,15 +50,6 @@
 												<a href="javascript:void(0)">My account</a>
 											</li>
 											<li>
-												<a href="javascript:void(0)">Campaigns</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">Dreams rent Dealers</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">Deals and Incentive</a>
-											</li>
-											<li>
 												<a href="javascript:void(0)">Financial Services</a>
 											</li>
 										</ul>
@@ -71,19 +62,10 @@
 										<h5 class="footer-title">Pages</h5>
 										<ul>
 											<li>
-												<a href="about-us.html">About Us</a>
-											</li>
+												<a href="/about">About Us</a>
+											</li>  
 											<li>
-												<a href="javascript:void(0)">Become a Partner</a>
-											</li>
-											<li>
-												<a href="faq.html">Faq’s</a>
-											</li>
-											<li>
-												<a href="testimonial.html">Testimonials</a>
-											</li>
-											<li>
-												<a href="contact-us.html">Contact Us</a>
+												<a href="/contact">Contact Us</a>
 											</li>
 										</ul>
 									</div>
@@ -97,15 +79,7 @@
 											<li>
 												<a href="javascript:void(0)">My account</a>
 											</li>
-											<li>
-												<a href="javascript:void(0)">Campaigns</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">Dreams rent Dealers</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">Deals and Incentive</a>
-											</li>
+										 
 											<li>
 												<a href="javascript:void(0)">Financial Services</a>
 											</li>
@@ -128,7 +102,7 @@
 						<div class="row align-items-center row-gap-3">
 							<div class="col-lg-4">
 								<div class="copyright-text">
-									<p>Copyright &copy; 2025 Dreams Rent. All Rights Reserved.</p>
+									<p>Copyright &copy; 2015 Am5 Auto. All Rights Reserved.</p>
  								</div>
 							</div>
 							<div class="col-lg-4">
@@ -147,10 +121,10 @@
 							<div class="col-lg-4">
 								<ul class="privacy-link">
 									<li>
-										<a href="privacy-policy.html">Privacy</a>
+										<a href="javascript:void(0);">Privacy</a>
 									</li>
 									<li>
-										<a href="terms-condition.html">Terms & Condition</a>
+										<a href="/terms">Terms & Condition</a>
 									</li>
 									<li>
 										<a href="javascript:void(0);">Refund Policy</a>

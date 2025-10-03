@@ -11,9 +11,9 @@
                     </span>
                 </a>
                 <a href="/" class="navbar-brand logo">
-                    <img src="{{ asset('images/logo-white.png') }}" class="img-fluid white-logo w-50 h-50" alt="Logo">
-                    <img src="{{ asset('images/logo.png') }}" class="img-fluid dark-logo w-50 h-50" alt="Logo">
-                </a>
+					<img src="images/logo-white.png" class="img-fluid white-logo" width="220px" alt="Logo">
+					<img src="imgages/logo.png" class="img-fluid dark-logo" alt="Logo">
+				</a> 
                 <a href="/" class="navbar-brand logo-small">
                     <img src="{{ asset('images/logo.png') }}" class="img-fluid w-25 h-25" alt="Logo">
                 </a>
@@ -33,15 +33,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/vehicule">vehicles</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a class="nav-link" href="/about">About Us</a></li>
-                            <li><a class="nav-link" href="/contact">Contact</a></li>
-                            <li><a class="nav-link" href="/gallery">Gallery</a></li>
-                            <li><a class="nav-link" href="/terms">Terms & Conditions</a></li>
-                        </ul>
-                    </li>
+                   <li class="has-submenu">
+						<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+						<ul class="submenu">
+							<li ><a href="/about">About Us</a></li>
+							<li><a href="/contact">Contact</a></li>
+							<li><a href="/gallery">Gallery</a></li>
+							<li><a href="/terms">Terms & Conditions</a></li>						
+						</ul>
+					</li>
 
                     @if (Auth::check() && Auth::user()->type_user === 'client')
                         <li class="has-submenu">
@@ -51,7 +51,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('track.search') }}">
-                            <i class="fas fa-search me-1"></i>Suivre ma commande
+                            <i class="fas fa-search me-1"></i>Track my order
                         </a>
                     </li>
 
@@ -112,4 +112,6 @@
         </nav>
     </div>
 </header>
+ 
+ 
 <!-- /Header -->

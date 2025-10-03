@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>Dreams Rent | Template</title>
+	<title>gallery am5auto</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -44,7 +44,7 @@
 		    		<div class="col-md-12 col-12">
 			    	    <h2 class="breadcrumb-title"> <br>Gallery </h2>
 				    	<nav aria-label="breadcrumb" class="page-breadcrumb">
-
+                                <p> our vehicles</p>
 						</nav>
 					</div>
 				</div>

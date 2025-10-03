@@ -46,62 +46,63 @@
     </div>
 
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">Mes commandes</h4>
-                        <div class="d-flex gap-2">
-                            <select id="statusFilter" class="form-select form-select-sm">
-                                <option value="">Tous les statuts</option>
-                                <option value="pending">En attente</option>
-                                <option value="confirmed">Confirmé</option>
-                                <option value="active">Actif</option>
-                                <option value="completed">Terminé</option>
-                                <option value="cancelled">Annulé</option>
-                            </select>
-                            <button class="btn btn-sm btn-success"
-                                onclick="window.location='{{ route('vitrine.vehicule') }}'">
-                                <i class="fas fa-plus"></i> Nouvelle commande
-                            </button>
-                        </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">My Orders</h4>
+                    <div class="d-flex gap-2">
+                        <select id="statusFilter" class="form-select form-select-sm">
+                            <option value="">All statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <button class="btn btn-sm btn-success"
+                            onclick="window.location='{{ route('vitrine.vehicule') }}'">
+                            <i class="fas fa-plus"></i> New Order
+                        </button>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="ordersTable" class="table table-striped table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th width="5%">#</th>
-                                        <th width="15%">Code de suivi</th>
-                                        <th width="25%">Véhicule</th>
-                                        <th width="12%">Statut</th>
-                                        <th width="15%">Prix/Paiement</th>
-                                        <th width="15%">Contact</th>
-                                        <th width="10%">Date</th>
-                                        <th width="8%">Actions</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="ordersTable" class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th width="5%">#</th>
+                                    <th width="15%">Tracking Code</th>
+                                    <th width="25%">Vehicle</th>
+                                    <th width="12%">Status</th>
+                                    <th width="15%">Price/Payment</th>
+                                    <th width="15%">Contact</th>
+                                    <th width="10%">Date</th>
+                                    <th width="8%">Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Modal détails commande -->
     <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Détails de la commande</h5>
+                    <h5 class="modal-title">Order Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="orderDetails">
                     <!-- Contenu chargé dynamiquement -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

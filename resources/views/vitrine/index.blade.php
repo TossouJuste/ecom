@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:46:30 GMT -->
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dreams Buy | Template</title>
+    <title>Home am5auto</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
@@ -88,10 +87,10 @@
                                         </div>
                                     </div>
                                     <div class="view-all d-flex align-items-center gap-3">
-                                        <a href="#"
+                                        <a href="/vehicule"
                                             class="btn btn-primary d-inline-flex align-items-center">Buy a Car<i
                                                 class="bx bx-right-arrow-alt ms-1"></i></a>
-                                        <a href="#"
+                                        <a href="/vehicule"
                                             class="btn btn-secondary d-inline-flex align-items-center"><i
                                                 class="bx bxs-plus-circle me-1"></i>Add Your Car</a>
                                     </div>
