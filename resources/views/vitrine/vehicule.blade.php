@@ -166,10 +166,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-sm-12 col-12 theiaStickySidebar">
-                    <form action="{{ route('vitrine.vehicule') }}" method="GET" autocomplete="off"
-                        class="sidebar-form" id="filter-form">
+                    <form action="{{ route('vitrine.vehicule') }}" method="GET" autocomplete="off" class="sidebar-form"
+                        id="filter-form">
                         <!-- Préserver les paramètres de recherche existants -->
-                        @foreach (request()->except(['brands', 'categories', 'years', 'fuel_type', 'mileage', 'rental_type', 'specifications', 'color', 'capacity', 'transmission', 'rating']) as $key => $value)
+                        @foreach (request()->except(['type', 'brands', 'categories', 'years', 'fuel_type', 'mileage', 'rental_type', 'specifications', 'color', 'capacity', 'transmission', 'rating']) as $key => $value)
                             @if (is_array($value))
                                 @foreach ($value as $v)
                                     <input type="hidden" name="{{ $key }}[]" value="{{ $v }}">
@@ -194,13 +194,49 @@
 
                         <!-- Disponibilité -->
                         {{-- <div class="product-availability">
-                            <h6>Availability</h6>
+                            <h6>Type</h6>
                             <div class="status-toggle">
-                                <input id="availability" name="availability" class="check" type="checkbox"
-                                    value="1" {{ request('availability') ? 'checked' : '' }}>
-                                <label for="availability" class="checktoggle">checkbox</label>
+                                <input id="type" name="type" class="check" type="checkbox" value="new"
+                                    {{ request('type') ? 'checked' : '' }}>
+                                <label for="type" class="checktoggle">checkbox</label>
                             </div>
                         </div> --}}
+
+                        <div class="accordion" id="accordionMain4">
+                            <div class="card-header-new" id="headingtransmiss">
+                                <h6 class="filter-title">
+                                    <a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#collapsetransmission">
+                                        Type
+                                        <span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </a>
+                                </h6>
+                            </div>
+                            <div id="collapsetransmission" class="collapse">
+                                <div class="card-body-chat">
+                                    <div class="fuel-list">
+                                        <ul>
+                                            <li>
+                                                <div class="input-selection">
+                                                    <input type="radio" name="type"
+                                                        id="type_new" value="new"
+                                                        {{ request('type') == 'new' ? 'checked' : '' }}>
+                                                    <label for="type_new">New</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="input-selection">
+                                                    <input type="radio" name="type"
+                                                        id="type_used" value="used"
+                                                        {{ request('type') == 'used' ? 'checked' : '' }}>
+                                                    <label for="type_used">Occasion</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Filtre par marque -->
                         <div class="accordion" id="accordionMain1">
@@ -1118,7 +1154,7 @@
                                         timerProgressBar: true,
                                         didOpen: (toast) => {
                                             toast.addEventListener('mouseenter', Swal
-                                            .stopTimer);
+                                                .stopTimer);
                                             toast.addEventListener('mouseleave', Swal
                                                 .resumeTimer);
                                         }

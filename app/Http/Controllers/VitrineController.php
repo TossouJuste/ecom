@@ -108,6 +108,10 @@ class VitrineController extends Controller
             $query->whereIn('places', $request->capacity);
         }
 
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
         // 11. Filtre par prix (range)
         if ($request->filled('price_min')) {
             $query->where('prix', '>=', $request->price_min);
