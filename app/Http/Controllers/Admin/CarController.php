@@ -118,8 +118,6 @@ class CarController extends Controller
         return back()->with('success', 'Véhicule ajouté avec succès.');
     }
 
-
-
     // public function update(Request $request, Car $car)
     // {
     //     $request->validate([

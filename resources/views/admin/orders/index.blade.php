@@ -537,7 +537,7 @@
                            Date: ${new Date(order.created_at).toLocaleDateString('fr-FR')}</p>
 
                         <h6>Paiement</h6>
-                        <p>Prix: <strong>${Number(order.prix).toLocaleString('fr-FR')} FCFA</strong><br>
+                        <p>Prix: <strong>${Number(order.prix).toLocaleString('fr-FR')} $</strong><br>
                            Type: ${order.type_paiement}<br>
                            Validé: ${order.paiement_valide ? 'Oui' : 'Non'}</p>
 

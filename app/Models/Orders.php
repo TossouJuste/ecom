@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Orders extends Model
 {
@@ -52,6 +53,6 @@ class Orders extends Model
     // Générer un code de suivi unique
     public static function generateTrackingCode()
     {
-        return 'ORD-' . strtoupper(uniqid());
+        return 'ORD-' . strtoupper(Str::random(6));
     }
 }

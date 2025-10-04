@@ -251,7 +251,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 20px;
             font-weight: bold;
         }
         .timeline-icon.completed {
@@ -408,7 +408,7 @@
                 <div class="info-row">
                     <span class="info-label">Prix total :</span>
                     <span class="info-value" style="color: #4CAF50; font-weight: bold;">
-                        {{ number_format($order->prix, 0, ',', ' ') }} FCFA
+                        ${{ number_format($order->prix, 0, ',', ' ') }}
                     </span>
                 </div>
             </div>

@@ -218,16 +218,14 @@
                                         <ul>
                                             <li>
                                                 <div class="input-selection">
-                                                    <input type="radio" name="type"
-                                                        id="type_new" value="new"
+                                                    <input type="radio" name="type" id="type_new" value="new"
                                                         {{ request('type') == 'new' ? 'checked' : '' }}>
                                                     <label for="type_new">New</label>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div class="input-selection">
-                                                    <input type="radio" name="type"
-                                                        id="type_used" value="used"
+                                                    <input type="radio" name="type" id="type_used" value="used"
                                                         {{ request('type') == 'used' ? 'checked' : '' }}>
                                                     <label for="type_used">Occasion</label>
                                                 </div>
@@ -691,7 +689,7 @@
 
                         <!-- Champ montant (masqué par défaut) -->
                         <div class="mb-3" id="montant-field" style="display: none;">
-                            <label class="form-label">Montant à verser (FCFA) *</label>
+                            <label class="form-label">Montant à verser ($) *</label>
                             <input type="number" name="montant" class="form-control" min="0" step="0.01">
                         </div>
 
@@ -902,17 +900,16 @@
                             html: `
                                 <p>Votre commande a été confirmée.</p>
                                 <p><strong>Code de suivi:</strong> <code>${data.tracking_code}</code></p>
-                                <p>Un email de confirmation vous a été envoyé.</p>
+                                <p>Un email de confirmation vous a été envoyé sur ${data.email}</p>
                             `,
                             confirmButtonText: 'OK',
                             allowOutsideClick: true,
                             allowEscapeKey: true
                         }).then(() => {
                             // Force la fermeture de la modal Bootstrap si elle existe encore
-                            // const modal = bootstrap.Modal.getInstance(rentModal);
-                            // if (modal) {
-                            //     modal.hide();
-                            // }
+
+
+                            window.location.href = "{{ route('client.orders.index') }}";
 
                             const rentModal = document.getElementById('rentModal');
                             const modal = bootstrap.Modal.getInstance(rentModal);

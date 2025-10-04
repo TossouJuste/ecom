@@ -158,7 +158,7 @@
 
                 <div class="detail-row">
                     <span class="label">Prix :</span>
-                    <span class="value">{{ number_format($order->prix, 0, ',', ' ') }} FCFA</span>
+                    <span class="value">${{ number_format($order->prix, 0, ',', ' ') }}</span>
                 </div>
 
                 <div class="detail-row">
@@ -170,7 +170,7 @@
                 <div class="detail-row">
                     <span class="label">Montant proposé :</span>
                     <span class="value" style="color: #28a745; font-weight: bold;">
-                        {{ number_format($order->montant, 0, ',', ' ') }} FCFA
+                        ${{ number_format($order->montant, 0, ',', ' ') }}
                     </span>
                 </div>
                 @endif

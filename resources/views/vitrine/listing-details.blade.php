@@ -28,9 +28,9 @@
                             <li>
                                 <div class="car-brand">
                                     <span>
-                                        <img src="assets/img/icons/car-icon.svg" alt="img">
+                                        <img src="{{ asset('assets/img/icons/car-icon.svg') }}" alt="img">
                                     </span>
-                                    {{ $car->category->name ?? 'Sedan' }}
+                                    {{ $car->category->name ?? '---' }}
                                 </div>
                             </li>
                             <li>
@@ -79,7 +79,8 @@
                     <div class="detail-product">
                         <div class="pro-info">
                             <div class="pro-badge">
-                                <span class="badge-km"><i class="fa-solid fa-person-walking"></i>$car-> Km</span>
+                                <span class="badge-km"><i class="fa-solid fa-person-walking"></i>{{ $car->kilometrage }}
+                                    Km</span>
                                 <a href="javascript:void(0);" class="fav-icon" data-car-id="{{ $car->id }}">
                                     @auth
                                         @if (auth()->user()->hasFavorite($car->id))
@@ -202,7 +203,7 @@
                                     <div class="more-text">
                                         <p>{{ substr($car->description, 300) }}</p>
                                     </div>
-                                    <a href="javascript:void(0);" class="more-link">Voir plus</a>
+                                    {{-- <a href="javascript:void(0);" class="more-link">Voir plus</a> --}}
                                 </div>
                             @endif
                         </div>
@@ -223,9 +224,12 @@
                                         </div>
                                         <div class="featues-info">
                                             <span>Carrosserie</span>
-                                            <h6>{{ $car->category->name ?? 'Sedan' }}</h6>
+                                            <h6>{{ $car->category->name ?? '---' }}</h6>
                                         </div>
                                     </div>
+                                    {{-- @php
+                                        $marque = App\Models\Brand::where('id', $car->marque)->first()->marque
+                                    @endphp --}}
                                     <div class="featureslist d-flex align-items-center col-xl-3 col-md-4 col-sm-6">
                                         <div class="feature-img">
                                             <img src="{{ asset('assets/img/specification/specification-icon-2.svg') }}"
@@ -233,9 +237,10 @@
                                         </div>
                                         <div class="featues-info">
                                             <span>Marque</span>
-                                            <h6>{{ $car->marque }}</h6>
+                                            <h6>{{ $car->brand->name }}</h6>
                                         </div>
                                     </div>
+
                                     <div class="featureslist d-flex align-items-center col-xl-3 col-md-4 col-sm-6">
                                         <div class="feature-img">
                                             <img src="{{ asset('assets/img/specification/specification-icon-3.svg') }}"
@@ -313,7 +318,7 @@
                                         </div>
                                         <div class="featues-info">
                                             <span>Puissance (CV)</span>
-                                            <h6>{{ $car->puissance_moteur_ch ?: '150' }}</h6>
+                                            <h6>{{ $car->puissance_moteur_ch ?: '---' }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -614,8 +619,7 @@
                                 <div class="input-block mb-0">
                                     <div class="search-btn flex d-flex text-center items-center">
                                         @if ($car->disponible)
-                                            <button type="button"
-                                                class="btn btn-primary check-available rent-now-btn"
+                                            <button type="button" class="btn btn-primary check-available rent-now-btn"
                                                 data-car-id="{{ $car->id }}">Commander
                                                 maintenant</button>
                                         @else
@@ -856,7 +860,7 @@
                         </div>
 
                         <div class="mb-3" id="montant-field" style="display: none;">
-                            <label class="form-label">Montant à verser (FCFA) *</label>
+                            <label class="form-label">Montant à verser ($) *</label>
                             <input type="number" name="montant" class="form-control" min="0" step="0.01">
                         </div>
 
@@ -1176,9 +1180,12 @@
                                 html: `
                                 <p>Votre commande a été confirmée.</p>
                                 <p><strong>Code de suivi:</strong> <code>${data.tracking_code}</code></p>
-                                <p>Un email de confirmation vous a été envoyé.</p>
+                                <p>Un email de confirmation vous a été envoyé sur ${data.email}</p>
                             `,
                                 confirmButtonText: 'OK'
+                            }).then(() => {
+                                // Redirection vers la route Laravel
+                                window.location.href = "{{ route('client.orders.index') }}";
                             });
 
                             this.reset();

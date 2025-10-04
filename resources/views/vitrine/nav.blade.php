@@ -11,9 +11,9 @@
                     </span>
                 </a>
                 <a href="/" class="navbar-brand logo">
-					<img src="images/logo-white.png" class="img-fluid white-logo" width="220px" alt="Logo">
-					<img src="imgages/logo.png" class="img-fluid dark-logo" alt="Logo">
-				</a> 
+					<img src="{{ asset('images/logo-white.png') }}" class="img-fluid white-logo" width="220px" alt="Logo">
+					<img src="{{ asset('images/logo.png') }}" class="img-fluid dark-logo w-25 h-25" alt="Logo">
+				</a>
                 <a href="/" class="navbar-brand logo-small">
                     <img src="{{ asset('images/logo.png') }}" class="img-fluid w-25 h-25" alt="Logo">
                 </a>
@@ -39,7 +39,7 @@
 							<li ><a href="/about">About Us</a></li>
 							<li><a href="/contact">Contact</a></li>
 							<li><a href="/gallery">Gallery</a></li>
-							<li><a href="/terms">Terms & Conditions</a></li>						
+							<li><a href="/terms">Terms & Conditions</a></li>
 						</ul>
 					</li>
 
@@ -112,6 +112,3 @@
         </nav>
     </div>
 </header>
- 
- 
-<!-- /Header -->

@@ -58,7 +58,7 @@
                                     <td>{{ $car->category?->name ?? $car->categorie }}</td>
                                     <td>{{ $car->annee }}</td>
                                     <td>{{ $car->kilometrage ? number_format($car->kilometrage) . ' km' : '-' }}</td>
-                                    <td>{{ $car->prix ? number_format($car->prix, 0, ',', ' ') . ' FCFA' : '-' }}</td>
+                                    <td>{{ $car->prix ? '$'.number_format($car->prix, 0, ',', ' ') : '-' }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm" data-toggle="modal"
                                             data-target="#editCarModal{{ $car->id }}">Modifier</button>
@@ -297,11 +297,11 @@
                                         </div>
 
                                         <div class="row">
-                                            <div class="mb-3 col-md-6"><label>Prix (FCFA)</label>
+                                            <div class="mb-3 col-md-6"><label>Prix ($)</label>
                                                 <input type="number" name="prix" value="{{ $car->prix }}"
                                                     class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-6"><label>Prix / mois (FCFA)</label>
+                                            <div class="mb-3 col-md-6"><label>Prix / mois ($)</label>
                                                 <input type="number" name="prix_mois" value="{{ $car->prix_mois }}"
                                                     class="form-control">
                                             </div>
@@ -485,7 +485,7 @@
                         </div>
 
                         <!-- Disponibilité -->
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="disponible" id="disponible"
                                     value="1" checked>
@@ -493,7 +493,7 @@
                                     Disponible à la location
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     {{-- <div class="col-md-6">
@@ -594,9 +594,9 @@
 
                 <div class="row">
                     <div class="mb-3 col-md-6"><input type="number" name="prix" class="form-control"
-                            placeholder="Prix (FCFA)"></div>
+                            placeholder="Prix ($)"></div>
                     <div class="mb-3 col-md-6"><input type="number" name="prix_mois" class="form-control"
-                            placeholder="Prix / mois (FCFA)"></div>
+                            placeholder="Prix / mois ($)"></div>
                 </div>
 
                 <div class="mb-3">

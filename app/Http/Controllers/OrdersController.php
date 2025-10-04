@@ -80,7 +80,8 @@ public function store(Request $request)
         return response()->json([
             'success' => true,
             'message' => 'Commande créée avec succès!',
-            'tracking_code' => $order->tracking_code
+            'tracking_code' => $order?->tracking_code,
+            'email' => $order?->client?->email,
         ]);
     }
 
@@ -107,7 +108,7 @@ public function store(Request $request)
             ->addIndexColumn()
             ->addColumn('car_info', function ($row) {
                 return '<div class="d-flex align-items-center">
-                            <img src="' . asset('storage/' . $row->car->image_principale) . '" 
+                            <img src="' . asset('storage/' . $row->car->image_principale) . '"
                                  alt="Car" class="me-2" style="width: 50px; height: 40px; object-fit: cover; border-radius: 5px;">
                             <div>
                                 <strong>' . $row->car->titre . '</strong><br>
@@ -125,16 +126,16 @@ public function store(Request $request)
                 ];
                 $statusText = ucfirst($row->status);
                 $badgeClass = $badges[$row->status] ?? 'bg-secondary';
-                
+
                 return '<span class="badge ' . $badgeClass . '">' . $statusText . '</span>';
             })
             ->addColumn('payment_info', function ($row) {
                 $paymentType = $row->type_paiement == 'financement' ? 'Financement' : 'Apport direct';
                 $html = '<div>';
-                $html .= '<strong>' . number_format($row->prix, 0, ',', ' ') . ' FCFA</strong><br>';
+                $html .= '<strong>$' . number_format($row->prix, 0, ',', ' ') . '</strong><br>';
                 $html .= '<small class="">' . $paymentType . '</small>';
                 if ($row->montant) {
-                    $html .= '<br><small class="text-success">Versé: ' . number_format($row->montant, 0, ',', ' ') . ' FCFA</small>';
+                    $html .= '<br><small class="text-success">Versé: $' . number_format($row->montant, 0, ',', ' ') . '</small>';
                 }
                 $html .= '</div>';
                 return $html;
@@ -153,7 +154,7 @@ public function store(Request $request)
                             <button class="btn btn-sm btn-secondary" onclick="copyTrackingCode(\'' . $row->tracking_code . '\')" title="Copier code">
                                 <i class="fas fa-copy"></i>
                             </button>
-                            ' . ($row->status == 'pending' ? 
+                            ' . ($row->status == 'pending' ?
                                 '<button class="btn btn-sm btn-danger cancel-order" data-id="' . $row->id . '" title="Annuler">
                                     <i class="fas fa-times"></i>
                                 </button>' : '') . '

@@ -131,7 +131,7 @@
                         <p class=" mb-2">{{ $order->car->modele }}</p>
                         <div class="d-flex justify-content-between">
                             <span>Prix total:</span>
-                            <strong class="text-success">{{ number_format($order->prix, 0, ',', ' ') }} FCFA</strong>
+                            <strong class="text-success">${{ number_format($order->prix, 0, ',', ' ') }}</strong>
                         </div>
                     </div>
                 </div>

@@ -321,8 +321,8 @@
 
                 <h6>Tarification</h6>
                 <table class="table table-sm">
-                    <tr><td><strong>Prix total:</strong></td><td class="text-success">${Number(order.prix).toLocaleString('fr-FR')} FCFA</td></tr>
-                    ${order.montant ? `<tr><td><strong>Montant versé:</strong></td><td class="text-info">${Number(order.montant).toLocaleString('fr-FR')} FCFA</td></tr>` : ''}
+                    <tr><td><strong>Prix total:</strong></td><td class="text-success">$ ${Number(order.prix).toLocaleString('fr-FR')}</td></tr>
+                    ${order.montant ? `<tr><td><strong>Montant versé:</strong></td><td class="text-info">$ ${Number(order.montant).toLocaleString('fr-FR')}</td></tr>` : ''}
                     <tr><td><strong>Paiement validé:</strong></td><td>${order.paiement_valide ? '<span class="text-success">Oui</span>' : '<span class="text-warning">En attente</span>'}</td></tr>
                 </table>
             </div>

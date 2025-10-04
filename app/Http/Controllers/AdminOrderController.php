@@ -72,7 +72,11 @@ class AdminOrderController extends Controller
                     $options .= "<option value='{$value}' {$selected}>{$label}</option>";
                 }
 
+                if ($row->status != 'cancelled') {
                 return '<select class="form-select form-select-sm status-select" data-id="' . $row->id . '">' . $options . '</select>';
+                }else{
+                    return '---';
+                }
             })
             ->addColumn('progress_info', function ($row) {
                 $progressClass = $row->completion_percentage >= 100 ? 'bg-success' : ($row->completion_percentage >= 50 ? 'bg-info' : 'bg-warning');
@@ -94,13 +98,15 @@ class AdminOrderController extends Controller
                     '<span class="badge bg-warning">En attente</span>';
 
                 return '<div>
-                            <strong>' . number_format($row->prix, 0, ',', ' ') . ' FCFA</strong><br>
+                            <strong>$' . number_format($row->prix, 0, ',', ' ') . '</strong><br>
                             ' . $paymentBadge . '<br>
                             <small class="text-muted">' . ucfirst($row->type_paiement) . '</small>
                         </div>';
             })
             ->addColumn('actions', function ($row) {
-                return '<div class="btn-group" role="group">
+                if ($row->status != 'cancelled') {
+                    return
+                        '<div class="btn-group" role="group">
                             <button class="btn btn-sm btn-info view-order" data-id="' . $row->id . '" title="Voir détails">
                                 Voir
                             </button>
@@ -111,6 +117,9 @@ class AdminOrderController extends Controller
                                 Valider
                             </button>
                         </div>';
+                }else{
+                    return '---';
+                }
 
                 // return view('admin.orders.button', ['row' => $row]);
             })
@@ -165,7 +174,6 @@ class AdminOrderController extends Controller
         if (abs($oldPercentage - $request->completion_percentage) >= 10 || $oldPercentage != $request->completion_percentage) {
             try {
                 Mail::to($order->client->email)->send(new OrderProgressUpdate($order));
-
             } catch (\Exception $e) {
                 Log::error('Erreur envoi email mise à jour: ' . $e->getMessage());
             }

@@ -463,13 +463,13 @@
                                     <div class="fav-item">
                                         <div class="d-flex align-items-center gap-2">
                                             <span class="featured-text">{{ $car->modele }}</span>
-                                            <span class="availability">Available</span>
+                                            <span class="availability">{{ $car->type === 'new' ? 'New' : 'Occasion' }}</span>
                                         </div>
-                                        <a href="javascript:void(0)" class="fav-icon selected">
+                                        {{-- <a href="javascript:void(0)" class="fav-icon selected">
                                             <i class="feather-heart"></i>
-                                        </a>
+                                        </a> --}}
                                     </div>
-                                    <span class="location"><i class="bx bx-map me-1"></i>Lasvegas</span>
+                                    {{-- <span class="location"><i class="bx bx-map me-1"></i>Lasvegas</span> --}}
                                 </div>
                                 <div class="listing-content">
                                     <div class="listing-features d-flex align-items-center justify-content-between">
@@ -512,7 +512,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /Car List -->
                     @endforeach
                 </div>
 

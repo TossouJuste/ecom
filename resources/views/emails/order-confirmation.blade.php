@@ -155,7 +155,7 @@
                 </div>
                 <div class="info-item">
                     <span class="info-label">Prix :</span>
-                    <span class="info-value">{{ number_format($order->prix, 0, ',', ' ') }} FCFA</span>
+                    <span class="info-value">${{ number_format($order->prix, 0, ',', ' ') }}</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Type de paiement :</span>
@@ -164,7 +164,7 @@
                 @if($order->montant)
                 <div class="info-item">
                     <span class="info-label">Montant versé :</span>
-                    <span class="info-value">{{ number_format($order->montant, 0, ',', ' ') }} FCFA</span>
+                    <span class="info-value">${{ number_format($order->montant, 0, ',', ' ') }}</span>
                 </div>
                 @endif
             </div>
