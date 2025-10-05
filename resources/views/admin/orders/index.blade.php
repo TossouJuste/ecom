@@ -181,6 +181,12 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Montant</label>
+                            <input class="form-control" type="number" name="admin_amount"
+                                placeholder="Montant">
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Description/Notes</label>
                             <textarea class="form-control" name="admin_description" rows="4"
                                 placeholder="Décrivez l'avancement, les étapes réalisées, etc..."></textarea>
@@ -373,6 +379,9 @@
                             $('textarea[name="admin_description"]').val(response.order
                                 .admin_description || '');
 
+                                 $('input[name="admin_amount"]').val(response.order
+                                .montant || 0);
+
                             // Ouvrir la modal avec Bootstrap 5
                             const modalElement = document.getElementById('progressModal');
                             const modal = new bootstrap.Modal(modalElement);
@@ -416,7 +425,8 @@
                 $.post(`{{ route('admin.orders.updateProgress', ':id') }}`.replace(':id', orderId), {
                         _token: '{{ csrf_token() }}',
                         completion_percentage: formData.get('completion_percentage'),
-                        admin_description: formData.get('admin_description')
+                        admin_description: formData.get('admin_description'),
+                        admin_amount: formData.get('admin_amount')
                     })
                     .done(function(response) {
                         if (response.success) {

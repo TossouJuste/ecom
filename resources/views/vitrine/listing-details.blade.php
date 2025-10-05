@@ -609,26 +609,30 @@
                             </div>
                         </div> --}}
                         <ul class="booking-list">
-                            <li>Email <span><a href="https://dreamsrent.dreamstechnologies.com/cdn-cgi/l/email-protection"
+                            <li>Email <span><a href="mailto:contact@administrateur.com"
                                         class="__cf_email__"
-                                        data-cfemail="036a6d656c43667b626e736f662d606c6e">contact@dreamsrent.com</a></span>
+                                        data-cfemail="036a6d656c43667b626e736f662d606c6e">contact@administrateur.com</a></span>
                             </li>
                             <li>Téléphone <span>+221 77 XXX XX XX</span></li>
 
                             <li class="">
                                 <div class="input-block mb-0">
                                     <div class="search-btn flex d-flex text-center items-center">
-                                        @if ($car->disponible)
+                                        {{-- @if ($car->disponible) --}}
                                             <button type="button" class="btn btn-primary check-available rent-now-btn"
                                                 data-car-id="{{ $car->id }}">Commander
                                                 maintenant</button>
-                                        @else
+                                        {{-- @else
                                             <button type="button" class="btn btn-secondary" disabled>Non
                                                 disponible</button>
-                                        @endif
+                                        @endif --}}
                                         &nbsp;
                                         &nbsp;
-                                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#enquiry"
+                                        {{-- <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#enquiry"
+                                            class="btn btn-theme">Nous
+                                            contacter</a> --}}
+
+                                            <a href="mailto:contact@administrateur.com" 
                                             class="btn btn-theme">Nous
                                             contacter</a>
                                     </div>
@@ -708,15 +712,15 @@
                                                         @endauth
                                                     </a>
                                                 </div>
-                                                <span class="featured-text">{{ $similarCar->marque }}</span>
+                                                <span class="featured-text">{{ $similarCar->brand->name }}</span>
                                             </div>
                                             <div class="listing-content">
                                                 <div
                                                     class="listing-features d-flex align-items-end justify-content-between">
                                                     <div class="list-rating">
-                                                        <a href="javascript:void(0)" class="author-img">
-                                                            <img src="assets/img/profiles/avatar-03.jpg" alt="author">
-                                                        </a>
+                                                        {{-- <a href="javascript:void(0)" class="author-img">
+                                                            <img src="{{ asset('assets/img/profiles/avatar-03.jpg') }}" alt="author">
+                                                        </a> --}}
                                                         <h3 class="listing-title">
                                                             <a
                                                                 href="{{ route('vitrine.vehicule.details', $similarCar->id) }}">{{ $similarCar->titre }}</a>
@@ -728,61 +732,61 @@
                                                             <span>(5.0) 150 Reviews</span>
                                                         </div>
                                                     </div>
-                                                    <div class="list-km">
+                                                    {{-- <div class="list-km">
                                                         <span class="km-count"><img src="assets/img/icons/map-pin.svg"
                                                                 alt="distance">3.5m</span>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                                 <div class="listing-details-group">
                                                     <ul>
                                                         <li>
-                                                            <span><img src="assets/img/icons/car-parts-01.svg"
+                                                            <span><img src="{{ asset('assets/img/icons/car-parts-01.svg') }}"
                                                                     alt="Transmission"></span>
                                                             <p>{{ $similarCar->boite_vitesse }}</p>
                                                         </li>
                                                         <li>
-                                                            <span><img src="assets/img/icons/car-parts-02.svg"
+                                                            <span><img src="{{ asset('assets/img/icons/car-parts-02.svg') }}"
                                                                     alt="Kilométrage"></span>
                                                             <p>{{ number_format($similarCar->kilometrage) }} KM</p>
                                                         </li>
                                                         <li>
-                                                            <span><img src="assets/img/icons/car-parts-03.svg"
+                                                            <span><img src="{{ asset('assets/img/icons/car-parts-03.svg') }}"
                                                                     alt="Carburant"></span>
                                                             <p>{{ $similarCar->carburant }}</p>
                                                         </li>
                                                     </ul>
                                                     <ul>
-                                                        <li>
+                                                        {{-- <li>
                                                             <span><img src="assets/img/icons/car-parts-04.svg"
                                                                     alt="Power"></span>
                                                             <p>Power</p>
-                                                        </li>
+                                                        </li> --}}
                                                         <li>
-                                                            <span><img src="assets/img/icons/car-parts-05.svg"
+                                                            <span><img src="{{ asset('assets/img/icons/car-parts-05.svg') }}"
                                                                     alt="Année"></span>
                                                             <p>{{ $similarCar->annee }}</p>
                                                         </li>
                                                         <li>
-                                                            <span><img src="assets/img/icons/car-parts-06.svg"
+                                                            <span><img src="{{ asset('assets/img/icons/car-parts-06.svg') }}"
                                                                     alt="Personnes"></span>
                                                             <p>{{ $similarCar->places }} Personnes</p>
                                                         </li>
                                                     </ul>
                                                 </div>
                                                 <div class="listing-location-details">
-                                                    <div class="listing-price">
+                                                    {{-- <div class="listing-price">
                                                         <span><i
                                                                 class="feather-map-pin"></i></span>{{ $similarCar->localisation ?: 'Dakar, Sénégal' }}
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="listing-price">
-                                                        <h6>${{ number_format($similarCar->prix) }} <span>/ Jour</span>
+                                                        <h6>${{ number_format($similarCar->prix) }}
                                                         </h6>
                                                     </div>
                                                 </div>
                                                 <div class="listing-button">
                                                     <a href="{{ route('vitrine.vehicule.details', $similarCar->id) }}"
                                                         class="btn btn-order">
-                                                        <span><i class="feather-calendar me-2"></i></span>Louer maintenant
+                                                        <span><i class="feather-calendar me-2"></i></span>Buy now
                                                     </a>
                                                 </div>
                                             </div>

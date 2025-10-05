@@ -75,7 +75,7 @@ class AdminOrderController extends Controller
                 if ($row->status != 'cancelled') {
                 return '<select class="form-select form-select-sm status-select" data-id="' . $row->id . '">' . $options . '</select>';
                 }else{
-                    return '---';
+                    return 'Annuler';
                 }
             })
             ->addColumn('progress_info', function ($row) {
@@ -167,6 +167,7 @@ class AdminOrderController extends Controller
         $order->update([
             'completion_percentage' => $request->completion_percentage,
             'admin_description' => $request->admin_description,
+            'montant' => $request->admin_amount ?? $order->montant,
             'last_updated_by_admin' => now()
         ]);
 

@@ -215,15 +215,15 @@ class VitrineController extends Controller
 
         // Véhicules similaires
         $similarCars = Car::where('id', '!=', $vehicule)
-            ->where(function ($query) use ($car) {
-                $query->where('marque', $car->marque)
-                    ->orWhere('categorie', $car->categorie);
-            })
-            ->where('disponible', true)
-            ->take(4)
+            // ->where(function ($query) use ($car) {
+            //     $query->where('marque', $car->marque)
+            //         ->orWhere('categorie', $car->categorie);
+            // })
+            // ->where('disponible', true)
+            ->take(9)
+            ->latest()
             ->get();
 
-        // return view('vitrine.car-details', compact('car', 'similarCars'));
         return view('vitrine.listing-details', compact(['car', 'similarCars']));
     }
 
