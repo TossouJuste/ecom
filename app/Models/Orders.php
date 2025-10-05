@@ -53,6 +53,6 @@ class Orders extends Model
     // Générer un code de suivi unique
     public static function generateTrackingCode()
     {
-        return 'ORD-' . strtoupper(Str::random(6));
+        return strtoupper(Str::random(10));
     }
 }
