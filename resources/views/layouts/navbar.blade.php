@@ -21,12 +21,12 @@
                 </li>
 
                 <!-- Clients -->
-                <li class="{{ request()->is('admin/clients*') ? 'active' : '' }}">
+                {{-- <li class="{{ request()->is('admin/clients*') ? 'active' : '' }}">
                     <a href="{{ url('/admin/clients') }}" class="dropdown-toggle no-arrow">
                         <span class="micon"><i class="fa fa-users"></i></span>
                         <span class="mtext">Clients</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <!-- Gestion véhicule -->
                 <li
@@ -42,9 +42,9 @@
                         <li class="{{ request()->is('admin/brands*') ? 'active' : '' }}">
                             <a href="{{ url('/admin/brands') }}">Marques</a>
                         </li>
-                        <li class="{{ request()->is('admin/avis*') ? 'active' : '' }}">
+                        {{-- <li class="{{ request()->is('admin/avis*') ? 'active' : '' }}">
                             <a href="{{ url('/admin/avis') }}">Avis</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
