@@ -32,19 +32,20 @@
 @endpush
 
 @section('content-client')
+
     <div class="breadcrumb-bar">
         <div class="container">
             <div class="text-center row align-items-center">
                 <div class="col-md-12 col-12">
                     <h2 class="breadcrumb-title"> <br>Orders</h2>
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
-
+                        my oders
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="container">
     <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
@@ -52,14 +53,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">My Orders</h4>
                     <div class="d-flex gap-2">
-                        <select id="statusFilter" class="form-select form-select-sm">
-                            <option value="">All statuses</option>
-                            <option value="pending">Pending</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="active">Active</option>
-                            <option value="completed">Completed</option>
-                            <option value="cancelled">Cancelled</option>
-                        </select>
+                        
                         <button class="btn btn-sm btn-success"
                             onclick="window.location='{{ route('vitrine.vehicule') }}'">
                             <i class="fas fa-plus"></i> New Order
@@ -87,10 +81,12 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
 
 
     <!-- Modal détails commande -->
+    
     <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -106,7 +102,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 @endsection
 
 @push('scripts')
@@ -179,8 +175,8 @@
                 order: [
                     [6, 'desc']
                 ], // Trier par date décroissante
-                pageLength: 10,
-                responsive: true,
+                pageLength: 10, 
+                scrollX: true,
                 dom: 'Bfrtip',
                 buttons: [{
                         extend: 'excel',

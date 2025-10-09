@@ -4,7 +4,7 @@
         <div class="container">
             <div class="text-center row align-items-center">
                 <div class="col-md-12 col-12">
-                    <h2 class="breadcrumb-title"> <br>Car Listings</h2>
+                    <h2 class="breadcrumb-title"> <br> <br>Car Listings</h2>
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
                         The list of our vehicles
                     </nav>

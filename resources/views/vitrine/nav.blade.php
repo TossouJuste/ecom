@@ -12,16 +12,16 @@
                 </a>
                 <a href="/" class="navbar-brand logo">
 					<img src="{{ asset('images/logo-white.png') }}" class="img-fluid white-logo" width="220px" alt="Logo">
-					<img src="{{ asset('images/logo.png') }}" class="img-fluid dark-logo w-25 h-25" alt="Logo">
+					<img src="{{ asset('images/logo.png') }}" class="img-fluid dark-logo w-30 h-30" width="180px" alt="Logo">
 				</a>
                 <a href="/" class="navbar-brand logo-small">
-                    <img src="{{ asset('images/logo.png') }}" class="img-fluid w-25 h-25" alt="Logo">
+                    <img src="{{ asset('images/logo.png') }}" class="img-fluid " width="180px" alt="Logo">
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
                     <a href="/" class="menu-logo">
-                        <img src="{{ asset('images/logo.png') }}" class="img-fluid w-50 h-50" alt="Logo">
+                        <img src="{{ asset('images/logo.png') }}" class="img-fluid " width="220px" alt="Logo">
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
                 </div>
@@ -44,9 +44,11 @@
 					</li>
 
                     @if (Auth::check() && Auth::user()->type_user === 'client')
-                        <li class="has-submenu">
-                            <a class="nav-link" href="{{ route('client.orders.index') }}">Dashboard</a>
-                        </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('client.orders.index') }}">
+                            <i class=" me-1"></i>Dashboard
+                        </a>
+                    </li> 
                     @endif
 
                     <li class="nav-item">

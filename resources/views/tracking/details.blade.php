@@ -22,7 +22,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">
                                 <i class="fas fa-check-circle me-2"></i>
-                                Commande {{ $order->tracking_code }}
+                                Order {{ $order->tracking_code }}
                             </h4>
                             <span class="badge bg-light text-dark fs-6">
                                 {{ ucfirst($order->status) }}
@@ -34,7 +34,7 @@
                         <!-- Barre de progression -->
                         <div class="mb-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h6 class="mb-0">Progression de votre commande</h6>
+                                <h6 class="mb-0">Progress of your order</h6>
                                 <strong class="text-success">{{ $order->completion_percentage }}%</strong>
                             </div>
                             <div class="progress" style="height: 25px;">
@@ -49,14 +49,14 @@
 
                         <!-- Timeline des étapes -->
                         <div class="timeline-container">
-                            <h6 class="mb-3">Étapes de traitement</h6>
+                            <h6 class="mb-3">Processing steps</h6>
                             <div class="timeline">
                                 <div class="timeline-item {{ $order->completion_percentage >= 0 ? 'completed' : '' }}">
                                     <div class="timeline-marker">
                                         <i class="fas fa-{{ $order->completion_percentage >= 0 ? 'check' : 'circle' }}"></i>
                                     </div>
                                     <div class="timeline-content">
-                                        <h6>Commande reçue</h6>
+                                        <h6>Order received</h6>
                                         <p class="mb-0 ">{{ $order->created_at->format('d/m/Y à H:i') }}</p>
                                     </div>
                                 </div>
@@ -68,8 +68,8 @@
                                             class="fas fa-{{ $order->completion_percentage >= 25 ? 'check' : ($order->completion_percentage > 0 ? 'clock' : 'circle') }}"></i>
                                     </div>
                                     <div class="timeline-content">
-                                        <h6>Vérification et préparation</h6>
-                                        <p class="mb-0 ">Validation des documents et préparation du véhicule</p>
+                                        <h6>Checking and preparing</h6>
+                                        <p class="mb-0 ">Validation of documents and preparation of the vehicle</p>
                                     </div>
                                 </div>
 
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="timeline-content">
                                         <h6>Finalisation</h6>
-                                        <p class="mb-0 ">Préparation pour la remise du véhicule</p>
+                                        <p class="mb-0 ">Preparation for vehicle delivery</p>
                                     </div>
                                 </div>
 
@@ -92,8 +92,8 @@
                                             class="fas fa-{{ $order->completion_percentage >= 100 ? 'check' : ($order->completion_percentage >= 75 ? 'clock' : 'circle') }}"></i>
                                     </div>
                                     <div class="timeline-content">
-                                        <h6>Véhicule prêt</h6>
-                                        <p class="mb-0 ">Disponible pour récupération</p>
+                                        <h6>Vehicle ready</h6>
+                                        <p class="mb-0 ">Available for recovery</p>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                         <!-- Description admin -->
                         @if ($order->admin_description)
                             <div class="alert alert-info mt-4">
-                                <h6><i class="fas fa-info-circle me-2"></i>Dernière mise à jour</h6>
+                                <h6><i class="fas fa-info-circle me-2"></i>Last update</h6>
                                 <p class="mb-2">{{ $order->admin_description }}</p>
                                 @if ($order->last_updated_by_admin)
                                     <small class="">
@@ -120,7 +120,7 @@
                 <!-- Détails du véhicule -->
                 <div class="card shadow border-0 mb-4">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="fas fa-car me-2"></i>Votre véhicule</h5>
+                        <h5 class="mb-0"><i class="fas fa-car me-2"></i>your vehicle</h5>
                     </div>
                     <div class="card-body">
                         @if ($order->car->image_principale)
@@ -130,7 +130,7 @@
                         <h6>{{ $order->car->titre }}</h6>
                         <p class=" mb-2">{{ $order->car->modele }}</p>
                         <div class="d-flex justify-content-between">
-                            <span>Prix total:</span>
+                            <span>Total price :</span>
                             <strong class="text-success">${{ number_format($order->prix, 0, ',', ' ') }}</strong>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                 <!-- Informations de contact -->
                 <div class="card shadow border-0 mb-4">
                     <div class="card-header bg-info text-white">
-                        <h5 class="mb-0"><i class="fas fa-address-card me-2"></i>Vos informations</h5>
+                        <h5 class="mb-0"><i class="fas fa-address-card me-2"></i>Your informations</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
@@ -167,14 +167,14 @@
                     <div class="card-body text-center">
                         <h6>Besoin d'aide ?</h6>
                         <a href="tel:+221XXXXXXXX" class="btn btn-primary btn-sm me-2">
-                            <i class="fas fa-phone me-1"></i>Appeler
+                            <i class="fas fa-phone me-1"></i>Call
                         </a>
                         <a href="mailto:contact@dreamsrent.com" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-envelope me-1"></i>Email
                         </a>
                         <hr>
                         <button class="btn btn-success btn-sm" onclick="window.print()">
-                            <i class="fas fa-print me-1"></i>Imprimer
+                            <i class="fas fa-print me-1"></i>Print
                         </button>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
         <!-- Bouton retour -->
         <div class="text-center mt-4">
             <a href="{{ route('track.search') }}" class="btn btn-outline-secondary">
-                <i class="fas fa-arrow-left me-2"></i>Rechercher une autre commande
+                <i class="fas fa-arrow-left me-2"></i>Find another order
             </a>
         </div>
     </div>

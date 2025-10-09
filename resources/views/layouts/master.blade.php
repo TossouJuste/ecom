@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/listing-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:54:44 GMT -->
-
+ 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Dreams Rent | Template</title>
+    <title>Am5 Auto </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">

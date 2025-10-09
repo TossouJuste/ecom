@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation de commande</title>
+    <title>Order confirmation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -124,46 +124,46 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Dreams Rent</h1>
-            <p>Confirmation de votre commande</p>
+            <h1>Am5 Auto</h1>
+            <p>Confirmation of your order</p>
         </div>
 
         <!-- Content -->
         <div class="content">
             <div class="greeting">
-                Bonjour <strong>{{ $order->client->name }}</strong>,
+                Hello <strong>{{ $order->client->name }}</strong>,
             </div>
 
-            <p>Nous avons le plaisir de confirmer votre commande de véhicule. Votre demande a été traitée avec succès et notre équipe va prendre contact avec vous très prochainement.</p>
+            <p>We are pleased to confirm your vehicle order. Your request has been successfully processed and our team will contact you shortly.</p>
 
             <!-- Code de suivi -->
             <div class="tracking-code">
-                <p>Code de suivi de votre commande :</p>
+                <p>Tracking code for your order:</p>
                 <strong>{{ $order->tracking_code }}</strong>
             </div>
 
             <!-- Informations véhicule -->
             <div class="car-info">
-                <h3>🚗 Détails du véhicule réservé</h3>
+                <h3>🚗 Vehicle details order</h3>
                 <div class="info-item">
-                    <span class="info-label">Véhicule :</span>
+                    <span class="info-label">Véhicle :</span>
                     <span class="info-value">{{ $order->car->titre }}</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Modèle :</span>
+                    <span class="info-label">Model :</span>
                     <span class="info-value">{{ $order->car->modele }}</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Prix :</span>
+                    <span class="info-label">Price :</span>
                     <span class="info-value">${{ number_format($order->prix, 0, ',', ' ') }}</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Type de paiement :</span>
+                    <span class="info-label">Payment type :</span>
                     <span class="info-value">{{ $order->type_paiement == 'financement' ? 'Financement' : 'Apport direct' }}</span>
                 </div>
                 @if($order->montant)
                 <div class="info-item">
-                    <span class="info-label">Montant versé :</span>
+                    <span class="info-label">Amount paid :</span>
                     <span class="info-value">${{ number_format($order->montant, 0, ',', ' ') }}</span>
                 </div>
                 @endif
@@ -171,52 +171,53 @@
 
             <!-- Informations contact -->
             <div class="car-info">
-                <h3>📍 Vos informations de contact</h3>
+                <h3>📍 Your contact information</h3>
                 <div class="info-item">
-                    <span class="info-label">Téléphone :</span>
+                    <span class="info-label">Phone number :</span>
                     <span class="info-value">{{ $order->telephone }}</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Adresse :</span>
+                    <span class="info-label">Address :</span>
                     <span class="info-value">{{ $order->adresse }}</span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">Ville :</span>
+                    <span class="info-label">City :</span>
                     <span class="info-value">{{ $order->ville }}, {{ $order->pays }}</span>
                 </div>
                 @if($order->code_postal)
                 <div class="info-item">
-                    <span class="info-label">Code postal :</span>
+                    <span class="info-label">Postcode :</span>
                     <span class="info-value">{{ $order->code_postal }}</span>
                 </div>
                 @endif
             </div>
 
             <!-- Prochaines étapes -->
-            <div class="next-steps">
-                <h4>📋 Prochaines étapes :</h4>
+           <div class="next-steps">
+                <h4>📋 Next Steps:</h4>
                 <ol style="margin: 15px 0; padding-left: 20px;">
-                    <li>Notre équipe va vous contacter dans les <strong>24h</strong></li>
-                    <li>Nous finaliserons ensemble les détails de la location</li>
-                    <li>Préparation et mise à disposition du véhicule</li>
-                    <li>Remise des clés et documentation</li>
+                    <li>Our team will contact you within <strong>24 hours</strong></li>
+                    <li>We will finalize the order details together</li>
+                    <li>Vehicle preparation and delivery</li>
+                    <li>Handover of keys and documentation</li>
                 </ol>
             </div>
-
+            
             <div style="text-align: center; margin: 30px 0;">
-                <a href="#" class="btn">Suivre ma commande</a>
+                <a href="#" class="btn">Track my order</a>
             </div>
-
+            
             <p style="color: #666; font-style: italic; text-align: center;">
-                Pour toute question, n'hésitez pas à nous contacter au <strong>+221 XX XXX XX XX</strong>
-                ou par email à <strong>contact@dreamsrent.com</strong>
+                For any questions, feel free to contact us at <strong>+221 XX XXX XX XX</strong>
+                or by email at <strong>contact@dreamsrent.com</strong>
             </p>
+
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p><strong>Dreams Rent</strong></p>
-            <p>Votre partenaire de confiance pour la location de véhicules</p>
+            <p><strong>Am5 Auto</strong></p>
+            <p>Your trusted partner for vehicle purchases</p>
 
             <div class="social-links">
                 <a href="#">Facebook</a> |
@@ -225,8 +226,7 @@
             </div>
 
             <p style="font-size: 12px; opacity: 0.8;">
-                © 2025 Dreams Rent. Tous droits réservés.<br>
-                Dakar, Sénégal
+                © 2015 Am5 Auto.  All Rights Reserved.<br>
             </p>
         </div>
     </div>

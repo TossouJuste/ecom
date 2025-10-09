@@ -5,7 +5,7 @@
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Dreams Rent | Template</title>
+		<title>Register | Am5 Auto</title>
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -28,20 +28,17 @@
 		<!-- Main Wrapper -->
 		<div class="main-wrapper login-body">
 			<!-- Header -->
-			<header class="log-header">
-				<a href="index.html"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo"></a>
-			</header>
+			
 			<!-- /Header -->
 
 			<div class="login-wrapper">
 				<div class="loginbox">
 					<div class="login-auth">
 						<div class="login-auth-wrap">
-							<div class="sign-group">
-								<a href="index.html" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
-							</div>
-							<h1>Sign Up</h1>
-							<p class="account-subtitle">We'll send a confirmation code to your email.</p>
+						 <header class="log-header">
+            				<a href="/"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo" width="220px"></a>
+            			</header>
+							<h1>Sign Up</h1> 
 							<form method="POST" action="{{ route('register') }}">
                                 @csrf
 								<div class="input-block">
@@ -94,17 +91,10 @@
                                 <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">  {{ __('Register') }} </button>
 								 	<div class="login-or">
 									<span class="or-line"></span>
-									<span class="span-or">Or, Create an account with your email</span>
+									<span class="span-or"> <a href="/login"> Log in here</a> </span>
 								</div>
 								<!-- Social Login -->
-								<div class="social-login">
-									<a href="#" class="d-flex align-items-center justify-content-center input-block btn google-login w-100"><span><img src="assets/img/icons/google.svg" class="img-fluid" alt="Google"></span>Log in with Google</a>
-								</div>
-								<div class="social-login">
-									<a href="#" class="d-flex align-items-center justify-content-center input-block btn google-login w-100"><span><img src="assets/img/icons/facebook.svg" class="img-fluid" alt="Facebook"></span>Log in with Facebook</a>
-								</div>
-								<!-- /Social Login -->
-								<div class="text-center dont-have">Already have an Account? <a href="login.html">Sign In</a></div>
+							
 							</form>
 						</div>
 					</div>
@@ -117,7 +107,7 @@
 					<!-- Copyright -->
 					<div class="copyright">
 						<div class="copyright-text">
-							<p>© 2024 Dreams Rent. All Rights Reserved.</p>
+							<p>© 2015 Am5 Auto. All Rights Reserved.</p>
 						</div>
 					</div>
 					<!-- /Copyright -->

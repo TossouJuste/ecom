@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Aug 2025 12:55:10 GMT -->
+ 
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Dreams Rent | Template</title>
+		<title>Login Am5 Auto</title>
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -28,26 +27,23 @@
 		<!-- Main Wrapper -->
 		<div class="main-wrapper login-body">
 			<!-- Header -->
-			<header class="log-header">
-				<a href="/"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo"></a>
-			</header>
+		
 			<!-- /Header -->
 
 			<div class="login-wrapper">
 				<div class="loginbox">
 					<div class="login-auth">
 						<div class="login-auth-wrap">
-							<div class="sign-group">
-								<a href="/" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
-							</div>
-							<h1>Sign In</h1>
-							<p class="account-subtitle">We'll send a confirmation code to your email.</p>
+						    	<header class="log-header">
+                    				<a href="/"><img class="img-fluid logo-dark" src="{{ asset('images/logo.png') }}" alt="Logo" width="220px"></a>
+                    			</header>  <br>
+							<h1>Sign In</h1> 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <!-- Email -->
                                 <div class="mb-3">
-                                    <label for="email">{{ __('Adresse Email') }}</label>
+                                    <label for="email">{{ __('Adress Email') }}</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" required autofocus>
@@ -58,7 +54,7 @@
 
                                 <!-- Password -->
                                 <div class="mb-3">
-                                    <label for="password">{{ __('Mot de passe') }}</label>
+                                    <label for="password">{{ __('Password') }}</label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror"
                                         name="password" required>
@@ -73,7 +69,11 @@
                                     <label class="form-check-label" for="remember">{{ __('Remember me') }}</label>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary w-100">{{ __('Se connecter') }}</button>
+                                <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button> 
+                                
+                                <div class="login-or">
+									<span class="or-line"></span>
+									<span class="span-or"> <a href="/register"> Create an account here</a> </span>
                             </form>
 
 						</div>
@@ -87,7 +87,7 @@
 					<!-- Copyright -->
 					<div class="copyright">
 						<div class="copyright-text">
-							<p>© 2024 Dreams Rent. All Rights Reserved.</p>
+							<p>© 2015 Am5 Auto. All Rights Reserved.</p>
 						</div>
 					</div>
 					<!-- /Copyright -->

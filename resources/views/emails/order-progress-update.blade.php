@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mise à jour de votre commande</title>
+    <title>Updating your order</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -299,22 +299,22 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>Dreams Rent</h1>
-            <p>Mise à jour de votre commande</p>
+            <h1>Am5 Auto</h1>
+            <p>Updating your order</p>
         </div>
 
         <!-- Content -->
         <div class="content">
             <div class="greeting">
-                Bonjour <strong>{{ $order->client->name }}</strong>,
+                Hello <strong>{{ $order->client->name }}</strong>,
             </div>
 
-            <p>Nous avons une mise à jour concernant votre commande. Notre équipe a progressé sur votre dossier et souhaite vous tenir informé de l'avancement.</p>
+            <p>We have an update regarding your order. Our team has been making progress on your file and would like to keep you informed of its progress.</p>
 
             <!-- Section Progression -->
             <div class="progress-section">
                 <div class="progress-header">
-                    <div class="progress-title">Avancement de votre dossier</div>
+                    <div class="progress-title">Progress of your file</div>
                     <div class="progress-percentage">{{ $order->completion_percentage }}%</div>
                 </div>
 
@@ -324,10 +324,10 @@
 
                 @if($order->admin_description)
                 <div class="progress-description">
-                    <h4 style="color: #4CAF50; margin-bottom: 10px;">Dernière mise à jour :</h4>
+                    <h4 style="color: #4CAF50; margin-bottom: 10px;">Last update :</h4>
                     <p>{{ $order->admin_description }}</p>
                     <small class="text-muted">
-                        Mise à jour le {{ $order->last_updated_by_admin ? $order->last_updated_by_admin->format('d/m/Y à H:i') : 'Maintenant' }}
+                       Updated on {{ $order->last_updated_by_admin ? $order->last_updated_by_admin->format('d/m/Y à H:i') : 'Now' }}
                     </small>
                 </div>
                 @endif
@@ -335,12 +335,12 @@
 
             <!-- Timeline des étapes -->
             <div class="order-summary">
-                <h3>Étapes de traitement</h3>
+                <h3>Processing steps</h3>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-icon completed">✓</div>
                         <div class="timeline-content">
-                            <h5>Commande reçue</h5>
+                            <h5>Order received</h5>
                             <small>{{ $order->created_at->format('d/m/Y') }}</small>
                         </div>
                     </div>
@@ -350,8 +350,8 @@
                             {{ $order->completion_percentage >= 25 ? '✓' : '2' }}
                         </div>
                         <div class="timeline-content">
-                            <h5>Vérification et préparation</h5>
-                            <small>Validation des documents et préparation du véhicule</small>
+                            <h5>Checking and preparing</h5>
+                            <small>Validation of documents and preparation of the vehicle</small>
                         </div>
                     </div>
 
@@ -361,7 +361,7 @@
                         </div>
                         <div class="timeline-content">
                             <h5>Finalisation</h5>
-                            <small>Préparation pour la remise du véhicule</small>
+                            <small>Preparation for vehicle delivery</small>
                         </div>
                     </div>
 
@@ -370,8 +370,8 @@
                             {{ $order->completion_percentage >= 100 ? '✓' : '4' }}
                         </div>
                         <div class="timeline-content">
-                            <h5>Véhicule prêt</h5>
-                            <small>Disponible pour récupération</small>
+                            <h5>Vehicle ready</h5>
+                            <small>Available for recovery</small>
                         </div>
                     </div>
                 </div>
@@ -379,25 +379,25 @@
 
             <!-- Récapitulatif commande -->
             <div class="order-summary">
-                <h3>Récapitulatif de votre commande</h3>
+                <h3>Summary of your order</h3>
 
                 <div class="info-row">
-                    <span class="info-label">Code de suivi :</span>
+                    <span class="info-label">Tracking code :</span>
                     <span class="info-value"><code style="background: #f8f9fa; padding: 3px 8px; border-radius: 3px;">{{ $order->tracking_code }}</code></span>
                 </div>
 
                 <div class="info-row">
-                    <span class="info-label">Véhicule :</span>
+                    <span class="info-label">Véhicle :</span>
                     <span class="info-value">{{ $order->car->titre }}</span>
                 </div>
 
                 <div class="info-row">
-                    <span class="info-label">Modèle :</span>
+                    <span class="info-label">Model :</span>
                     <span class="info-value">{{ $order->car->modele }}</span>
                 </div>
 
                 <div class="info-row">
-                    <span class="info-label">Statut actuel :</span>
+                    <span class="info-label">Current status :</span>
                     <span class="info-value">
                         <span style="background: #e3f2fd; color: #1976d2; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">
                             {{ ucfirst($order->status) }}
@@ -406,7 +406,7 @@
                 </div>
 
                 <div class="info-row">
-                    <span class="info-label">Prix total :</span>
+                    <span class="info-label">Total price :</span>
                     <span class="info-value" style="color: #4CAF50; font-weight: bold;">
                         ${{ number_format($order->prix, 0, ',', ' ') }}
                     </span>
@@ -416,46 +416,46 @@
             <!-- Message selon le pourcentage -->
             @if($order->completion_percentage >= 100)
             <div class="status-update" style="background: #d4edda; color: #155724; border-color: #c3e6cb;">
-                <strong>🎉 Votre véhicule est prêt !</strong>
-                <p>Félicitations ! Votre commande est finalisée. Vous pouvez maintenant récupérer votre véhicule.</p>
+                <strong>🎉Your vehicle is ready !</strong>
+                <p>Congratulations! Your order is complete. You can now pick up your vehicle.</p>
             </div>
             @elseif($order->completion_percentage >= 75)
             <div class="status-update" style="background: #cce5ff; color: #004085; border-color: #99d6ff;">
-                <strong>⚡ Finalisation en cours</strong>
-                <p>Nous finalisons votre dossier. Vous serez contacté très prochainement pour la remise des clés.</p>
+                <strong>⚡ Ffinalization in progress</strong>
+                <p>We are finalizing your file. You will be contacted very soon to hand over the keys.</p>
             </div>
             @elseif($order->completion_percentage >= 25)
             <div class="status-update" style="background: #fff3cd; color: #856404; border-color: #ffeaa7;">
-                <strong>🔧 Traitement en cours</strong>
-                <p>Nous travaillons activement sur votre demande. Merci de votre patience.</p>
+                <strong>🔧 Processing in progress</strong>
+                <p>We are actively working on your request. Thank you for your patience.</p>
             </div>
             @else
             <div class="status-update">
-                <strong>📋 Dossier en cours d'analyse</strong>
-                <p>Nous avons bien reçu votre demande et commençons le traitement de votre dossier.</p>
+                <strong>📋 File under analysis</strong>
+                <p>We have received your request and are starting to process your file.</p>
             </div>
             @endif
 
             <!-- Section contact -->
             <div class="contact-section">
-                <h4>Une question ? Nous sommes là pour vous aider</h4>
-                <p>N'hésitez pas à nous contacter pour toute information complémentaire</p>
+                <h4>Got a question? We're here to help</h4>
+                <p>Do not hesitate to contact us for any further information.</p>
 
                 <div>
-                    <a href="tel:+221XXXXXXXX" class="btn">📞 Nous appeler</a>
-                    <a href="mailto:contact@dreamsrent.com" class="btn">✉️ Nous écrire</a>
+                    <a href="tel:+33 XXXXXXXX" class="btn">📞 Call us</a>
+                    <a href="mailto:contact@dreamsrent.com" class="btn">✉️ write us/a>
                 </div>
             </div>
 
             <p style="color: #666; font-style: italic; text-align: center; margin-top: 30px;">
-                Vous recevrez une nouvelle notification à chaque étape importante de votre commande.
+               You will receive a new notification at each important stage of your order.
             </p>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p><strong>Dreams Rent</strong></p>
-            <p>Votre partenaire de confiance pour la location de véhicules</p>
+            <p><strong>Am5 Auto</strong></p>
+            <p>Your trusted partner for vehicle rentals</p>
 
             <div class="social-links">
                 <a href="#">Facebook</a> |
@@ -465,13 +465,13 @@
             </div>
 
             <p style="font-size: 12px; opacity: 0.8; margin-top: 15px;">
-                © 2025 Dreams Rent. Tous droits réservés.<br>
-                Dakar, Sénégal | contact@dreamsrent.com
+                © 2015 Am5 Auto.  All Rights Reserved.<br>
+               contact@am5auto.com
             </p>
 
             <p style="font-size: 11px; opacity: 0.6; margin-top: 10px;">
-                Vous recevez cet email car vous avez une commande active avec nous.<br>
-                Code de suivi: {{ $order->tracking_code }}
+               You are receiving this email because you have an active order with us.<br>
+               Tracking code : {{ $order->tracking_code }}
             </p>
         </div>
     </div>

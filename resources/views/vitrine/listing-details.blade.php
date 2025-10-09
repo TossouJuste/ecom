@@ -4,13 +4,11 @@
     <div class="breadcrumb-bar">
         <div class="container">
             <div class="row align-items-center text-center">
-                <div class="col-md-12 col-12">
-                    <h2 class="breadcrumb-title">{{ $car->titre }}</h2>
+                <div class="col-md-12 col-12"><br> <br> <br>
+                    <h2 class="breadcrumb-title">{{ $car->titre }} details</h2>
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('vitrine.vehicule') }}">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('vitrine.vehicule') }}">Véhicules</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $car->titre }}</li>
+                            <li class=""><a href="{{ route('vitrine.vehicule') }}">Details</a></li>  
                         </ol>
                     </nav>
                 </div>
@@ -56,8 +54,9 @@
                                 </div> --}}
                                 <div class="camaro-location-inner">
                                     <i class='bx bx-car'></i>
-                                    <span>Ajouté le : {{ $car->created_at->format('d M, Y') }}</span>
+                                    <span>Added on : {{ $car->created_at->format('d M, Y') }}</span>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -133,7 +132,7 @@
                     <!-- Extra Service Section -->
                     <div class="review-sec pb-0">
                         <div class="review-header">
-                            <h4>Services Supplémentaires</h4>
+                            <h4>other features</h4>
                         </div>
                         <div class="lisiting-service">
                             <div class="row">
@@ -142,7 +141,7 @@
                                         <img src="{{ asset('assets/img/icons/service-01.svg') }}" alt="GPS">
                                     </div>
                                     <div class="service-info">
-                                        <p>Système de navigation GPS</p>
+                                        <p>GPS navigation system</p>
                                     </div>
                                 </div>
                                 <div class="servicelist d-flex align-items-center col-xxl-3 col-xl-4 col-sm-6">
@@ -150,7 +149,7 @@
                                         <img src="{{ asset('assets/img/icons/service-02.svg') }}" alt="WiFi">
                                     </div>
                                     <div class="service-info">
-                                        <p>Point d'accès Wi-Fi</p>
+                                        <p>Wi-Fi hotspot</p>
                                     </div>
                                 </div>
                                 <div class="servicelist d-flex align-items-center col-xxl-3 col-xl-4 col-sm-6">
@@ -158,7 +157,7 @@
                                         <img src="{{ asset('assets/img/icons/service-03.svg') }}" alt="Sièges">
                                     </div>
                                     <div class="service-info">
-                                        <p>Sièges de sécurité enfant</p>
+                                        <p>Child safety seats</p>
                                     </div>
                                 </div>
                                 <div class="servicelist d-flex align-items-center col-xxl-3 col-xl-4 col-sm-6">
@@ -166,7 +165,7 @@
                                         <img src="{{ asset('assets/img/icons/service-04.svg') }}" alt="Carburant">
                                     </div>
                                     <div class="service-info">
-                                        <p>Options carburant</p>
+                                        <p>Fuel options</p>
                                     </div>
                                 </div>
                                 <div class="servicelist d-flex align-items-center col-xxl-3 col-xl-4 col-sm-6">
@@ -174,7 +173,7 @@
                                         <img src="{{ asset('assets/img/icons/service-05.svg') }}" alt="Assistance">
                                     </div>
                                     <div class="service-info">
-                                        <p>Assistance routière</p>
+                                        <p>Roadside assistance</p>
                                     </div>
                                 </div>
                                 <div class="servicelist d-flex align-items-center col-xxl-3 col-xl-4 col-sm-6">
@@ -182,7 +181,7 @@
                                         <img src="{{ asset('assets/img/icons/service-06.svg') }}" alt="Radio">
                                     </div>
                                     <div class="service-info">
-                                        <p>Radio satellite</p>
+                                        <p>Satellite radio</p>
                                     </div>
                                 </div>
                             </div>
@@ -192,10 +191,10 @@
                     <!-- Listing Section -->
                     <div class="review-sec mb-0">
                         <div class="review-header">
-                            <h4>Description du véhicule</h4>
+                            <h4>Description of the vehicle</h4>
                         </div>
                         <div class="description-list">
-                            <p>{{ $car->description ?: 'Ce véhicule offre une expérience de conduite exceptionnelle avec un design moderne et des performances remarquables. Parfait pour vos déplacements en ville ou vos escapades. Il dispose de toutes les commodités modernes pour assurer votre confort et votre sécurité.' }}
+                            <p>{{ $car->description ?: 'This vehicle offers an exceptional driving experience with a modern design and remarkable performance. Perfect for your city trips or getaways. It has all the modern amenities to ensure your comfort and safety.' }}
                             </p>
 
                             @if (strlen($car->description ?? '') > 300)
@@ -203,7 +202,7 @@
                                     <div class="more-text">
                                         <p>{{ substr($car->description, 300) }}</p>
                                     </div>
-                                    {{-- <a href="javascript:void(0);" class="more-link">Voir plus</a> --}}
+                                    {{-- <a href="javascript:void(0);" class="more-link">See more</a> --}}
                                 </div>
                             @endif
                         </div>
@@ -212,7 +211,7 @@
                     <!-- Specifications -->
                     <div class="review-sec specification-card">
                         <div class="review-header">
-                            <h4>Spécifications</h4>
+                            <h4>Specifications</h4>
                         </div>
                         <div class="card-body">
                             <div class="lisiting-featues">
@@ -223,7 +222,7 @@
                                                 alt="Type">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Carrosserie</span>
+                                            <span>Car body</span>
                                             <h6>{{ $car->category->name ?? '---' }}</h6>
                                         </div>
                                     </div>
@@ -236,7 +235,7 @@
                                                 alt="Marque">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Marque</span>
+                                            <span>Brand</span>
                                             <h6>{{ $car->brand->name }}</h6>
                                         </div>
                                     </div>
@@ -257,7 +256,7 @@
                                                 alt="Carburant">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Type de carburant</span>
+                                            <span>Fuel type</span>
                                             <h6>{{ $car->carburant }}</h6>
                                         </div>
                                     </div>
@@ -267,7 +266,7 @@
                                                 alt="Kilométrage">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Kilométrage</span>
+                                            <span>Mileage</span>
                                             <h6>{{ number_format($car->kilometrage) }} Km</h6>
                                         </div>
                                     </div>
@@ -287,7 +286,7 @@
                                                 alt="Année">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Année</span>
+                                            <span>Year</span>
                                             <h6>{{ $car->annee }}</h6>
                                         </div>
                                     </div>
@@ -297,8 +296,8 @@
                                                 alt="Climatisation">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Climatisation</span>
-                                            <h6>Climatisé</h6>
+                                            <span>Air conditioning</span>
+                                            <h6>Yes</h6>
                                         </div>
                                     </div>
                                     <div class="featureslist d-flex align-items-center col-xl-3 col-md-4 col-sm-6">
@@ -307,7 +306,7 @@
                                                 alt="Portes">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Portes</span>
+                                            <span>Doors</span>
                                             <h6>{{ $car->portes }} Portes</h6>
                                         </div>
                                     </div>
@@ -317,7 +316,7 @@
                                                 alt="Puissance">
                                         </div>
                                         <div class="featues-info">
-                                            <span>Puissance (CV)</span>
+                                            <span>Power (CV)</span>
                                             <h6>{{ $car->puissance_moteur_ch ?: '---' }}</h6>
                                         </div>
                                     </div>
@@ -329,36 +328,37 @@
                     <!-- Car Features -->
                     <div class="review-sec listing-feature">
                         <div class="review-header">
-                            <h4>Équipements du véhicule</h4>
+                            <h4>Vehicle equipment</h4>
                         </div>
                         <div class="listing-description">
-                            <div class="row">
+                              <div class="row">
                                 <div class="col-md-4">
-                                    <ul>
-                                        <li><span><i class="bx bx-check-double"></i></span>Climatisation multi-zones</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Sièges avant chauffants</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Android Auto</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Système de navigation</li>
-                                    </ul>
+                                  <ul>
+                                    <li><span><i class="bx bx-check-double"></i></span>Automatic air conditioning</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Front and rear power windows</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Cruise control</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Multifunction steering wheel</li>
+                                  </ul>
                                 </div>
                                 <div class="col-md-4">
-                                    <ul>
-                                        <li><span><i class="bx bx-check-double"></i></span>Système audio premium</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Bluetooth</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Démarrage sans clé</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Siège à mémoire</li>
-                                    </ul>
+                                  <ul>
+                                    <li><span><i class="bx bx-check-double"></i></span>Touchscreen display</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Bluetooth / USB connectivity</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Rearview camera</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Navigation system (GPS)</li>
+                                  </ul>
                                 </div>
                                 <div class="col-md-4">
-                                    <ul>
-                                        <li><span><i class="bx bx-check-double"></i></span>Caméra de recul</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Régulateur adaptatif</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>Essuie-glaces automatiques</li>
-                                        <li><span><i class="bx bx-check-double"></i></span>4 vitres électriques</li>
-                                    </ul>
+                                  <ul>
+                                    <li><span><i class="bx bx-check-double"></i></span>Automatic wipers</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Automatic headlights</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Keyless start</li>
+                                    <li><span><i class="bx bx-check-double"></i></span>Front and side airbags</li>
+                                  </ul>
                                 </div>
+                              </div>
                             </div>
-                        </div>
+
                     </div>
 
                     <!-- Tariff -->
@@ -589,55 +589,35 @@
 
                     <!-- Owner Details -->
                     <div class="review-sec extra-service mt-0">
+                       <p style="color: #d9534f; font-size: 1.5rem; font-weight: bold;">
+                            Price : ${{ number_format($car->prix, 0, ',', ' ') }}
+                        </p>
+                        <br>
                         <div class="review-header">
                             <h4>Contacts</h4>
                         </div>
-                        {{-- <div class="owner-detail">
-                            <div class="owner-img">
-                                <a href="#"><img src="assets/img/profiles/avatar-07.jpg" alt="Propriétaire"></a>
-                                <span class="badge-check"><img src="assets/img/icons/badge-check.svg"
-                                        alt="Vérifié"></span>
-                            </div>
-                            <div class="reviewbox-list-rating">
-                                <h5><a>Dreams Cars</a></h5>
-                                <p>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <i class="fas fa-star filled"></i>
-                                    @endfor
-                                    <span>(5.0)</span>
-                                </p>
-                            </div>
-                        </div> --}}
+                        
                         <ul class="booking-list">
-                            <li>Email <span><a href="mailto:contact@administrateur.com"
+                            <li>Email <span><a href="mailto:contact@am5auto.com"
                                         class="__cf_email__"
-                                        data-cfemail="036a6d656c43667b626e736f662d606c6e">contact@administrateur.com</a></span>
+                                        data-cfemail="036a6d656c43667b626e736f662d606c6e">contact@am5auto.com</a></span>
                             </li>
-                            <li>Téléphone <span>+221 77 XXX XX XX</span></li>
+                            <li>Phone number <span>+33 77 XXX XX XX</span></li>
 
-                            <li class="">
-                                <div class="input-block mb-0">
-                                    <div class="search-btn flex d-flex text-center items-center">
-                                        {{-- @if ($car->disponible) --}}
-                                            <button type="button" class="btn btn-primary check-available rent-now-btn"
-                                                data-car-id="{{ $car->id }}">Commander
-                                                maintenant</button>
-                                        {{-- @else
-                                            <button type="button" class="btn btn-secondary" disabled>Non
-                                                disponible</button>
-                                        @endif --}}
-                                        &nbsp;
-                                        &nbsp;
-                                        {{-- <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#enquiry"
-                                            class="btn btn-theme">Nous
-                                            contacter</a> --}}
+                            <li>
+    <div class="input-block mb-0">
+        <div class="search-btn d-flex justify-content-center align-items-center text-center">
+            <button type="button" 
+                    class="btn btn-primary check-available rent-now-btn"
+                    data-car-id="{{ $car->id }}">
+                Buy now
+            </button>
+            &nbsp;&nbsp;
+             
+        </div>
+    </div>
+</li>
 
-                                            <a href="mailto:contact@administrateur.com" 
-                                            class="btn btn-theme">Nous
-                                            contacter</a>
-                                    </div>
-                                </div>
-                            </li>
                             {{-- <li>Localisation <span>{{ $car->localisation ?: 'Dakar, Sénégal' }}</span></li> --}}
                         </ul>
                         {{-- <div class="message-btn">
@@ -1077,7 +1057,7 @@
                 if (navigator.share) {
                     navigator.share({
                         title: '{{ $car->titre }}',
-                        text: 'Découvrez ce véhicule incroyable sur Dreams Rent',
+                        text: 'Découvrez ce véhicule incroyable sur Am5 Auto',
                         url: window.location.href
                     });
                 } else {

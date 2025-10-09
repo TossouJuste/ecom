@@ -47,10 +47,10 @@
 										<h5 class="footer-title">Quick Links</h5>
 										<ul>
 											<li>
-												<a href="javascript:void(0)">My account</a>
+												<a href="/">Home</a>
 											</li>
 											<li>
-												<a href="javascript:void(0)">Financial Services</a>
+												<a href="/vehicule">Véhicles</a>
 											</li>
 										</ul>
 									</div>
@@ -77,11 +77,11 @@
 										<h5 class="footer-title">Useful Links</h5>
 										<ul>
 											<li>
-												<a href="javascript:void(0)">My account</a>
+												<a href="terms">Terms & condition</a>
 											</li>
 										 
 											<li>
-												<a href="javascript:void(0)">Financial Services</a>
+												<a href="/track-order">track my order</a>
 											</li>
 										</ul>
 									</div>
